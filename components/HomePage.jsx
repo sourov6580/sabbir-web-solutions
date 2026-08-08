@@ -358,7 +358,8 @@ export default function HomePage() {
           {/* grid */}
           <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {shown.map((p, i) => (
-              <div key={p.t + i} className="card-media lift" style={{ background: "#fff", borderRadius: 18, overflow: "hidden", border: `1px solid ${C.line}` }}>
+              <a key={p.t + i} href={p.url || undefined} target={p.url ? "_blank" : undefined} rel={p.url ? "noopener noreferrer" : undefined}
+                className="card-media lift" style={{ display: "block", textDecoration: "none", color: "inherit", background: "#fff", borderRadius: 18, overflow: "hidden", border: `1px solid ${C.line}` }}>
                 <div style={{ height: 190, background: p.image ? C.navy : `linear-gradient(135deg, ${C.purple}, ${C.purpleDeep})`, position: "relative", overflow: "hidden" }}>
                   {p.image ? (
                     <img className="grow" src={p.image} alt={p.t} style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover" }} />
@@ -372,7 +373,7 @@ export default function HomePage() {
                   </span>
                   <div className="overlay" style={{ position: "absolute", inset: 0, background: "rgba(15,23,42,.55)", display: "flex", alignItems: "center", justifyContent: "center" }}>
                     <span className="inline-flex items-center gap-2" style={{ background: "#fff", color: C.navy, fontSize: 14, fontWeight: 600, padding: "9px 16px", borderRadius: 999 }}>
-                      প্রজেক্ট দেখুন <ArrowUpRight size={16} />
+                      {pTab === "video" ? <>ভিডিও দেখুন <Play size={15} fill={C.navy} /></> : <>প্রজেক্ট দেখুন <ArrowUpRight size={16} /></>}
                     </span>
                   </div>
                 </div>
@@ -383,7 +384,7 @@ export default function HomePage() {
                   </div>
                   <ArrowUpRight size={20} color={C.muted} />
                 </div>
-              </div>
+              </a>
             ))}
           </div>
         </div>
