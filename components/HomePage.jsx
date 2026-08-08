@@ -98,7 +98,7 @@ export default function HomePage() {
           {/* Logo area */}
           <div className="flex items-center gap-3">
             {brand.logoImage ? (
-              <img src={brand.logoImage} alt={brand.name} style={{ height: 42, width: "auto" }} />
+              <img src={brand.logoImage} alt={brand.name} className="h-9 sm:h-11 w-auto" style={{ display: "block" }} />
             ) : (
               <>
                 <div
