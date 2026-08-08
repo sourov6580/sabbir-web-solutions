@@ -164,7 +164,7 @@ export default function HomePage() {
       <section id="home" style={{ background: C.light, overflow: "hidden", position: "relative" }}>
         <div aria-hidden style={{ position: "absolute", top: -120, right: -120, width: 420, height: 420, borderRadius: "50%", background: "radial-gradient(circle, rgba(91,42,157,.14), transparent 70%)" }} />
         <div aria-hidden style={{ position: "absolute", bottom: -160, left: -100, width: 380, height: 380, borderRadius: "50%", background: "radial-gradient(circle, rgba(91,42,157,.08), transparent 70%)" }} />
-        <div className="mx-auto grid items-center gap-16 px-6 pt-10 pb-24 lg:grid-cols-2 lg:pt-14 lg:pb-28" style={{ maxWidth: 1200 }}>
+        <div className="mx-auto grid items-center gap-16 px-6 pt-8 pb-16 lg:grid-cols-2 lg:pt-12 lg:pb-20" style={{ maxWidth: 1200 }}>
           <Reveal>
             {/* Founder-led trust badge */}
             <div className="inline-flex items-center gap-2.5 pl-1.5 pr-4 py-1.5 mb-7"
@@ -288,7 +288,7 @@ export default function HomePage() {
       </section>
 
       {/* ============ SERVICES ============ */}
-      <section id="services" className="mx-auto px-6 py-24" style={{ maxWidth: 1200 }}>
+      <section id="services" className="mx-auto px-6 py-16" style={{ maxWidth: 1200 }}>
         <Reveal><SectionHead eyebrow={services.eyebrow} title={services.title} sub={services.sub} /></Reveal>
         <div className="grid gap-8 md:grid-cols-2" style={{ marginTop: 52 }}>
           {services.cards.map((s, i) => (
@@ -325,7 +325,7 @@ export default function HomePage() {
 
       {/* ============ PORTFOLIO ============ */}
       <section id="portfolio" style={{ background: C.light }}>
-        <div className="mx-auto px-6 py-24" style={{ maxWidth: 1200 }}>
+        <div className="mx-auto px-6 py-16" style={{ maxWidth: 1200 }}>
           <Reveal><SectionHead eyebrow={portfolio.eyebrow} title={portfolio.title} sub={portfolio.sub} /></Reveal>
 
           {/* main tabs */}
@@ -390,7 +390,7 @@ export default function HomePage() {
       </section>
 
       {/* ============ CASE STUDY ============ */}
-      <section className="mx-auto px-6 py-24" style={{ maxWidth: 1200 }}>
+      <section className="mx-auto px-6 py-16" style={{ maxWidth: 1200 }}>
         <Reveal><SectionHead eyebrow={caseStudy.eyebrow} title={caseStudy.title} sub={caseStudy.sub} /></Reveal>
         <Reveal delay={0.1}>
           <div className="mt-12 overflow-hidden" style={{ borderRadius: 24, border: `1px solid ${C.line}`, background: "#fff" }}>
@@ -429,7 +429,7 @@ export default function HomePage() {
 
       {/* ============ PRICING ============ */}
       <section id="pricing" style={{ background: C.light }}>
-        <div className="mx-auto px-6 py-24" style={{ maxWidth: 1200 }}>
+        <div className="mx-auto px-6 py-16" style={{ maxWidth: 1200 }}>
           <Reveal><SectionHead eyebrow={pricing.eyebrow} title={pricing.title} sub={pricing.sub} /></Reveal>
 
           <div style={{ marginTop: 40 }}>
@@ -457,7 +457,7 @@ export default function HomePage() {
       </section>
 
       {/* ============ ABOUT ============ */}
-      <section id="about" className="mx-auto px-6 pt-12 pb-24" style={{ maxWidth: 1100 }}>
+      <section id="about" className="mx-auto px-6 pt-8 pb-16" style={{ maxWidth: 1100 }}>
         <div className="grid items-center gap-12 lg:grid-cols-2">
           <Reveal>
             <div style={{ position: "relative" }}>
@@ -499,7 +499,7 @@ export default function HomePage() {
 
       {/* ============ PROCESS ============ */}
       <section style={{ background: C.navy, color: "#fff" }}>
-        <div className="mx-auto px-6 py-24" style={{ maxWidth: 1200 }}>
+        <div className="mx-auto px-6 py-16" style={{ maxWidth: 1200 }}>
           <Reveal>
             <div style={{ textAlign: "center", maxWidth: 640, margin: "0 auto" }}>
               <div style={{ fontSize: 13, letterSpacing: ".14em", textTransform: "uppercase", color: C.purpleSoft, fontWeight: 700 }}>{processData.eyebrow}</div>
@@ -524,7 +524,7 @@ export default function HomePage() {
       </section>
 
       {/* ============ TESTIMONIALS ============ */}
-      <section className="mx-auto px-6 py-24" style={{ maxWidth: 1200 }}>
+      <section className="mx-auto px-6 py-16" style={{ maxWidth: 1200 }}>
         <Reveal><SectionHead eyebrow={testimonials.eyebrow} title={testimonials.title} sub={testimonials.sub} /></Reveal>
         <div className="mt-12 grid gap-6 md:grid-cols-3">
           {testimonials.items.map((t, i) => (
@@ -552,7 +552,7 @@ export default function HomePage() {
 
       {/* ============ CONTACT ============ */}
       <section id="contact" style={{ background: C.light }}>
-        <div className="mx-auto px-6 py-24" style={{ maxWidth: 1100 }}>
+        <div className="mx-auto px-6 py-16" style={{ maxWidth: 1100 }}>
           <div className="grid gap-12 lg:grid-cols-2">
             <Reveal>
               <div style={{ fontSize: 13, letterSpacing: ".14em", textTransform: "uppercase", color: C.purple, fontWeight: 700 }}>{contact.eyebrow}</div>
@@ -577,8 +577,8 @@ export default function HomePage() {
             </Reveal>
 
             <Reveal delay={0.1}>
-              <div style={{ position: "relative" }}>
-                <div style={{ aspectRatio: "4/5", borderRadius: 24, overflow: "hidden", background: `linear-gradient(160deg, ${C.purple}, ${C.purpleDeep})`, display: "flex", alignItems: "center", justifyContent: "center", boxShadow: "0 30px 60px -30px rgba(91,42,157,.5)" }}>
+              <div style={{ position: "relative", maxWidth: 340, margin: "0 auto", width: "100%" }}>
+                <div style={{ aspectRatio: "1/1", borderRadius: 24, overflow: "hidden", background: `linear-gradient(160deg, ${C.purple}, ${C.purpleDeep})`, display: "flex", alignItems: "center", justifyContent: "center", boxShadow: "0 30px 60px -30px rgba(91,42,157,.5)" }}>
                   {contact.image ? (
                     <img src={contact.image} alt={brand.founderName} style={{ width: "100%", height: "100%", objectFit: "cover" }} />
                   ) : (
@@ -607,9 +607,7 @@ export default function HomePage() {
           <div className="flex flex-col items-center gap-6 md:flex-row md:justify-between">
             <a href="/" className="flex items-center gap-3" style={{ textDecoration: "none" }} aria-label={brand.name}>
               {brand.logoImage ? (
-                <span style={{ background: "#fff", borderRadius: 12, padding: "8px 14px", display: "inline-flex", alignItems: "center" }}>
-                  <img src={brand.logoImage} alt={brand.name} style={{ height: 32, width: "auto", display: "block" }} />
-                </span>
+                <img src={brand.logoImage} alt={brand.name} style={{ height: 38, width: "auto", display: "block", filter: "brightness(0) invert(1)" }} />
               ) : (
                 <>
                   <div style={{ width: 40, height: 40, borderRadius: 11, background: C.purple, display: "flex", alignItems: "center", justifyContent: "center" }}>
