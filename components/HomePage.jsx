@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect, useRef } from "react";
 import {
-  Menu, X, ArrowRight, ArrowUpRight, Globe, Video, Layout,
+  Menu, X, ArrowRight, ArrowUpRight, ArrowUp, Globe, Video, Layout,
   Zap, Sparkles, Film, Play, Check, Phone,
   Mail, User, MessageCircle, Quote, MapPin, Star,
 } from "lucide-react";
@@ -66,11 +66,15 @@ function Reveal({ children, delay = 0, className = "" }) {
 export default function HomePage() {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [showTop, setShowTop] = useState(false);
   const [pTab, setPTab] = useState("web");
   const [pFilter, setPFilter] = useState("All");
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 20);
+    const onScroll = () => {
+      setScrolled(window.scrollY > 20);
+      setShowTop(window.scrollY > 400);
+    };
     window.addEventListener("scroll", onScroll);
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
@@ -118,7 +122,7 @@ export default function HomePage() {
           {/* Desktop nav */}
           <nav className="hidden items-center gap-8 lg:flex">
             {nav.map((n) => (
-              <a key={n} href={`#${n.toLowerCase()}`} className="navlink" style={{ fontSize: 15, fontWeight: 500, color: C.navy, textDecoration: "none" }}>
+              <a key={n} href={n === "Home" ? "/" : `#${n.toLowerCase()}`} className="navlink" style={{ fontSize: 15, fontWeight: 500, color: C.navy, textDecoration: "none" }}>
                 {n}
               </a>
             ))}
@@ -142,7 +146,7 @@ export default function HomePage() {
           <div className="lg:hidden px-6 pb-6" style={{ background: "#fff", borderBottom: `1px solid ${C.line}` }}>
             <div className="flex flex-col gap-1 pt-2">
               {nav.map((n) => (
-                <a key={n} href={`#${n.toLowerCase()}`} onClick={() => setOpen(false)}
+                <a key={n} href={n === "Home" ? "/" : `#${n.toLowerCase()}`} onClick={() => setOpen(false)}
                   style={{ padding: "12px 4px", fontWeight: 500, color: C.navy, textDecoration: "none", borderBottom: `1px solid ${C.light}` }}>
                   {n}
                 </a>
@@ -601,18 +605,26 @@ export default function HomePage() {
       <footer style={{ background: C.navy, color: "#fff" }}>
         <div className="mx-auto px-6 py-14" style={{ maxWidth: 1200 }}>
           <div className="flex flex-col items-center gap-6 md:flex-row md:justify-between">
-            <div className="flex items-center gap-3">
-              <div style={{ width: 40, height: 40, borderRadius: 11, background: C.purple, display: "flex", alignItems: "center", justifyContent: "center" }}>
-                <Sparkles size={20} color="#fff" />
-              </div>
-              <div>
-                <div className="display" style={{ fontWeight: 700 }}>{brand.name}</div>
-                <div style={{ fontSize: 12, color: "#94a3b8" }}>{brand.tagline}</div>
-              </div>
-            </div>
+            <a href="/" className="flex items-center gap-3" style={{ textDecoration: "none" }} aria-label={brand.name}>
+              {brand.logoImage ? (
+                <span style={{ background: "#fff", borderRadius: 12, padding: "8px 14px", display: "inline-flex", alignItems: "center" }}>
+                  <img src={brand.logoImage} alt={brand.name} style={{ height: 32, width: "auto", display: "block" }} />
+                </span>
+              ) : (
+                <>
+                  <div style={{ width: 40, height: 40, borderRadius: 11, background: C.purple, display: "flex", alignItems: "center", justifyContent: "center" }}>
+                    <Sparkles size={20} color="#fff" />
+                  </div>
+                  <div>
+                    <div className="display" style={{ fontWeight: 700, color: "#fff" }}>{brand.name}</div>
+                    <div style={{ fontSize: 12, color: "#94a3b8" }}>{brand.tagline}</div>
+                  </div>
+                </>
+              )}
+            </a>
             <div className="flex flex-wrap justify-center gap-6">
               {nav.map((n) => (
-                <a key={n} href={`#${n.toLowerCase()}`} style={{ color: "#cbd5e1", fontSize: 14, textDecoration: "none" }}>{n}</a>
+                <a key={n} href={n === "Home" ? "/" : `#${n.toLowerCase()}`} style={{ color: "#cbd5e1", fontSize: 14, textDecoration: "none" }}>{n}</a>
               ))}
             </div>
           </div>
@@ -621,6 +633,26 @@ export default function HomePage() {
           </div>
         </div>
       </footer>
+
+      {/* ============ SCROLL TO TOP ============ */}
+      <button
+        onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+        aria-label="Scroll to top"
+        className="btnx"
+        style={{
+          position: "fixed", bottom: 24, right: 24, zIndex: 60,
+          width: 48, height: 48, borderRadius: "50%",
+          background: C.purple, color: "#fff", border: "none", cursor: "pointer",
+          display: "flex", alignItems: "center", justifyContent: "center",
+          boxShadow: "0 12px 28px -8px rgba(91,42,157,.7)",
+          opacity: showTop ? 1 : 0,
+          visibility: showTop ? "visible" : "hidden",
+          transform: showTop ? "translateY(0)" : "translateY(12px)",
+          transition: "opacity .3s ease, transform .3s ease, visibility .3s ease",
+        }}
+      >
+        <ArrowUp size={22} />
+      </button>
     </div>
   );
 }
