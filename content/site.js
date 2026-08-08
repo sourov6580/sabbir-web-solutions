@@ -17,7 +17,7 @@ export const brand = {
   founderRole: "ফাউন্ডার ও ডিজাইনার",
   founderInitials: "SH",
   domainLabel: "sabbirwebsolutions.site",
-  tagline: "ওয়েবসাইট ও ক্রিয়েটিভ ভিডিও",
+  tagline: "ওয়েব ডিজাইন & Ai ভিডিও কন্টেন্ট সার্ভিস",
 };
 
 /* nav: label = যা দেখাবে, href = কোথায় যাবে (সেকশন id ইংরেজিই থাকবে) */
@@ -34,8 +34,8 @@ export const startProjectLabel = "প্রজেক্ট শুরু কর�
 
 export const hero = {
   badge: "Sabbir Web Solutions এ আপনাকে স্বাগতম",
-  titleLead: "আপনার বিজনেস গ্রোথ এর Smart Solution",
-  titleAccent: "Website ও Video",
+  titleLead: "আপনার বিজনেস গ্রোথ এর",
+  titleAccent: "Smart Solution",
   subtitle:
     "ছোট ব্যবসা, ই-কমার্স ব্র্যান্ড আর স্টার্টআপের জন্য আমি এমন Website ও Promotional Video বানাই — যা Customer-এর আস্থা অর্জন করে আর সত্যিকারের বিক্রি বাড়ায়।",
   primaryCta: { label: "প্রজেক্ট শুরু করুন", href: "#contact" },
