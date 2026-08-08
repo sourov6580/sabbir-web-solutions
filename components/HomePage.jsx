@@ -68,7 +68,7 @@ export default function HomePage() {
   const [scrolled, setScrolled] = useState(false);
   const [showTop, setShowTop] = useState(false);
   const [pTab, setPTab] = useState("web");
-  const [pFilter, setPFilter] = useState("All");
+  const [pFilter, setPFilter] = useState("সব");
 
   useEffect(() => {
     const onScroll = () => {
@@ -81,7 +81,7 @@ export default function HomePage() {
 
   const projects = pTab === "web" ? portfolio.web : portfolio.video;
   const filters = pTab === "web" ? portfolio.webFilters : portfolio.videoFilters;
-  const shown = projects.filter((p) => pFilter === "All" || p.cat === pFilter);
+  const shown = projects.filter((p) => pFilter === "সব" || p.cat === pFilter);
 
   const waHref = `https://wa.me/${contact.whatsappNumber}`;
   const btn = (bg, color, extra = {}) => ({ background: bg, color, ...extra });
@@ -121,9 +121,9 @@ export default function HomePage() {
 
           {/* Desktop nav */}
           <nav className="hidden items-center gap-8 lg:flex">
-            {nav.map((n) => (
-              <a key={n} href={n === "Home" ? "/" : `#${n.toLowerCase()}`} className="navlink" style={{ fontSize: 15, fontWeight: 500, color: C.navy, textDecoration: "none" }}>
-                {n}
+            {nav.map((item) => (
+              <a key={item.label} href={item.href} className="navlink" style={{ fontSize: 15, fontWeight: 500, color: C.navy, textDecoration: "none" }}>
+                {item.label}
               </a>
             ))}
           </nav>
@@ -145,10 +145,10 @@ export default function HomePage() {
         {open && (
           <div className="lg:hidden px-6 pb-6" style={{ background: "#fff", borderBottom: `1px solid ${C.line}` }}>
             <div className="flex flex-col gap-1 pt-2">
-              {nav.map((n) => (
-                <a key={n} href={n === "Home" ? "/" : `#${n.toLowerCase()}`} onClick={() => setOpen(false)}
+              {nav.map((item) => (
+                <a key={item.label} href={item.href} onClick={() => setOpen(false)}
                   style={{ padding: "12px 4px", fontWeight: 500, color: C.navy, textDecoration: "none", borderBottom: `1px solid ${C.light}` }}>
-                  {n}
+                  {item.label}
                 </a>
               ))}
               <a href={waHref} target="_blank" rel="noopener noreferrer" onClick={() => setOpen(false)} className="mt-3 inline-flex items-center justify-center gap-2 px-5 py-3"
@@ -249,7 +249,7 @@ export default function HomePage() {
               <div className="lift" style={{ position: "absolute", bottom: -34, left: -22, width: 264, background: C.navy, borderRadius: 18, padding: 16, boxShadow: "0 30px 60px -22px rgba(15,23,42,.7)" }}>
                 <div className="flex items-center justify-between" style={{ marginBottom: 12 }}>
                   <div className="flex items-center gap-2" style={{ color: "#fff", fontSize: 12.5, fontWeight: 600 }}>
-                    <Film size={14} color={C.purpleSoft} /> Video Editor
+                    <Film size={14} color={C.purpleSoft} /> ভিডিও এডিটর
                   </div>
                   <span style={{ fontSize: 10, color: "#94a3b8" }}>00:24</span>
                 </div>
@@ -315,7 +315,7 @@ export default function HomePage() {
                   ))}
                 </div>
                 <a href="#portfolio" className="mt-8 inline-flex items-center gap-2" style={{ color: C.purple, fontWeight: 600, textDecoration: "none" }}>
-                  View Portfolio <ArrowUpRight size={17} />
+                  পোর্টফোলিও দেখুন <ArrowUpRight size={17} />
                 </a>
               </div>
             </Reveal>
@@ -330,8 +330,8 @@ export default function HomePage() {
 
           {/* main tabs */}
           <div className="mt-10 flex justify-center gap-2" style={{ marginTop: 40 }}>
-            {[["web", "Web Design", <Layout size={16} key="a" />], ["video", "Video", <Film size={16} key="b" />]].map(([id, label, ic]) => (
-              <button key={id} onClick={() => { setPTab(id); setPFilter("All"); }}
+            {[["web", "ওয়েব ডিজাইন", <Layout size={16} key="a" />], ["video", "ভিডিও", <Film size={16} key="b" />]].map(([id, label, ic]) => (
+              <button key={id} onClick={() => { setPTab(id); setPFilter("সব"); }}
                 className="btnx inline-flex items-center gap-2 px-5 py-2.5"
                 style={{ borderRadius: 999, fontWeight: 600, fontSize: 15, cursor: "pointer",
                   border: `1px solid ${pTab === id ? C.purple : C.line}`,
@@ -372,7 +372,7 @@ export default function HomePage() {
                   </span>
                   <div className="overlay" style={{ position: "absolute", inset: 0, background: "rgba(15,23,42,.55)", display: "flex", alignItems: "center", justifyContent: "center" }}>
                     <span className="inline-flex items-center gap-2" style={{ background: "#fff", color: C.navy, fontSize: 14, fontWeight: 600, padding: "9px 16px", borderRadius: 999 }}>
-                      View Project <ArrowUpRight size={16} />
+                      প্রজেক্ট দেখুন <ArrowUpRight size={16} />
                     </span>
                   </div>
                 </div>
@@ -473,7 +473,7 @@ export default function HomePage() {
               </div>
               <div style={{ position: "absolute", bottom: -18, right: -14, background: "#fff", borderRadius: 16, padding: "14px 18px", boxShadow: "0 20px 40px -20px rgba(15,23,42,.4)", border: `1px solid ${C.line}` }}>
                 <div className="display" style={{ fontSize: 20, fontWeight: 700, color: C.purple }}>{brand.founderName}</div>
-                <div style={{ fontSize: 13, color: C.muted }}>Founder · {brand.name}</div>
+                <div style={{ fontSize: 13, color: C.muted }}>ফাউন্ডার · {brand.name}</div>
               </div>
             </div>
           </Reveal>
@@ -563,7 +563,7 @@ export default function HomePage() {
                 {contact.sub}
               </p>
               <div className="mt-8 space-y-4">
-                {[[<Mail size={18} key="m" />, contact.email], [<Phone size={18} key="p" />, "Available on WhatsApp"], [<MapPin size={18} key="l" />, contact.location]].map(([ic, t], i) => (
+                {[[<Mail size={18} key="m" />, contact.email], [<Phone size={18} key="p" />, "WhatsApp-এ পাওয়া যাবে"], [<MapPin size={18} key="l" />, contact.location]].map(([ic, t], i) => (
                   <div key={i} className="flex items-center gap-3">
                     <span style={{ width: 40, height: 40, borderRadius: 12, background: "#fff", border: `1px solid ${C.line}`, color: C.purple, display: "flex", alignItems: "center", justifyContent: "center" }}>{ic}</span>
                     <span style={{ color: C.navy, fontWeight: 500 }}>{t}</span>
@@ -623,8 +623,8 @@ export default function HomePage() {
               )}
             </a>
             <div className="flex flex-wrap justify-center gap-6">
-              {nav.map((n) => (
-                <a key={n} href={n === "Home" ? "/" : `#${n.toLowerCase()}`} style={{ color: "#cbd5e1", fontSize: 14, textDecoration: "none" }}>{n}</a>
+              {nav.map((item) => (
+                <a key={item.label} href={item.href} style={{ color: "#cbd5e1", fontSize: 14, textDecoration: "none" }}>{item.label}</a>
               ))}
             </div>
           </div>
@@ -686,10 +686,10 @@ function PriceGroup({ label, plans }) {
             boxShadow: p.featured ? "0 26px 50px -24px rgba(91,42,157,.6)" : "none",
           }}>
             {p.featured && (
-              <span style={{ position: "absolute", top: 18, right: 18, fontSize: 11, fontWeight: 700, letterSpacing: ".08em", textTransform: "uppercase", background: "rgba(255,255,255,.18)", padding: "4px 10px", borderRadius: 999 }}>Popular</span>
+              <span style={{ position: "absolute", top: 18, right: 18, fontSize: 11, fontWeight: 700, letterSpacing: ".08em", textTransform: "uppercase", background: "rgba(255,255,255,.18)", padding: "4px 10px", borderRadius: 999 }}>জনপ্রিয়</span>
             )}
             <div style={{ fontSize: 16, fontWeight: 600, opacity: p.featured ? .9 : 1 }}>{p.name}</div>
-            <div style={{ marginTop: 12, fontSize: 13, opacity: .7 }}>Starting from</div>
+            <div style={{ marginTop: 12, fontSize: 13, opacity: .7 }}>শুরু হচ্ছে</div>
             <div className="display" style={{ fontSize: 40, fontWeight: 800, letterSpacing: "-.02em" }}>{p.price}</div>
             <div className="mt-6 space-y-3">
               {p.feats.map((f) => (
@@ -702,7 +702,7 @@ function PriceGroup({ label, plans }) {
             <a href={waHref} target="_blank" rel="noopener noreferrer" className="btnx mt-7 inline-flex items-center justify-center gap-2"
               style={{ width: "100%", padding: "12px", borderRadius: 11, fontWeight: 600, textDecoration: "none",
                 background: p.featured ? "#fff" : "#5B2A9D", color: p.featured ? "#5B2A9D" : "#fff" }}>
-              Get Started <ArrowRight size={16} />
+              শুরু করুন <ArrowRight size={16} />
             </a>
           </div>
         ))}
