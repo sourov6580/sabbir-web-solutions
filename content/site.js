@@ -17,7 +17,7 @@ export const brand = {
   name: "Sabbir Web Solutions",
   logoLine1: "Sabbir Web",
   logoLine2: "Solutions",
-  logoImage: null, // e.g. "/images/logo.png" — null shows the built-in mark
+  logoImage: "/images/logo.png", // set to null to show the built-in mark instead
   founderName: "Sabbir Hossain",
   founderRole: "Founder & Lead Designer",
   founderInitials: "SH",
@@ -214,9 +214,9 @@ export const contact = {
   eyebrow: "Contact",
   heading: "Let's start your project",
   sub: "Tell us what you need and we'll get back with a clear plan and quote.",
-  email: "hello@sabbirwebsolutions.site",
+  email: "sabbirngdca1@gmail.com",
   // WhatsApp number in international format, digits only (no + or spaces).
-  whatsappNumber: "8801XXXXXXXXX",
+  whatsappNumber: "8801610034234",
   whatsappLabel: "Chat on WhatsApp",
   location: "Natore, Bangladesh",
   services: ["Website Design", "Video Editing", "Both"],
