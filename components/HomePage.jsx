@@ -96,7 +96,7 @@ export default function HomePage() {
       >
         <div className="mx-auto flex items-center justify-between px-6 py-4" style={{ maxWidth: 1200 }}>
           {/* Logo area */}
-          <a href="#home" className="flex items-center gap-3" style={{ textDecoration: "none", color: "inherit" }} aria-label={brand.name}>
+          <a href="/" className="flex items-center gap-3" style={{ textDecoration: "none", color: "inherit" }} aria-label={brand.name}>
             {brand.logoImage ? (
               <img src={brand.logoImage} alt={brand.name} className="h-9 sm:h-11 w-auto" style={{ display: "block" }} />
             ) : (
