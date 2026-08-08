@@ -68,7 +68,7 @@ export default function HomePage() {
   const [scrolled, setScrolled] = useState(false);
   const [showTop, setShowTop] = useState(false);
   const [pTab, setPTab] = useState("web");
-  const [pFilter, setPFilter] = useState("সব");
+  const [pFilter, setPFilter] = useState(portfolio.webFilters[0]);
 
   useEffect(() => {
     const onScroll = () => {
@@ -81,7 +81,7 @@ export default function HomePage() {
 
   const projects = pTab === "web" ? portfolio.web : portfolio.video;
   const filters = pTab === "web" ? portfolio.webFilters : portfolio.videoFilters;
-  const shown = projects.filter((p) => pFilter === "সব" || p.cat === pFilter);
+  const shown = projects.filter((p) => pFilter === filters[0] || p.cat === pFilter);
 
   const waHref = `https://wa.me/${contact.whatsappNumber}`;
   const btn = (bg, color, extra = {}) => ({ background: bg, color, ...extra });
@@ -331,7 +331,7 @@ export default function HomePage() {
           {/* main tabs */}
           <div className="mt-10 flex justify-center gap-2" style={{ marginTop: 40 }}>
             {[["web", "ওয়েব ডিজাইন", <Layout size={16} key="a" />], ["video", "ভিডিও", <Film size={16} key="b" />]].map(([id, label, ic]) => (
-              <button key={id} onClick={() => { setPTab(id); setPFilter("সব"); }}
+              <button key={id} onClick={() => { setPTab(id); setPFilter((id === "web" ? portfolio.webFilters : portfolio.videoFilters)[0]); }}
                 className="btnx inline-flex items-center gap-2 px-5 py-2.5"
                 style={{ borderRadius: 999, fontWeight: 600, fontSize: 15, cursor: "pointer",
                   border: `1px solid ${pTab === id ? C.purple : C.line}`,
