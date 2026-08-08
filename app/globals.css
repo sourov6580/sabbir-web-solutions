@@ -1,0 +1,60 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --font-sora: 'Sora', sans-serif;
+  --font-jakarta: 'Plus Jakarta Sans', sans-serif;
+}
+
+
+/* ---- base ---- */
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: var(--font-jakarta), system-ui, sans-serif;
+  color: #0F172A;
+  background: #FFFFFF;
+}
+.display { font-family: var(--font-sora), sans-serif; }
+
+/* ---- hover lift ---- */
+.lift { transition: transform .35s cubic-bezier(.22,1,.36,1), box-shadow .35s ease; }
+.lift:hover { transform: translateY(-6px); box-shadow: 0 24px 50px -20px rgba(91,42,157,.35); }
+
+/* ---- nav underline ---- */
+.navlink { position: relative; }
+.navlink::after { content:''; position:absolute; left:0; bottom:-6px; height:2px; width:0; background:#5B2A9D; transition:width .3s ease; }
+.navlink:hover::after { width:100%; }
+
+/* ---- misc transitions ---- */
+.chip { transition: all .25s ease; }
+.grow { transition: transform .4s ease; }
+.card-media:hover .grow { transform: scale(1.06); }
+.card-media .overlay { opacity: 0; transition: opacity .3s ease; }
+.card-media:hover .overlay { opacity: 1; }
+
+/* ---- top accent bar on hover ---- */
+.topbar { position: relative; }
+.topbar::before {
+  content:''; position:absolute; top:0; left:0; right:0; height:3px;
+  background:linear-gradient(90deg, #5B2A9D, #7C4DCB);
+  border-radius:20px 20px 0 0;
+  transform:scaleX(0); transform-origin:left; transition:transform .4s ease;
+}
+.topbar:hover::before { transform:scaleX(1); }
+
+/* ---- buttons ---- */
+.btnx { transition: transform .25s ease, box-shadow .25s ease, background .25s ease; }
+.btnx:hover { transform: translateY(-2px); }
+
+/* ---- floating hero visual ---- */
+@keyframes float { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-12px)} }
+.floaty { animation: float 6s ease-in-out infinite; }
+
+@media (prefers-reduced-motion: reduce){
+  .floaty { animation:none; }
+  .lift:hover { transform:none; }
+}
+
+:focus-visible { outline: 3px solid #7C4DCB; outline-offset: 2px; border-radius: 6px; }
