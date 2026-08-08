@@ -14,7 +14,7 @@ export const brand = {
   logoLine2: "Solutions",
   logoImage: "/images/logo.png", // null দিলে বিল্ট-ইন মার্ক দেখাবে
   founderName: "সাব্বির হোসেন",
-  founderRole: "ফাউন্ডার ও লিড ডিজাইনার",
+  founderRole: "ফাউন্ডার ও ডিজাইনার",
   founderInitials: "SH",
   domainLabel: "sabbirwebsolutions.site",
   tagline: "ওয়েবসাইট ও ক্রিয়েটিভ ভিডিও",
@@ -33,8 +33,8 @@ export const nav = [
 export const startProjectLabel = "প্রজেক্ট শুরু করুন";
 
 export const hero = {
-  badge: "ফাউন্ডার-চালিত স্টুডিও · Sabbir Web Solutions",
-  titleLead: "ভিজিটরকে ক্রেতায় রূপান্তর করে — এমন ",
+  badge: "Sabbir Web Solutions এ আপনাকে স্বাগতম",
+  titleLead: "আপনার বিজনেস গ্রোথ এর Smart Solution",
   titleAccent: "Website ও Video",
   subtitle:
     "ছোট ব্যবসা, ই-কমার্স ব্র্যান্ড আর স্টার্টআপের জন্য আমি এমন Website ও Promotional Video বানাই — যা Customer-এর আস্থা অর্জন করে আর সত্যিকারের বিক্রি বাড়ায়।",
