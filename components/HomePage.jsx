@@ -96,7 +96,7 @@ export default function HomePage() {
       >
         <div className="mx-auto flex items-center justify-between px-6 py-4" style={{ maxWidth: 1200 }}>
           {/* Logo area */}
-          <div className="flex items-center gap-3">
+          <a href="#home" className="flex items-center gap-3" style={{ textDecoration: "none", color: "inherit" }} aria-label={brand.name}>
             {brand.logoImage ? (
               <img src={brand.logoImage} alt={brand.name} className="h-9 sm:h-11 w-auto" style={{ display: "block" }} />
             ) : (
@@ -113,7 +113,7 @@ export default function HomePage() {
                 </div>
               </>
             )}
-          </div>
+          </a>
 
           {/* Desktop nav */}
           <nav className="hidden items-center gap-8 lg:flex">
@@ -125,7 +125,7 @@ export default function HomePage() {
           </nav>
 
           <div className="hidden lg:block">
-            <a href="#contact" className="btnx inline-flex items-center gap-2 px-5 py-3"
+            <a href={waHref} target="_blank" rel="noopener noreferrer" className="btnx inline-flex items-center gap-2 px-5 py-3"
               style={{ ...btn(C.purple, "#fff"), borderRadius: 12, fontWeight: 600, fontSize: 15, textDecoration: "none", boxShadow: "0 12px 24px -12px rgba(91,42,157,.7)" }}>
               {startProjectLabel} <ArrowRight size={17} />
             </a>
@@ -147,7 +147,7 @@ export default function HomePage() {
                   {n}
                 </a>
               ))}
-              <a href="#contact" onClick={() => setOpen(false)} className="mt-3 inline-flex items-center justify-center gap-2 px-5 py-3"
+              <a href={waHref} target="_blank" rel="noopener noreferrer" onClick={() => setOpen(false)} className="mt-3 inline-flex items-center justify-center gap-2 px-5 py-3"
                 style={{ ...btn(C.purple, "#fff"), borderRadius: 12, fontWeight: 600, textDecoration: "none" }}>
                 {startProjectLabel} <ArrowRight size={17} />
               </a>
@@ -160,7 +160,7 @@ export default function HomePage() {
       <section id="home" style={{ background: C.light, overflow: "hidden", position: "relative" }}>
         <div aria-hidden style={{ position: "absolute", top: -120, right: -120, width: 420, height: 420, borderRadius: "50%", background: "radial-gradient(circle, rgba(91,42,157,.14), transparent 70%)" }} />
         <div aria-hidden style={{ position: "absolute", bottom: -160, left: -100, width: 380, height: 380, borderRadius: "50%", background: "radial-gradient(circle, rgba(91,42,157,.08), transparent 70%)" }} />
-        <div className="mx-auto grid items-center gap-16 px-6 py-24 lg:grid-cols-2 lg:py-32" style={{ maxWidth: 1200 }}>
+        <div className="mx-auto grid items-center gap-16 px-6 pt-10 pb-24 lg:grid-cols-2 lg:pt-14 lg:pb-28" style={{ maxWidth: 1200 }}>
           <Reveal>
             {/* Founder-led trust badge */}
             <div className="inline-flex items-center gap-2.5 pl-1.5 pr-4 py-1.5 mb-7"
@@ -178,7 +178,7 @@ export default function HomePage() {
             </p>
 
             <div className="mt-9 flex flex-wrap items-center gap-4">
-              <a href={hero.primaryCta.href} className="btnx inline-flex items-center gap-2 px-7 py-4"
+              <a href={waHref} target="_blank" rel="noopener noreferrer" className="btnx inline-flex items-center gap-2 px-7 py-4"
                 style={{ ...btn(C.purple, "#fff"), borderRadius: 13, fontWeight: 700, fontSize: 16, textDecoration: "none", boxShadow: "0 18px 34px -14px rgba(91,42,157,.75)" }}>
                 {hero.primaryCta.label} <ArrowRight size={18} />
               </a>
@@ -453,7 +453,7 @@ export default function HomePage() {
       </section>
 
       {/* ============ ABOUT ============ */}
-      <section id="about" className="mx-auto px-6 py-24" style={{ maxWidth: 1100 }}>
+      <section id="about" className="mx-auto px-6 pt-12 pb-24" style={{ maxWidth: 1100 }}>
         <div className="grid items-center gap-12 lg:grid-cols-2">
           <Reveal>
             <div style={{ position: "relative" }}>
@@ -573,26 +573,22 @@ export default function HomePage() {
             </Reveal>
 
             <Reveal delay={0.1}>
-              <div style={{ background: "#fff", borderRadius: 20, padding: 30, border: `1px solid ${C.line}`, boxShadow: "0 24px 50px -30px rgba(15,23,42,.25)" }}>
-                <div className="space-y-4">
-                  <Field label="Name" placeholder="Your full name" icon={<User size={16} />} />
-                  <Field label="Email" placeholder="you@email.com" icon={<Mail size={16} />} />
-                  <Field label="Phone" placeholder="+880 1XXX-XXXXXX" icon={<Phone size={16} />} />
-                  <div>
-                    <label style={lblStyle}>Service Required</label>
-                    <select style={{ ...inputStyle, cursor: "pointer" }}>
-                      {contact.services.map((sv) => <option key={sv}>{sv}</option>)}
-                    </select>
-                  </div>
-                  <div>
-                    <label style={lblStyle}>Message</label>
-                    <textarea rows={4} placeholder="Tell us about your project..." style={{ ...inputStyle, resize: "vertical" }} />
-                  </div>
-                  <button className="btnx" style={{ ...btn(C.purple, "#fff"), width: "100%", padding: "14px", borderRadius: 12, fontWeight: 700, fontSize: 16, border: "none", cursor: "pointer", boxShadow: "0 14px 28px -14px rgba(91,42,157,.7)" }}>
-                    {contact.submitLabel}
-                  </button>
-                  <div className="flex items-center justify-center gap-2" style={{ fontSize: 13, color: C.muted }}>
-                    <Check size={14} color={C.purple} /> {contact.privacyNote}
+              <div style={{ position: "relative" }}>
+                <div style={{ aspectRatio: "4/5", borderRadius: 24, overflow: "hidden", background: `linear-gradient(160deg, ${C.purple}, ${C.purpleDeep})`, display: "flex", alignItems: "center", justifyContent: "center", boxShadow: "0 30px 60px -30px rgba(91,42,157,.5)" }}>
+                  {contact.image ? (
+                    <img src={contact.image} alt={brand.founderName} style={{ width: "100%", height: "100%", objectFit: "cover" }} />
+                  ) : (
+                    <>
+                      <User size={90} color="rgba(255,255,255,.6)" />
+                      <span style={{ position: "absolute", bottom: 16, left: 16, fontSize: 12, color: "rgba(255,255,255,.75)" }}>{contact.imageCaption}</span>
+                    </>
+                  )}
+                </div>
+                <div style={{ position: "absolute", bottom: -18, right: -14, background: "#fff", borderRadius: 16, padding: "12px 16px 12px 12px", boxShadow: "0 20px 40px -20px rgba(15,23,42,.4)", border: `1px solid ${C.line}`, display: "flex", alignItems: "center", gap: 10 }}>
+                  <span className="display" style={{ width: 38, height: 38, borderRadius: "50%", background: `linear-gradient(145deg, ${C.purple}, ${C.purpleDeep})`, color: "#fff", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 13, fontWeight: 700 }}>{brand.founderInitials}</span>
+                  <div style={{ lineHeight: 1.25 }}>
+                    <div style={{ fontSize: 14, fontWeight: 700, color: C.navy }}>{brand.founderName}</div>
+                    <div style={{ fontSize: 12, color: C.muted }}>{brand.founderRole}</div>
                   </div>
                 </div>
               </div>
@@ -641,6 +637,7 @@ function SectionHead({ eyebrow, title, sub }) {
 }
 
 function PriceGroup({ label, plans }) {
+  const waHref = `https://wa.me/${contact.whatsappNumber}`;
   return (
     <Reveal>
       <div className="flex items-center gap-4" style={{ marginBottom: 22 }}>
@@ -670,7 +667,7 @@ function PriceGroup({ label, plans }) {
                 </div>
               ))}
             </div>
-            <a href="#contact" className="btnx mt-7 inline-flex items-center justify-center gap-2"
+            <a href={waHref} target="_blank" rel="noopener noreferrer" className="btnx mt-7 inline-flex items-center justify-center gap-2"
               style={{ width: "100%", padding: "12px", borderRadius: 11, fontWeight: 600, textDecoration: "none",
                 background: p.featured ? "#fff" : "#5B2A9D", color: p.featured ? "#5B2A9D" : "#fff" }}>
               Get Started <ArrowRight size={16} />
