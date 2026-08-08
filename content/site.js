@@ -112,12 +112,24 @@ export const portfolio = {
     { t: "Prime Consult", cat: "Landing Page", biz: "সার্ভিস বিজনেস", image: null },
   ],
   video: [
-    { t: "Crispy Bites Ad", cat: "E-commerce & Product Ads", biz: "ফুড", image: null },
-    { t: "Summer Fashion Drop", cat: "Clothing & Fashion Ads", biz: "ফ্যাশন", image: null },
-    { t: "Herbal Care Promo", cat: "Organic & Herbal Solutions", biz: "হার্বাল", image: null },
-    { t: "Green Valley Homes", cat: "Real Estate & Property Ads", biz: "রিয়েল এস্টেট", image: null },
-    { t: "Consult Pro Intro", cat: "Lifestyle & Service Ads", biz: "সার্ভিস বিজনেস", image: null },
-    { t: "ShopEasy Launch", cat: "E-commerce & Product Ads", biz: "ই-কমার্স", image: null },
+    { t: "M M Agro – Fresh Agricultural & Dairy", cat: "E-commerce & Product Ads", biz: "এগ্রিকালচার", url: "https://youtu.be/Fn0Z41aj2Gs", image: "https://img.youtube.com/vi/Fn0Z41aj2Gs/hqdefault.jpg" },
+    { t: "JS Calligraphy – Handcrafted Custom Name Gift Design", cat: "E-commerce & Product Ads", biz: "গিফট", url: "https://youtu.be/PyBP-aZ3joA", image: "https://img.youtube.com/vi/PyBP-aZ3joA/hqdefault.jpg" },
+    { t: "Fresh Mango Rajshahi – Premium Agro", cat: "E-commerce & Product Ads", biz: "এগ্রিকালচার", url: "https://youtu.be/-FJiPYMp5gQ", image: "https://img.youtube.com/vi/-FJiPYMp5gQ/hqdefault.jpg" },
+    { t: "ওয়েবসাইট না ল্যান্ডিং পেজ?", cat: "E-commerce & Product Ads", biz: "এডুকেশন", url: "https://youtu.be/MnIbE0lwTOI", image: "https://img.youtube.com/vi/MnIbE0lwTOI/hqdefault.jpg" },
+
+    { t: "Rupak Store – Premium Collection", cat: "Clothing & Fashion Ads", biz: "ফ্যাশন", url: "https://youtu.be/aB2BcOuFxO0", image: "https://img.youtube.com/vi/aB2BcOuFxO0/hqdefault.jpg" },
+    { t: "Borka Everyday – Premium Borka Set Collections", cat: "Clothing & Fashion Ads", biz: "ফ্যাশন", url: "https://youtu.be/UbgXWiZy9wY", image: "https://img.youtube.com/vi/UbgXWiZy9wY/hqdefault.jpg" },
+    { t: "Daraz Fashion Zone – Premium Skin Care Products", cat: "Clothing & Fashion Ads", biz: "স্কিন কেয়ার", url: "https://youtu.be/hQ8wMqXFJV8", image: "https://img.youtube.com/vi/hQ8wMqXFJV8/hqdefault.jpg" },
+
+    { t: "Shifayah – Organic Wellness & Energy Booster", cat: "Organic & Herbal Solutions", biz: "ওয়েলনেস", url: "https://youtu.be/q6K0d-8Dfo4", image: "https://img.youtube.com/vi/q6K0d-8Dfo4/hqdefault.jpg" },
+    { t: "Jamaican Black Castor Oil – Pure Herbal Hair Care", cat: "Organic & Herbal Solutions", biz: "হেয়ার কেয়ার", url: "https://youtu.be/fu720ICsaQc", image: "https://img.youtube.com/vi/fu720ICsaQc/hqdefault.jpg" },
+    { t: "KING SPICE – 100% Pure Organic Energy Booster", cat: "Organic & Herbal Solutions", biz: "হার্বাল", url: "https://youtu.be/oh9_ZYwYtgo", image: "https://img.youtube.com/vi/oh9_ZYwYtgo/hqdefault.jpg" },
+
+    { t: "Dream 15 Dolonchapa – Modern Residential Living Spaces", cat: "Real Estate & Property Ads", biz: "রিয়েল এস্টেট", url: "https://youtu.be/wk5kA4Lzpng", image: "https://img.youtube.com/vi/wk5kA4Lzpng/hqdefault.jpg" },
+    { t: "Dream 15 Dolonchapa – Luxury Apartment Tour & Flat Booking", cat: "Real Estate & Property Ads", biz: "রিয়েল এস্টেট", url: "https://youtu.be/PsF615meeVM", image: "https://img.youtube.com/vi/PsF615meeVM/hqdefault.jpg" },
+
+    { t: "Ghotok Apu – Trusted Matrimony & Matchmaking Service", cat: "Lifestyle & Service Ads", biz: "সার্ভিস", url: "https://youtu.be/a2Pg42ZCFk0", image: "https://img.youtube.com/vi/a2Pg42ZCFk0/hqdefault.jpg" },
+    { t: "Kotha Bondhu – Mental Health Counseling Video", cat: "Lifestyle & Service Ads", biz: "কাউন্সেলিং", url: "https://youtu.be/y0KCcPFjduE", image: "https://img.youtube.com/vi/y0KCcPFjduE/hqdefault.jpg" },
   ],
 };
 
