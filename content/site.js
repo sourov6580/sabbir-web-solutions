@@ -219,6 +219,10 @@ export const contact = {
   whatsappNumber: "8801610034234",
   whatsappLabel: "Chat on WhatsApp",
   location: "Natore, Bangladesh",
+  // Right-side photo in the contact section. Drop your image in /public/images
+  // and set it here, e.g. "/images/sabbir-contact.jpg". null shows a placeholder frame.
+  image: null,
+  imageCaption: "Your photo here",
   services: ["Website Design", "Video Editing", "Both"],
   privacyNote: "Your details stay private · No spam, ever",
   submitLabel: "Send Message",
