@@ -1,61 +1,64 @@
 /* =============================================================================
-   SABBIR WEB SOLUTIONS — SITE CONTENT
+   SABBIR WEB SOLUTIONS — SITE CONTENT (Bangla)
    -----------------------------------------------------------------------------
-   This is the ONLY file you need to edit to update the website text, projects,
-   pricing, testimonials and contact details. No need to touch any component.
-
-   • Change any text between the quotes.
-   • Add/remove items inside the [ ... ] arrays.
-   • To use a real image, drop the file into /public/images and set the matching
-     `image` field to e.g. "/images/my-photo.jpg". Leave it as null to keep the
-     built-in placeholder graphic.
-   • Icon fields accept one of: "globe" | "video" | "message" | "layout" |
-     "sparkles" | "check" | "zap"
+   পুরো সাইটের সব লেখা এখানেই। এডিট করতে quotes-এর ভেতরের লেখা বদলান।
+   • [ ... ] অ্যারের ভেতরে আইটেম যোগ/বাদ দেওয়া যায়।
+   • ছবি বসাতে: ফাইল /public/images-এ রাখুন, তারপর image ফিল্ডে path দিন
+     (যেমন "/images/photo.jpg")। null থাকলে বিল্ট-ইন প্লেসহোল্ডার দেখাবে।
+   • icon values: "globe" | "video" | "message" | "layout" | "sparkles" | "check" | "zap"
 ============================================================================= */
 
 export const brand = {
   name: "Sabbir Web Solutions",
   logoLine1: "Sabbir Web",
   logoLine2: "Solutions",
-  logoImage: "/images/logo.png", // set to null to show the built-in mark instead
-  founderName: "Sabbir Hossain",
-  founderRole: "Founder & Lead Designer",
+  logoImage: "/images/logo.png", // null দিলে বিল্ট-ইন মার্ক দেখাবে
+  founderName: "সাব্বির হোসেন",
+  founderRole: "ফাউন্ডার ও লিড ডিজাইনার",
   founderInitials: "SH",
   domainLabel: "sabbirwebsolutions.site",
-  tagline: "Websites & Creative Videos",
+  tagline: "ওয়েবসাইট ও ক্রিয়েটিভ ভিডিও",
 };
 
-export const nav = ["Home", "Services", "Portfolio", "Pricing", "About", "Contact"];
+/* nav: label = যা দেখাবে, href = কোথায় যাবে (সেকশন id ইংরেজিই থাকবে) */
+export const nav = [
+  { label: "হোম", href: "/" },
+  { label: "সার্ভিস", href: "#services" },
+  { label: "পোর্টফোলিও", href: "#portfolio" },
+  { label: "প্রাইসিং", href: "#pricing" },
+  { label: "পরিচিতি", href: "#about" },
+  { label: "যোগাযোগ", href: "#contact" },
+];
 
-export const startProjectLabel = "Start Your Project";
+export const startProjectLabel = "প্রজেক্ট শুরু করুন";
 
 export const hero = {
-  badge: "Founder-led studio · Sabbir Web Solutions",
-  titleLead: "Websites & Videos That Turn Visitors Into ",
-  titleAccent: "Paying Customers",
+  badge: "ফাউন্ডার-চালিত স্টুডিও · Sabbir Web Solutions",
+  titleLead: "ভিজিটরকে ক্রেতায় রূপান্তর করে — এমন ",
+  titleAccent: "Website ও Video",
   subtitle:
-    "I design high-converting websites and scroll-stopping promotional videos for small businesses, e-commerce brands, and startups — built to earn trust and drive real sales.",
-  primaryCta: { label: "Start Your Project", href: "#contact" },
-  secondaryCta: { label: "View Portfolio", href: "#portfolio" },
-  microcopy: "Free project consultation · Reply within 24 hours",
+    "ছোট ব্যবসা, ই-কমার্স ব্র্যান্ড আর স্টার্টআপের জন্য আমি এমন Website ও Promotional Video বানাই — যা Customer-এর আস্থা অর্জন করে আর সত্যিকারের বিক্রি বাড়ায়।",
+  primaryCta: { label: "প্রজেক্ট শুরু করুন", href: "#contact" },
+  secondaryCta: { label: "পোর্টফোলিও দেখুন", href: "#portfolio" },
+  microcopy: "ফ্রি কনসালটেশন · 24 ঘণ্টার মধ্যে উত্তর",
   trust: [
-    { icon: "zap", text: "Fast, on-time delivery" },
-    { icon: "message", text: "Direct founder communication" },
-    { icon: "sparkles", text: "Revisions until you're happy" },
+    { icon: "zap", text: "দ্রুত, সময়মতো ডেলিভারি" },
+    { icon: "message", text: "সরাসরি ফাউন্ডারের সাথে যোগাযোগ" },
+    { icon: "sparkles", text: "সন্তুষ্ট না হওয়া পর্যন্ত রিভিশন" },
   ],
 };
 
 export const services = {
-  eyebrow: "What We Do",
-  title: "Services Built to Grow Your Brand",
-  sub: "Two focused offerings, delivered with agency-level polish.",
+  eyebrow: "আমরা যা করি",
+  title: "আপনার ব্র্যান্ড বড় করার সার্ভিস",
+  sub: "দুটি ফোকাসড সার্ভিস — এজেন্সি-মানের প্রিমিয়াম ফিনিশিং সহ।",
   cards: [
     {
       no: "01",
       icon: "globe",
-      tag: "Design & Development",
-      title: "Website Design",
-      desc: "Conversion-focused websites engineered to build trust and turn visitors into customers.",
+      tag: "ডিজাইন ও ডেভেলপমেন্ট",
+      title: "ওয়েবসাইট ডিজাইন",
+      desc: "আস্থা তৈরি করে আর ভিজিটরকে ক্রেতায় রূপান্তর করে — এমন conversion-focused Website।",
       items: [
         "Landing Page Design",
         "Business Website",
@@ -67,9 +70,9 @@ export const services = {
     {
       no: "02",
       icon: "video",
-      tag: "Creative Production",
-      title: "Video Editing",
-      desc: "Scroll-stopping videos that tell your brand story and drive real engagement.",
+      tag: "ক্রিয়েটিভ প্রোডাকশন",
+      title: "ভিডিও এডিটিং",
+      desc: "আপনার ব্র্যান্ড স্টোরি বলে আর real engagement আনে — এমন scroll-stopping Video।",
       items: [
         "Product Videos",
         "Facebook Ads Videos",
@@ -82,172 +85,169 @@ export const services = {
 };
 
 export const portfolio = {
-  eyebrow: "Selected Work",
-  title: "Portfolio Showcase",
-  sub: "A look at recent projects across web and video.",
+  eyebrow: "নির্বাচিত কাজ",
+  title: "পোর্টফোলিও",
+  sub: "সাম্প্রতিক কিছু Web ও Video প্রজেক্টের ঝলক।",
   webFilters: [
-    "All",
+    "সব",
     "Landing Page",
     "Single Page Website",
     "Multi Page Website",
     "E-commerce Website",
   ],
   videoFilters: [
-    "All",
+    "সব",
     "Product Video",
     "Promotional Video",
     "Facebook Ads",
     "Social Media Video",
   ],
-  // image: null keeps the branded gradient thumbnail. Set "/images/xxx.jpg" for a real one.
   web: [
-    { t: "Aria Studio", cat: "Landing Page", biz: "Fashion", image: null },
-    { t: "GreenLeaf Bistro", cat: "Multi Page Website", biz: "Food", image: null },
-    { t: "Lumière Jewels", cat: "E-commerce Website", biz: "Jewellery", image: null },
-    { t: "BrightPath Academy", cat: "Multi Page Website", biz: "Education", image: null },
-    { t: "CareWell Clinic", cat: "Single Page Website", biz: "Healthcare", image: null },
-    { t: "Prime Consult", cat: "Landing Page", biz: "Service Business", image: null },
+    { t: "Aria Studio", cat: "Landing Page", biz: "ফ্যাশন", image: null },
+    { t: "GreenLeaf Bistro", cat: "Multi Page Website", biz: "ফুড", image: null },
+    { t: "Lumière Jewels", cat: "E-commerce Website", biz: "জুয়েলারি", image: null },
+    { t: "BrightPath Academy", cat: "Multi Page Website", biz: "এডুকেশন", image: null },
+    { t: "CareWell Clinic", cat: "Single Page Website", biz: "হেলথকেয়ার", image: null },
+    { t: "Prime Consult", cat: "Landing Page", biz: "সার্ভিস বিজনেস", image: null },
   ],
   video: [
-    { t: "Mango Harvest Reel", cat: "Product Video", biz: "Agriculture", image: null },
-    { t: "Summer Fashion Drop", cat: "Promotional Video", biz: "Fashion", image: null },
-    { t: "Crispy Bites Ad", cat: "Facebook Ads", biz: "Food", image: null },
-    { t: "ShopEasy Launch", cat: "Social Media Video", biz: "E-commerce", image: null },
-    { t: "Consult Pro Intro", cat: "Promotional Video", biz: "Service Business", image: null },
-    { t: "Fresh Farm Story", cat: "Product Video", biz: "Agriculture", image: null },
+    { t: "Mango Harvest Reel", cat: "Product Video", biz: "এগ্রিকালচার", image: null },
+    { t: "Summer Fashion Drop", cat: "Promotional Video", biz: "ফ্যাশন", image: null },
+    { t: "Crispy Bites Ad", cat: "Facebook Ads", biz: "ফুড", image: null },
+    { t: "ShopEasy Launch", cat: "Social Media Video", biz: "ই-কমার্স", image: null },
+    { t: "Consult Pro Intro", cat: "Promotional Video", biz: "সার্ভিস বিজনেস", image: null },
+    { t: "Fresh Farm Story", cat: "Product Video", biz: "এগ্রিকালচার", image: null },
   ],
 };
 
 export const caseStudy = {
-  eyebrow: "Case Study",
-  title: "Results That Speak",
-  sub: "How a focused approach turned a store into a sales machine.",
-  clientLabel: "Client",
+  eyebrow: "কেস স্টাডি",
+  title: "ফলাফলই কথা বলে",
+  sub: "একটি ফোকাসড অ্যাপ্রোচ কীভাবে একটা দোকানকে সেলস মেশিনে রূপ দিল।",
+  clientLabel: "ক্লায়েন্ট",
   client: "Lumière Jewels",
   projectType: "E-commerce Website + Product Video",
   metrics: [
-    { value: "+180%", label: "Online Sales" },
-    { value: "2.4x", label: "Conversion Rate" },
-    { value: "-45%", label: "Bounce Rate" },
+    { value: "+180%", label: "অনলাইন সেলস" },
+    { value: "2.4x", label: "কনভার্সন রেট" },
+    { value: "-45%", label: "বাউন্স রেট" },
   ],
   blocks: [
     {
-      head: "Challenge",
-      body: "An outdated store with slow load times and low trust was losing mobile shoppers before checkout.",
+      head: "চ্যালেঞ্জ",
+      body: "পুরনো একটা স্টোর — ধীর লোডিং আর কম আস্থার কারণে চেকআউটের আগেই মোবাইল ক্রেতা হারিয়ে যাচ্ছিল।",
     },
     {
-      head: "Solution",
-      body: "A rebuilt WooCommerce storefront with a clean product flow, trust signals, and a polished promo video for ads.",
+      head: "সমাধান",
+      body: "পরিষ্কার product flow, trust signal আর অ্যাডের জন্য একটা পলিশড promo video সহ নতুন করে বানানো WooCommerce স্টোর।",
     },
     {
-      head: "Result",
-      body: "Faster pages, higher trust, and a measurable jump in completed orders within the first two months.",
+      head: "ফলাফল",
+      body: "দ্রুত পেজ, বেশি আস্থা আর প্রথম দুই মাসেই সম্পূর্ণ অর্ডারে স্পষ্ট বৃদ্ধি।",
     },
   ],
-  techLabel: "Technology Used",
+  techLabel: "ব্যবহৃত টেকনোলজি",
   tech: ["WordPress", "WooCommerce", "Elementor Pro", "CapCut", "Performance Tuning"],
 };
 
 export const pricing = {
-  eyebrow: "Pricing",
-  title: "Transparent, Value-First Packages",
-  sub: "Starting-from pricing — final quote tailored to your project.",
+  eyebrow: "প্রাইসিং",
+  title: "স্বচ্ছ, ভ্যালু-ফার্স্ট প্যাকেজ",
+  sub: "শুরুর দাম — চূড়ান্ত কোট আপনার প্রজেক্ট অনুযায়ী।",
   groups: [
     {
-      label: "Website Design",
+      label: "ওয়েবসাইট ডিজাইন",
       plans: [
-        { name: "Starter Landing Page", price: "$120", feats: ["1 conversion-focused page", "Mobile responsive", "Basic SEO setup", "3-day delivery"] },
-        { name: "Business Website", price: "$320", featured: true, feats: ["Up to 6 pages", "Custom design", "On-page SEO", "Speed optimization", "Contact integration"] },
-        { name: "E-commerce Website", price: "$650", feats: ["WooCommerce store", "Product setup", "Payment gateway", "Cart & checkout flow", "Launch support"] },
+        { name: "স্টার্টার Landing Page", price: "৳3,000", feats: ["1টি conversion-focused পেজ", "মোবাইল রেসপন্সিভ", "বেসিক SEO সেটআপ", "3 দিনে ডেলিভারি"] },
+        { name: "বিজনেস Website", price: "৳6,000", featured: true, feats: ["6টি পর্যন্ত পেজ", "কাস্টম ডিজাইন", "On-page SEO", "স্পিড অপটিমাইজেশন", "Contact ইন্টিগ্রেশন"] },
+        { name: "E-commerce Website", price: "৳10,000", feats: ["WooCommerce স্টোর", "প্রোডাক্ট সেটআপ", "পেমেন্ট গেটওয়ে", "কার্ট ও চেকআউট", "লঞ্চ সাপোর্ট"] },
       ],
     },
     {
-      label: "Video Editing",
+      label: "ভিডিও এডিটিং",
       plans: [
-        { name: "Basic Promotional Video", price: "$40", feats: ["Up to 30 seconds", "Music & captions", "1 revision", "HD export"] },
-        { name: "Business Advertisement", price: "$90", featured: true, feats: ["Up to 60 seconds", "Motion graphics", "2 revisions", "Ad-ready formats", "Voiceover sync"] },
-        { name: "Premium Brand Video", price: "$180", feats: ["Full brand story", "Advanced editing", "3 revisions", "Multi-platform export", "Priority delivery"] },
+        { name: "বেসিক Promotional Video", price: "৳1,500", feats: ["30 সেকেন্ড পর্যন্ত", "মিউজিক ও ক্যাপশন", "1 রিভিশন", "HD এক্সপোর্ট"] },
+        { name: "বিজনেস Advertisement", price: "৳3,000", featured: true, feats: ["60 সেকেন্ড পর্যন্ত", "মোশন গ্রাফিক্স", "2 রিভিশন", "Ad-ready ফরম্যাট", "ভয়েসওভার সিংক"] },
+        { name: "প্রিমিয়াম Brand Video", price: "৳6,000", feats: ["ফুল ব্র্যান্ড স্টোরি", "অ্যাডভান্সড এডিটিং", "3 রিভিশন", "মাল্টি-প্ল্যাটফর্ম এক্সপোর্ট", "প্রায়োরিটি ডেলিভারি"] },
       ],
     },
   ],
-  reassurance: ["No hidden fees", "Milestone-based payments", "Free consultation first"],
-  customNote: "Need something custom?",
-  customLinkLabel: "Request a tailored quote →",
+  reassurance: ["কোনো লুকানো খরচ নেই", "মাইলস্টোন-ভিত্তিক পেমেন্ট", "আগে ফ্রি কনসালটেশন"],
+  customNote: "কাস্টম কিছু দরকার?",
+  customLinkLabel: "কাস্টম কোট নিন →",
 };
 
 export const about = {
-  eyebrow: "About",
-  title: "Building trust through design & story",
+  eyebrow: "পরিচিতি",
+  title: "ডিজাইন ও স্টোরির মাধ্যমে আস্থা তৈরি",
   body:
-    "I am Sabbir, founder of Sabbir Web Solutions. I help businesses build professional online presence through modern websites and creative video solutions.",
-  image: null, // e.g. "/images/sabbir.jpg" — null shows the branded placeholder
-  imageCaption: "Profile image space",
+    "আমি সাব্বির, Sabbir Web Solutions-এর ফাউন্ডার। আধুনিক Website আর ক্রিয়েটিভ Video-র মাধ্যমে ব্যবসাগুলোকে প্রফেশনাল অনলাইন উপস্থিতি গড়ে তুলতে সাহায্য করি।",
+  image: null,
+  imageCaption: "প্রোফাইল ছবির জায়গা",
   highlights: [
-    { head: "Design-led", body: "Every project starts with the goal, not a template." },
-    { head: "Detail-driven", body: "Speed, trust, and clarity in everything shipped." },
+    { head: "ডিজাইন-কেন্দ্রিক", body: "প্রতিটি প্রজেক্ট শুরু হয় লক্ষ্য দিয়ে, টেমপ্লেট দিয়ে নয়।" },
+    { head: "ডিটেইল-কেন্দ্রিক", body: "প্রতিটি কাজে স্পিড, আস্থা আর স্পষ্টতা।" },
   ],
 };
 
 export const process = {
-  eyebrow: "How We Work",
-  title: "A Clear, Simple Process",
+  eyebrow: "আমরা যেভাবে কাজ করি",
+  title: "সহজ, পরিষ্কার প্রসেস",
   steps: [
-    { icon: "message", head: "Discuss Requirement", body: "We align on your goals, audience, and scope." },
-    { icon: "layout", head: "Planning & Strategy", body: "A clear roadmap and structure before we build." },
-    { icon: "sparkles", head: "Design & Development", body: "Crafting the site or video with precision." },
-    { icon: "check", head: "Review & Delivery", body: "Refine, polish, and hand off ready to launch." },
+    { icon: "message", head: "রিকোয়ারমেন্ট আলোচনা", body: "আপনার লক্ষ্য, অডিয়েন্স আর স্কোপ নিয়ে একমত হই।" },
+    { icon: "layout", head: "প্ল্যানিং ও স্ট্র্যাটেজি", body: "কাজ শুরুর আগে পরিষ্কার রোডম্যাপ ও স্ট্রাকচার।" },
+    { icon: "sparkles", head: "ডিজাইন ও ডেভেলপমেন্ট", body: "নিখুঁতভাবে সাইট বা ভিডিও তৈরি।" },
+    { icon: "check", head: "রিভিউ ও ডেলিভারি", body: "পরিমার্জন, পলিশ আর লঞ্চ-রেডি হ্যান্ডঅফ।" },
   ],
 };
 
 export const testimonials = {
-  eyebrow: "Testimonials",
-  title: "What Clients Say",
-  sub: "Real feedback from businesses we've partnered with.",
+  eyebrow: "ক্লায়েন্ট রিভিউ",
+  title: "ক্লায়েন্টরা যা বলেন",
+  sub: "যেসব ব্যবসার সাথে কাজ করেছি তাদের সত্যিকারের মতামত।",
   items: [
-    { quote: "The new website completely changed how customers see our brand. Sales followed within weeks.", name: "Rina A.", role: "Fashion Store Owner" },
-    { quote: "Fast, professional, and genuinely creative. Our promo video performed better than any ad before.", name: "Tanvir H.", role: "E-commerce Founder" },
-    { quote: "Clear communication and premium results. It felt like working with a full agency.", name: "Meherun N.", role: "Service Business" },
+    { quote: "নতুন Website আমাদের ব্র্যান্ডকে দেখার ধরনটাই বদলে দিয়েছে। কয়েক সপ্তাহেই বিক্রি বেড়েছে।", name: "Rina A.", role: "ফ্যাশন স্টোর ওনার" },
+    { quote: "দ্রুত, প্রফেশনাল আর সত্যিই ক্রিয়েটিভ। আমাদের promo video আগের যেকোনো অ্যাডের চেয়ে ভালো পারফর্ম করেছে।", name: "Tanvir H.", role: "E-commerce ফাউন্ডার" },
+    { quote: "পরিষ্কার যোগাযোগ আর প্রিমিয়াম রেজাল্ট। মনে হলো একটা ফুল এজেন্সির সাথে কাজ করছি।", name: "Meherun N.", role: "সার্ভিস বিজনেস" },
   ],
 };
 
 export const contact = {
-  eyebrow: "Contact",
-  heading: "Let's start your project",
-  sub: "Tell us what you need and we'll get back with a clear plan and quote.",
+  eyebrow: "যোগাযোগ",
+  heading: "চলুন আপনার প্রজেক্ট শুরু করি",
+  sub: "আপনার প্রয়োজন জানান — আমরা পরিষ্কার প্ল্যান আর কোট নিয়ে যোগাযোগ করব।",
   email: "sabbirngdca1@gmail.com",
-  // WhatsApp number in international format, digits only (no + or spaces).
   whatsappNumber: "8801610034234",
-  whatsappLabel: "Chat on WhatsApp",
-  location: "Natore, Bangladesh",
-  // Right-side photo in the contact section. Drop your image in /public/images
-  // and set it here, e.g. "/images/sabbir-contact.jpg". null shows a placeholder frame.
+  whatsappLabel: "WhatsApp-এ চ্যাট করুন",
+  location: "নাটোর, বাংলাদেশ",
+  // ডান পাশের ছবি: /public/images-এ ছবি রেখে এখানে path দিন। null দিলে প্লেসহোল্ডার ফ্রেম দেখাবে।
   image: null,
-  imageCaption: "Your photo here",
-  services: ["Website Design", "Video Editing", "Both"],
-  privacyNote: "Your details stay private · No spam, ever",
-  submitLabel: "Send Message",
+  imageCaption: "আপনার ছবি এখানে",
+  services: ["ওয়েবসাইট ডিজাইন", "ভিডিও এডিটিং", "দুটোই"],
+  privacyNote: "আপনার তথ্য গোপন থাকবে · কোনো স্প্যাম নয়",
+  submitLabel: "মেসেজ পাঠান",
 };
 
 export const footer = {
-  copyright: "Sabbir Web Solutions. All rights reserved.",
+  copyright: "Sabbir Web Solutions. সর্বস্বত্ব সংরক্ষিত।",
 };
 
-/* Used for SEO <head> metadata (app/layout.jsx). */
 export const seo = {
-  title: "Sabbir Web Solutions — Websites & Creative Videos That Grow Businesses",
+  title: "Sabbir Web Solutions — ব্যবসা বাড়ানোর Website ও ক্রিয়েটিভ Video",
   description:
-    "Creative digital agency by Sabbir Hossain. High-converting websites and promotional videos for small businesses, e-commerce brands, and startups.",
+    "সাব্বির হোসেনের ক্রিয়েটিভ ডিজিটাল এজেন্সি। ছোট ব্যবসা, ই-কমার্স ব্র্যান্ড আর স্টার্টআপের জন্য হাই-কনভার্টিং Website ও Promotional Video।",
   siteUrl: "https://sabbirwebsolutions.site",
-  ogImage: "/images/og-image.jpg", // add a 1200x630 image at /public/images/og-image.jpg
+  ogImage: "/images/og-image.jpg",
   keywords: [
+    "ওয়েবসাইট ডিজাইন",
+    "ভিডিও এডিটিং",
     "web design",
     "website development",
     "video editing",
-    "promotional video",
     "WordPress",
-    "WooCommerce",
+    "ই-কমার্স ওয়েবসাইট",
     "landing page",
     "Sabbir Web Solutions",
-    "Bangladesh web designer",
+    "বাংলাদেশ ওয়েব ডিজাইনার",
   ],
 };
