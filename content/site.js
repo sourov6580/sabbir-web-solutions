@@ -96,11 +96,12 @@ export const portfolio = {
     "E-commerce Website",
   ],
   videoFilters: [
-    "সব",
-    "Product Video",
-    "Promotional Video",
-    "Facebook Ads",
-    "Social Media Video",
+    "All",
+    "E-commerce & Product Ads",
+    "Clothing & Fashion Ads",
+    "Organic & Herbal Solutions",
+    "Real Estate & Property Ads",
+    "Lifestyle & Service Ads",
   ],
   web: [
     { t: "Aria Studio", cat: "Landing Page", biz: "ফ্যাশন", image: null },
@@ -111,12 +112,12 @@ export const portfolio = {
     { t: "Prime Consult", cat: "Landing Page", biz: "সার্ভিস বিজনেস", image: null },
   ],
   video: [
-    { t: "Mango Harvest Reel", cat: "Product Video", biz: "এগ্রিকালচার", image: null },
-    { t: "Summer Fashion Drop", cat: "Promotional Video", biz: "ফ্যাশন", image: null },
-    { t: "Crispy Bites Ad", cat: "Facebook Ads", biz: "ফুড", image: null },
-    { t: "ShopEasy Launch", cat: "Social Media Video", biz: "ই-কমার্স", image: null },
-    { t: "Consult Pro Intro", cat: "Promotional Video", biz: "সার্ভিস বিজনেস", image: null },
-    { t: "Fresh Farm Story", cat: "Product Video", biz: "এগ্রিকালচার", image: null },
+    { t: "Crispy Bites Ad", cat: "E-commerce & Product Ads", biz: "ফুড", image: null },
+    { t: "Summer Fashion Drop", cat: "Clothing & Fashion Ads", biz: "ফ্যাশন", image: null },
+    { t: "Herbal Care Promo", cat: "Organic & Herbal Solutions", biz: "হার্বাল", image: null },
+    { t: "Green Valley Homes", cat: "Real Estate & Property Ads", biz: "রিয়েল এস্টেট", image: null },
+    { t: "Consult Pro Intro", cat: "Lifestyle & Service Ads", biz: "সার্ভিস বিজনেস", image: null },
+    { t: "ShopEasy Launch", cat: "E-commerce & Product Ads", biz: "ই-কমার্স", image: null },
   ],
 };
 
