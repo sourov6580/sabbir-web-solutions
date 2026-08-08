@@ -63,7 +63,7 @@ export const services = {
         "Landing Page Design",
         "Business Website",
         "E-commerce Website",
-        "WordPress Website",
+        "Organization Website",
         "Website Optimization",
       ],
     },
@@ -85,9 +85,9 @@ export const services = {
 };
 
 export const portfolio = {
-  eyebrow: "নির্বাচিত কাজ",
+  eyebrow: "আমাদের কাজের স্যাম্পল",
   title: "পোর্টফোলিও",
-  sub: "সাম্প্রতিক কিছু Web ও Video প্রজেক্টের ঝলক।",
+  sub: "সাম্প্রতিক কিছু Website ও Video প্রজেক্ট দেখুন।",
   webFilters: [
     "সব",
     "Landing Page",
