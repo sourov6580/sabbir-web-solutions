@@ -1,12 +1,11 @@
 import { seo } from "@/content/site";
 
 export default function sitemap() {
-  return [
-    {
-      url: seo.siteUrl,
-      lastModified: new Date(),
-      changeFrequency: "monthly",
-      priority: 1,
-    },
-  ];
+  const routes = ["", "/web-samples", "/video-samples", "/pricing"];
+  return routes.map((path, i) => ({
+    url: `${seo.siteUrl}${path}`,
+    lastModified: new Date(),
+    changeFrequency: "monthly",
+    priority: i === 0 ? 1 : 0.8,
+  }));
 }

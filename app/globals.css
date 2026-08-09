@@ -52,6 +52,10 @@ body {
 @keyframes float { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-12px)} }
 .floaty { animation: float 6s ease-in-out infinite; }
 
+/* ---- modal ---- */
+@keyframes fadeIn { from{opacity:0} to{opacity:1} }
+@keyframes popIn { from{opacity:0; transform:translateY(14px) scale(.96)} to{opacity:1; transform:translateY(0) scale(1)} }
+
 @media (prefers-reduced-motion: reduce){
   .floaty { animation:none; }
   .lift:hover { transform:none; }

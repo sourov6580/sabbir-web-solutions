@@ -20,14 +20,16 @@ export const brand = {
   tagline: "ওয়েব ডিজাইন & Ai ভিডিও কন্টেন্ট সার্ভিস",
 };
 
-/* nav: label = যা দেখাবে, href = কোথায় যাবে (সেকশন id ইংরেজিই থাকবে) */
+/* nav: label = যা দেখাবে, href = কোথায় যাবে।
+   "/#services" মানে হোম পেজের services সেকশন — অন্য পেজ থেকেও কাজ করবে। */
 export const nav = [
   { label: "হোম", href: "/" },
-  { label: "সার্ভিস", href: "#services" },
-  { label: "পোর্টফোলিও", href: "#portfolio" },
-  { label: "প্রাইসিং", href: "#pricing" },
-  { label: "পরিচিতি", href: "#about" },
-  { label: "যোগাযোগ", href: "#contact" },
+  { label: "সার্ভিস", href: "/#services" },
+  { label: "ওয়েব স্যাম্পল", href: "/web-samples" },
+  { label: "ভিডিও স্যাম্পল", href: "/video-samples" },
+  { label: "প্রাইসিং", href: "/pricing" },
+  { label: "পরিচিতি", href: "/#about" },
+  { label: "যোগাযোগ", href: "/#contact" },
 ];
 
 export const startProjectLabel = "প্রজেক্ট শুরু করুন";
@@ -88,6 +90,18 @@ export const portfolio = {
   eyebrow: "আমাদের কাজের স্যাম্পল",
   title: "পোর্টফোলিও",
   sub: "সাম্প্রতিক কিছু Website ও Video প্রজেক্ট দেখুন।",
+  // ওয়েব স্যাম্পল পেজের হেডিং
+  webPage: {
+    eyebrow: "আমাদের কাজের স্যাম্পল",
+    title: "ওয়েব স্যাম্পল",
+    sub: "সাম্প্রতিক কিছু Website ডিজাইন ও ডেভেলপমেন্ট প্রজেক্ট দেখুন।",
+  },
+  // ভিডিও স্যাম্পল পেজের হেডিং
+  videoPage: {
+    eyebrow: "আমাদের কাজের স্যাম্পল",
+    title: "ভিডিও স্যাম্পল",
+    sub: "সাম্প্রতিক কিছু Promotional ও Product Video প্রজেক্ট দেখুন।",
+  },
   webFilters: [
     "সব",
     "Landing Page",
@@ -167,6 +181,11 @@ export const pricing = {
   eyebrow: "প্রাইসিং",
   title: "স্বচ্ছ, ভ্যালু-ফার্স্ট প্যাকেজ",
   sub: "শুরুর দাম — চূড়ান্ত কোট আপনার প্রজেক্ট অনুযায়ী।",
+  // প্রাইসিং পেজের টগল বাটন (নিচের groups-এর সাথে মিলিয়ে, একই ক্রমে)
+  toggles: [
+    { key: "web", label: "ওয়েবসাইট প্রাইসিং", icon: "globe" },
+    { key: "video", label: "ভিডিও প্রাইসিং", icon: "video" },
+  ],
   groups: [
     {
       label: "ওয়েবসাইট ডিজাইন",
