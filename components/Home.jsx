@@ -118,13 +118,7 @@ export default function Home() {
               <Check size={15} color={C.purple} /> {hero.microcopy}
             </div>
 
-            <div className="mt-10 flex flex-wrap gap-x-6 gap-y-3" style={{ paddingTop: 26, borderTop: `1px solid ${C.line}` }}>
-              {hero.trust.map((it) => (
-                <div key={it.text} className="flex items-center gap-2" style={{ fontSize: 14, fontWeight: 500, color: C.navy }}>
-                  <span style={{ color: C.purple, display: "flex" }}><Icon name={it.icon} size={15} /></span> {it.text}
-                </div>
-              ))}
-            </div>
+
           </Reveal>
 
           {/* Signature hero visual */}
