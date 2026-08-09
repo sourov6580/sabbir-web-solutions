@@ -114,9 +114,7 @@ export default function Home() {
                 {hero.secondaryCta.label} <ArrowUpRight size={17} />
               </button>
             </div>
-            <div className="mt-4 flex items-center gap-2" style={{ fontSize: 13.5, color: C.muted }}>
-              <Check size={15} color={C.purple} /> {hero.microcopy}
-            </div>
+
 
 
           </Reveal>
