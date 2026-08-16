@@ -8,6 +8,7 @@ import { C } from "@/components/tokens";
 
 /* type: "web" | "video" */
 export default function SampleGallery({ type }) {
+  const [preview, setPreview] = useState(null);
   const isVideo = type === "video";
   const projects = isVideo ? portfolio.video : portfolio.web;
   const filters = isVideo ? portfolio.videoFilters : portfolio.webFilters;
@@ -38,11 +39,11 @@ export default function SampleGallery({ type }) {
         <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {shown.map((p, i) => (
             <Reveal key={p.t + i} delay={(i % 3) * 0.06}>
-              <a href={p.url || undefined} target={p.url ? "_blank" : undefined} rel={p.url ? "noopener noreferrer" : undefined}
-                className="card-media lift" style={{ display: "block", textDecoration: "none", color: "inherit", background: "#fff", borderRadius: 18, overflow: "hidden", border: `1px solid ${C.line}` }}>
+              <div onClick={() => p.image && setPreview(p.image)}
+                className="card-media lift" style={{ display: "block", cursor: p.image ? "pointer" : "default", textDecoration: "none", color: "inherit", background: "#fff", borderRadius: 18, overflow: "hidden", border: `1px solid ${C.line}` }}>
                 <div style={{ height: 190, background: p.image ? C.navy : `linear-gradient(135deg, ${C.purple}, ${C.purpleDeep})`, position: "relative", overflow: "hidden" }}>
                   {p.image ? (
-                    <img className="grow" src={p.image} alt={p.t} style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover" }} />
+                    <img className="grow" src={p.image} alt={p.t} style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover", objectPosition: "top center" }} />
                   ) : (
                     <div className="grow" style={{ position: "absolute", inset: 0, display: "flex", alignItems: "center", justifyContent: "center" }}>
                       {isVideo ? <Play size={46} color="rgba(255,255,255,.85)" /> : <Layout size={46} color="rgba(255,255,255,.85)" />}
@@ -64,11 +65,22 @@ export default function SampleGallery({ type }) {
                   </div>
                   <ArrowUpRight size={20} color={C.muted} />
                 </div>
-              </a>
+              <button onClick={(e) => e.stopPropagation()} style={{ margin: "0 18px 18px", padding: "10px 16px", borderRadius: 999, border: `1px solid ${C.line}`, background: "#fff", color: C.purple, cursor: "pointer" }}>
+                  <a href={p.url || "#"} target={p.url ? "_blank" : undefined} rel="noopener noreferrer" style={{textDecoration:"none", color:"inherit"}}>
+                    লাইভ দেখুন
+                  </a>
+                </button>
+              </div>
             </Reveal>
           ))}
         </div>
       </div>
+
+      {preview && (
+        <div onClick={() => setPreview(null)} style={{position:"fixed", inset:0, background:"rgba(0,0,0,.75)", zIndex:50, display:"flex", alignItems:"center", justifyContent:"center", padding:30}}>
+          <img src={preview} alt="preview" style={{maxWidth:"95%", maxHeight:"90%", objectFit:"contain", borderRadius:12}} />
+        </div>
+      )}
     </section>
   );
 }
