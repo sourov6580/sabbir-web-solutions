@@ -120,7 +120,7 @@ export const portfolio = {
   web: [
     { t: "Aria Studio", cat: "Landing Page", biz: "ফ্যাশন", image: null },
     { t: "GreenLeaf Bistro", cat: "Multi Page Website", biz: "ফুড", image: null },
-    { t: "Lumière Jewels", cat: "E-commerce Website", biz: "জুয়েলারি", image: null },
+    {   t: "আমাদের ঐতিহ্য",   cat: "Multi Page Website",   biz: "Organization",   image: "/images/amader-oitijjo.png" },
     { t: "BrightPath Academy", cat: "Multi Page Website", biz: "এডুকেশন", image: null },
     { t: "CareWell Clinic", cat: "Single Page Website", biz: "হেলথকেয়ার", image: null },
     { t: "Prime Consult", cat: "Landing Page", biz: "সার্ভিস বিজনেস", image: null },
