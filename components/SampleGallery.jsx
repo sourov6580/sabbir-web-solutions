@@ -8,7 +8,6 @@ import { C } from "@/components/tokens";
 
 /* type: "web" | "video" */
 export default function SampleGallery({ type }) {
-  const [preview, setPreview] = useState(null);
   const isVideo = type === "video";
   const projects = isVideo ? portfolio.video : portfolio.web;
   const filters = isVideo ? portfolio.videoFilters : portfolio.webFilters;
@@ -39,7 +38,7 @@ export default function SampleGallery({ type }) {
         <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {shown.map((p, i) => (
             <Reveal key={p.t + i} delay={(i % 3) * 0.06}>
-              <div onClick={() => p.image && setPreview(p.image)}
+              <div onClick={() => window.open("https://amader-proshchitra.lovable.app/", "_blank")}
                 className="card-media lift" style={{ display: "block", cursor: p.image ? "pointer" : "default", textDecoration: "none", color: "inherit", background: "#fff", borderRadius: 18, overflow: "hidden", border: `1px solid ${C.line}` }}>
                 <div style={{ height: 190, background: p.image ? C.navy : `linear-gradient(135deg, ${C.purple}, ${C.purpleDeep})`, position: "relative", overflow: "hidden" }}>
                   {p.image ? (
@@ -76,11 +75,4 @@ export default function SampleGallery({ type }) {
         </div>
       </div>
 
-      {preview && (
-        <div onClick={() => setPreview(null)} style={{position:"fixed", inset:0, background:"rgba(0,0,0,.75)", zIndex:50, display:"flex", alignItems:"center", justifyContent:"center", padding:30}}>
-          <img src={preview} alt="preview" style={{maxWidth:"95%", maxHeight:"90%", objectFit:"contain", borderRadius:12}} />
-        </div>
-      )}
-    </section>
-  );
-}
+
