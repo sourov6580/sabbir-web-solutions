@@ -35,6 +35,7 @@ export const nav = [
 export const startProjectLabel = "প্রজেক্ট শুরু করুন";
 
 export const hero = {
+  image: "/images/webhero.webp", // ডান পাশের হিরো ভিজ্যুয়াল (4:3)
   badge: "Sabbir Web Solutions এ আপনাকে স্বাগতম",
   titleLead: "আপনার বিজনেস গ্রোথ এর   ",
   titleAccent: "Smart Solution",

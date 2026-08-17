@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import {
-  ArrowRight, ArrowUpRight, Globe, Video, Film, Play, Check, X,
+  ArrowRight, ArrowUpRight, Globe, Video, Check, X,
   Mail, User, MessageCircle, Quote, Phone, MapPin, Star,
 } from "lucide-react";
 import {
@@ -121,78 +121,9 @@ export default function Home() {
 
           {/* Signature hero visual */}
           <Reveal delay={0.15}>
-            <div className="relative floaty" style={{ minHeight: 420 }}>
-              <div className="lift" style={{ background: "#fff", borderRadius: 20, boxShadow: "0 40px 80px -34px rgba(15,23,42,.4)", border: `1px solid ${C.line}`, overflow: "hidden" }}>
-                <div className="flex items-center gap-2 px-4 py-3" style={{ background: C.navy }}>
-                  <span style={{ width: 10, height: 10, borderRadius: "50%", background: "#ff5f57" }} />
-                  <span style={{ width: 10, height: 10, borderRadius: "50%", background: "#febc2e" }} />
-                  <span style={{ width: 10, height: 10, borderRadius: "50%", background: "#28c840" }} />
-                  <span style={{ marginLeft: 10, flex: 1, textAlign: "center", fontSize: 11.5, color: "#94a3b8", background: "rgba(255,255,255,.06)", borderRadius: 6, padding: "3px 0" }}>{brand.domainLabel}</span>
-                </div>
-                <div>
-                  <div style={{ padding: "22px 22px 26px", background: "linear-gradient(160deg, rgba(91,42,157,.10), rgba(91,42,157,.02))" }}>
-                    <div className="flex items-center justify-between" style={{ marginBottom: 20 }}>
-                      <div style={{ height: 9, width: 60, borderRadius: 5, background: C.purple }} />
-                      <div className="flex gap-2">
-                        {[0, 1, 2].map((i) => <div key={i} style={{ height: 6, width: 22, borderRadius: 4, background: C.line }} />)}
-                      </div>
-                    </div>
-                    <div style={{ height: 15, width: "78%", borderRadius: 6, background: C.navy }} />
-                    <div style={{ height: 15, width: "52%", borderRadius: 6, background: C.navy, marginTop: 8, opacity: .85 }} />
-                    <div style={{ height: 7, width: "88%", borderRadius: 5, background: C.line, marginTop: 14 }} />
-                    <div style={{ height: 7, width: "70%", borderRadius: 5, background: C.line, marginTop: 7 }} />
-                    <div style={{ height: 32, width: 128, borderRadius: 9, background: C.purple, marginTop: 18, boxShadow: "0 10px 20px -10px rgba(91,42,157,.7)" }} />
-                  </div>
-                  <div className="grid grid-cols-3 gap-3" style={{ padding: "18px 22px 24px" }}>
-                    {[0, 1, 2].map((i) => (
-                      <div key={i} style={{ borderRadius: 11, border: `1px solid ${C.line}`, overflow: "hidden" }}>
-                        <div style={{ height: 36, background: i === 1 ? "rgba(91,42,157,.12)" : C.light }} />
-                        <div style={{ padding: 8 }}>
-                          <div style={{ height: 5, width: "80%", borderRadius: 4, background: C.line }} />
-                          <div style={{ height: 5, width: "55%", borderRadius: 4, background: C.line, marginTop: 5 }} />
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              </div>
-
-              {/* floating video editor card */}
-              <div className="lift" style={{ position: "absolute", bottom: -34, left: -22, width: 264, background: C.navy, borderRadius: 18, padding: 16, boxShadow: "0 30px 60px -22px rgba(15,23,42,.7)" }}>
-                <div className="flex items-center justify-between" style={{ marginBottom: 12 }}>
-                  <div className="flex items-center gap-2" style={{ color: "#fff", fontSize: 12.5, fontWeight: 600 }}>
-                    <Film size={14} color={C.purpleSoft} /> ভিডিও এডিটর
-                  </div>
-                  <span style={{ fontSize: 10, color: "#94a3b8" }}>00:24</span>
-                </div>
-                <div style={{ height: 76, borderRadius: 11, background: "linear-gradient(135deg, #5B2A9D, #3D1A6E)", position: "relative", overflow: "hidden", marginBottom: 12 }}>
-                  <div style={{ position: "absolute", inset: 0, display: "flex", alignItems: "center", justifyContent: "center" }}>
-                    <div style={{ width: 34, height: 34, borderRadius: "50%", background: "rgba(255,255,255,.95)", display: "flex", alignItems: "center", justifyContent: "center" }}>
-                      <Play size={15} color={C.purple} fill={C.purple} />
-                    </div>
-                  </div>
-                </div>
-                <div className="flex items-end gap-1" style={{ height: 22, marginBottom: 10 }}>
-                  {[10, 18, 7, 22, 14, 20, 9, 16, 12, 21, 8, 17, 13, 19, 6, 15, 11].map((h, i) => (
-                    <div key={i} style={{ flex: 1, height: h, borderRadius: 2, background: i % 3 === 0 ? C.purpleSoft : "rgba(255,255,255,.28)" }} />
-                  ))}
-                </div>
-                <div className="space-y-2">
-                  {[["#7C4DCB", "72%"], ["#28c840", "46%"], ["#febc2e", "88%"]].map(([c, w], i) => (
-                    <div key={i} style={{ height: 7, borderRadius: 5, background: "rgba(255,255,255,.1)" }}>
-                      <div style={{ height: "100%", width: w, borderRadius: 5, background: c }} />
-                    </div>
-                  ))}
-                </div>
-              </div>
-
-              {/* founder personal-branding badge */}
-              <div style={{ position: "absolute", top: -18, right: 6, background: "#fff", borderRadius: 15, padding: "10px 14px 10px 10px", boxShadow: "0 18px 34px -16px rgba(15,23,42,.45)", border: `1px solid ${C.line}`, display: "flex", alignItems: "center", gap: 10 }}>
-                <span className="display" style={{ width: 36, height: 36, borderRadius: "50%", background: `linear-gradient(145deg, ${C.purple}, ${C.purpleDeep})`, color: "#fff", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 13, fontWeight: 700 }}>{brand.founderInitials}</span>
-                <div style={{ lineHeight: 1.25 }}>
-                  <div style={{ fontSize: 13, fontWeight: 700, color: C.navy }}>{brand.founderName}</div>
-                  <div style={{ fontSize: 11, color: C.muted }}>{brand.founderRole}</div>
-                </div>
+            <div className="relative floaty">
+              <div className="lift" style={{ background: "#fff", borderRadius: 20, boxShadow: "0 40px 80px -34px rgba(15,23,42,.4)", border: `1px solid ${C.line}`, overflow: "hidden", aspectRatio: "4 / 3" }}>
+                <img src={hero.image} alt={brand.name} style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }} />
               </div>
             </div>
           </Reveal>
