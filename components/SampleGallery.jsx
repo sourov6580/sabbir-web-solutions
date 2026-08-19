@@ -74,12 +74,9 @@ export default function SampleGallery({ type }) {
             <Reveal key={p.t + i} delay={(i % 3) * 0.06}>
 
               <div
-                onClick={() =>
-                  window.open(
-                    "https://amader-proshchitra.lovable.app/",
-                    "_blank"
-                  )
-                }
+                onClick={() => {
+                  if (p.url) window.open(p.url, "_blank");
+                }}
                 className="card-media lift"
                 style={{
                   cursor: "pointer",
@@ -249,26 +246,6 @@ export default function SampleGallery({ type }) {
                   />
 
                 </div>
-
-
-                {/* Live Button */}
-                <a
-                  href="#"
-                  onClick={(e)=>e.stopPropagation()}
-                  style={{
-                    display:"inline-block",
-                    margin:"0 18px 18px",
-                    padding:"10px 16px",
-                    borderRadius:999,
-                    border:`1px solid ${C.line}`,
-                    background:"#fff",
-                    color:C.purple,
-                    textDecoration:"none",
-                    cursor:"pointer",
-                  }}
-                >
-                  লাইভ দেখুন
-                </a>
 
 
               </div>
