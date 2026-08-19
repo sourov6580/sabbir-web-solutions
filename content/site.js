@@ -212,7 +212,7 @@ export const about = {
   title: "ডিজাইন ও স্টোরির মাধ্যমে আস্থা তৈরি",
   body:
     "আমি সাব্বির, Sabbir Web Solutions-এর ফাউন্ডার। আধুনিক Website আর ক্রিয়েটিভ Video-র মাধ্যমে ব্যবসাগুলোকে প্রফেশনাল অনলাইন উপস্থিতি গড়ে তুলতে সাহায্য করি।",
-  image: null,
+  image: "/images/sabbir_hossain.webp",
   imageCaption: "প্রোফাইল ছবির জায়গা",
   highlights: [
     { head: "ডিজাইন-কেন্দ্রিক", body: "প্রতিটি প্রজেক্ট শুরু হয় লক্ষ্য দিয়ে, টেমপ্লেট দিয়ে নয়।" },
