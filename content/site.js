@@ -106,9 +106,9 @@ export const portfolio = {
   webFilters: [
     "সব",
     "Landing Page",
-    "Single Page Website",
-    "Multi Page Website",
     "E-commerce Website",
+    "Business Website",
+    "Other Website",
   ],
   videoFilters: [
     "All",
@@ -119,12 +119,7 @@ export const portfolio = {
     "Lifestyle & Service Ads",
   ],
   web: [
-    { t: "Aria Studio", cat: "Landing Page", biz: "ফ্যাশন", image: null },
-    { t: "GreenLeaf Bistro", cat: "Multi Page Website", biz: "ফুড", image: null },
-    {   t: "আমাদের ঐতিহ্য",   cat: "Multi Page Website",   biz: "Organization",   image: "/images/amader-oitijjo.png" },
-    { t: "BrightPath Academy", cat: "Multi Page Website", biz: "এডুকেশন", image: null },
-    { t: "CareWell Clinic", cat: "Single Page Website", biz: "হেলথকেয়ার", image: null },
-    { t: "Prime Consult", cat: "Landing Page", biz: "সার্ভিস বিজনেস", image: null },
+    { t: "আমাদের ঐতিহ্য", cat: "Other Website", biz: "Organization", image: "/images/amader-oitijjo.png" },
   ],
   video: [
     { t: "M M Agro – Fresh Agricultural & Dairy", cat: "E-commerce & Product Ads", biz: "এগ্রিকালচার", url: "https://youtu.be/Fn0Z41aj2Gs", image: "https://img.youtube.com/vi/Fn0Z41aj2Gs/hqdefault.jpg" },
