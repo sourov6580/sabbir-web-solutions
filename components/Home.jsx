@@ -136,29 +136,55 @@ export default function Home() {
         <div className="grid gap-8 md:grid-cols-2" style={{ marginTop: 52 }}>
           {services.cards.map((s, i) => (
             <Reveal key={s.title} delay={i * 0.1}>
-              <div className="lift topbar" style={{ background: "#fff", border: `1px solid ${C.line}`, borderRadius: 20, padding: 36, height: "100%" }}>
-                <div className="flex items-start justify-between">
-                  <div style={{ width: 62, height: 62, borderRadius: 17, background: "rgba(91,42,157,.1)", color: C.purple, display: "flex", alignItems: "center", justifyContent: "center" }}>
+              <div
+                className="lift topbar topbar-light"
+                style={{
+                  position: "relative",
+                  background: `linear-gradient(160deg, ${C.navy} 0%, ${C.navySoft} 100%)`,
+                  border: "1px solid rgba(255,255,255,.08)",
+                  borderRadius: 20,
+                  padding: 36,
+                  height: "100%",
+                  color: "#fff",
+                  overflow: "hidden",
+                  boxShadow: "0 30px 60px -35px rgba(15,23,42,.7)",
+                }}
+              >
+                {/* soft purple glow */}
+                <div
+                  aria-hidden
+                  style={{
+                    position: "absolute", top: -90, right: -90, width: 260, height: 260, borderRadius: "50%",
+                    background: "radial-gradient(circle, rgba(124,77,203,.35), transparent 70%)", pointerEvents: "none",
+                  }}
+                />
+
+                <div className="flex items-start justify-between" style={{ position: "relative" }}>
+                  <div style={{ width: 62, height: 62, borderRadius: 17, background: "rgba(124,77,203,.22)", border: "1px solid rgba(255,255,255,.12)", color: "#C4A9F0", display: "flex", alignItems: "center", justifyContent: "center" }}>
                     <Icon name={s.icon} size={26} />
                   </div>
-                  <span className="display" style={{ fontSize: 40, fontWeight: 800, color: C.line, lineHeight: 1 }}>{s.no}</span>
+                  <span className="display" style={{ fontSize: 40, fontWeight: 800, color: "rgba(255,255,255,.12)", lineHeight: 1 }}>{s.no}</span>
                 </div>
-                <div style={{ marginTop: 22, fontSize: 12, fontWeight: 700, letterSpacing: ".12em", textTransform: "uppercase", color: C.purple }}>{s.tag}</div>
-                <h3 className="display" style={{ marginTop: 6, fontSize: 25, fontWeight: 700, letterSpacing: "-.02em" }}>{s.title}</h3>
-                <p style={{ marginTop: 10, color: C.muted, lineHeight: 1.6 }}>{s.desc}</p>
-                <div style={{ height: 1, background: C.line, margin: "24px 0" }} />
-                <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
+
+                <div style={{ marginTop: 22, fontSize: 12, fontWeight: 700, letterSpacing: ".12em", textTransform: "uppercase", color: "#C4A9F0", position: "relative" }}>{s.tag}</div>
+                <h3 className="display" style={{ marginTop: 6, fontSize: 25, fontWeight: 700, letterSpacing: "-.02em", color: "#fff", position: "relative" }}>{s.title}</h3>
+                <p style={{ marginTop: 10, color: "rgba(255,255,255,.68)", lineHeight: 1.6, position: "relative" }}>{s.desc}</p>
+
+                <div style={{ height: 1, background: "rgba(255,255,255,.1)", margin: "24px 0" }} />
+
+                <div className="grid grid-cols-1 gap-3 sm:grid-cols-2" style={{ position: "relative" }}>
                   {s.items.map((it) => (
-                    <div key={it} className="flex items-center gap-2.5" style={{ fontSize: 14.5, fontWeight: 500 }}>
-                      <span style={{ width: 20, height: 20, borderRadius: 6, background: "rgba(91,42,157,.1)", color: C.purple, display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
+                    <div key={it} className="flex items-center gap-2.5" style={{ fontSize: 14.5, fontWeight: 500, color: "rgba(255,255,255,.88)" }}>
+                      <span style={{ width: 20, height: 20, borderRadius: 6, background: "rgba(124,77,203,.3)", color: "#D9C7F7", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
                         <Check size={13} />
                       </span>
                       {it}
                     </div>
                   ))}
                 </div>
-                <button onClick={() => setShowPortfolio(true)} className="mt-8 inline-flex items-center gap-2"
-                  style={{ color: C.purple, fontWeight: 600, background: "none", border: "none", cursor: "pointer", padding: 0, fontSize: 15 }}>
+
+                <button onClick={() => setShowPortfolio(true)} className="btnx mt-8 inline-flex items-center gap-2 px-5 py-2.5"
+                  style={{ color: "#fff", fontWeight: 600, background: "rgba(255,255,255,.08)", border: "1px solid rgba(255,255,255,.16)", borderRadius: 999, cursor: "pointer", fontSize: 15, position: "relative" }}>
                   পোর্টফোলিও দেখুন <ArrowUpRight size={17} />
                 </button>
               </div>

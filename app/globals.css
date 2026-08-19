@@ -43,6 +43,7 @@ body {
   transform:scaleX(0); transform-origin:left; transition:transform .4s ease;
 }
 .topbar:hover::before { transform:scaleX(1); }
+.topbar-light::before { background:linear-gradient(90deg, #7C4DCB, #C4A9F0); }
 
 /* ---- buttons ---- */
 .btnx { transition: transform .25s ease, box-shadow .25s ease, background .25s ease; }
