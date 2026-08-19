@@ -148,10 +148,10 @@ export const portfolio = {
 export const caseStudy = {
   eyebrow: "কেস স্টাডি",
   title: "ফলাফলই কথা বলে",
-  sub: "একটি ফোকাসড অ্যাপ্রোচ কীভাবে একটা দোকানকে সেলস মেশিনে রূপ দিল।",
+  sub: "একটি ফোকাসড অ্যাপ্রোচ কীভাবে খেজুরের গুড়ের একটা দোকানকে সেলস মেশিনে রূপ দিল।",
   clientLabel: "ক্লায়েন্ট",
-  client: "Lumière Jewels",
-  projectType: "E-commerce Website + Product Video",
+  client: "NishchintoBazar",
+  projectType: "E-commerce Website + Product Video (খেজুরের গুড়)",
   metrics: [
     { value: "+180%", label: "অনলাইন সেলস" },
     { value: "2.4x", label: "কনভার্সন রেট" },
@@ -160,11 +160,11 @@ export const caseStudy = {
   blocks: [
     {
       head: "চ্যালেঞ্জ",
-      body: "পুরনো একটা স্টোর — ধীর লোডিং আর কম আস্থার কারণে চেকআউটের আগেই মোবাইল ক্রেতা হারিয়ে যাচ্ছিল।",
+      body: "খেজুরের গুড়ের মতো সিজনাল প্রোডাক্টের পুরনো একটা স্টোর — ধীর লোডিং আর কম আস্থার কারণে চেকআউটের আগেই মোবাইল ক্রেতা হারিয়ে যাচ্ছিল।",
     },
     {
       head: "সমাধান",
-      body: "পরিষ্কার product flow, trust signal আর অ্যাডের জন্য একটা পলিশড promo video সহ নতুন করে বানানো WooCommerce স্টোর।",
+      body: "পরিষ্কার product flow, খাঁটি গুড়ের trust signal আর অ্যাডের জন্য একটা পলিশড promo video সহ নতুন করে বানানো WooCommerce স্টোর।",
     },
     {
       head: "ফলাফল",
