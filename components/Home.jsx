@@ -4,7 +4,7 @@ import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import {
   ArrowRight, ArrowUpRight, Globe, Video, Check, X,
-  Mail, User, MessageCircle, Quote, Phone, MapPin, Star,
+  Mail, User, MessageCircle, Quote, Phone, MapPin, Star, Send,
 } from "lucide-react";
 import {
   brand, startProjectLabel, hero, services, caseStudy,
@@ -300,53 +300,62 @@ export default function Home() {
       </section>
 
       {/* ============ CONTACT ============ */}
-      <section id="contact" style={{ background: C.light }}>
-        <div className="mx-auto px-6 py-16" style={{ maxWidth: 1100 }}>
-          <div className="grid gap-12 lg:grid-cols-2">
-            <Reveal>
-              <div style={{ fontSize: 13, letterSpacing: ".14em", textTransform: "uppercase", color: C.purple, fontWeight: 700 }}>{contact.eyebrow}</div>
-              <h2 className="display" style={{ marginTop: 12, fontSize: "clamp(1.8rem,3.4vw,2.6rem)", fontWeight: 800, letterSpacing: "-.02em", lineHeight: 1.15 }}>
-                {contact.heading}
-              </h2>
-              <p style={{ marginTop: 16, fontSize: 17, color: C.muted, lineHeight: 1.7 }}>
-                {contact.sub}
-              </p>
-              <div className="mt-8 space-y-4">
-                {[[<Mail size={18} key="m" />, contact.email], [<Phone size={18} key="p" />, "WhatsApp-এ পাওয়া যাবে"], [<MapPin size={18} key="l" />, contact.location]].map(([ic, t], i) => (
-                  <div key={i} className="flex items-center gap-3">
-                    <span style={{ width: 40, height: 40, borderRadius: 12, background: "#fff", border: `1px solid ${C.line}`, color: C.purple, display: "flex", alignItems: "center", justifyContent: "center" }}>{ic}</span>
-                    <span style={{ color: C.navy, fontWeight: 500 }}>{t}</span>
-                  </div>
-                ))}
-              </div>
-              <a href={waHref} target="_blank" rel="noopener noreferrer" className="btnx mt-8 inline-flex items-center gap-2 px-6 py-3.5"
-                style={{ background: "#25D366", color: "#fff", borderRadius: 12, fontWeight: 700, textDecoration: "none", boxShadow: "0 14px 28px -14px rgba(37,211,102,.7)" }}>
-                <MessageCircle size={18} /> {contact.whatsappLabel}
-              </a>
-            </Reveal>
+      <section id="contact" style={{ background: C.light, borderTop: `1px solid ${C.line}` }}>
+        <div className="mx-auto px-6 py-14" style={{ maxWidth: 1040 }}>
+          <Reveal>
+            <div style={{ background: "#fff", border: `1px solid ${C.line}`, borderRadius: 20, overflow: "hidden" }}>
+              <div className="grid lg:grid-cols-2">
 
-            <Reveal delay={0.1}>
-              <div style={{ position: "relative", maxWidth: 340, margin: "0 auto", width: "100%" }}>
-                <div style={{ aspectRatio: "1/1", borderRadius: 24, overflow: "hidden", background: `linear-gradient(160deg, ${C.purple}, ${C.purpleDeep})`, display: "flex", alignItems: "center", justifyContent: "center", boxShadow: "0 30px 60px -30px rgba(91,42,157,.5)" }}>
-                  {contact.image ? (
-                    <img src={contact.image} alt={brand.founderName} style={{ width: "100%", height: "100%", objectFit: "cover" }} />
-                  ) : (
-                    <>
-                      <User size={90} color="rgba(255,255,255,.6)" />
-                      <span style={{ position: "absolute", bottom: 16, left: 16, fontSize: 12, color: "rgba(255,255,255,.75)" }}>{contact.imageCaption}</span>
-                    </>
-                  )}
-                </div>
-                <div style={{ position: "absolute", bottom: -18, right: -14, background: "#fff", borderRadius: 16, padding: "12px 16px 12px 12px", boxShadow: "0 20px 40px -20px rgba(15,23,42,.4)", border: `1px solid ${C.line}`, display: "flex", alignItems: "center", gap: 10 }}>
-                  <span className="display" style={{ width: 38, height: 38, borderRadius: "50%", background: `linear-gradient(145deg, ${C.purple}, ${C.purpleDeep})`, color: "#fff", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 13, fontWeight: 700 }}>{brand.founderInitials}</span>
-                  <div style={{ lineHeight: 1.25 }}>
-                    <div style={{ fontSize: 14, fontWeight: 700, color: C.navy }}>{brand.founderName}</div>
-                    <div style={{ fontSize: 12, color: C.muted }}>{brand.founderRole}</div>
+                {/* Left — info */}
+                <div style={{ padding: 32 }}>
+                  <div style={{ fontSize: 12, letterSpacing: ".14em", textTransform: "uppercase", color: C.purple, fontWeight: 700 }}>{contact.eyebrow}</div>
+                  <h2 className="display" style={{ marginTop: 10, fontSize: "clamp(1.5rem,2.8vw,2.1rem)", fontWeight: 800, letterSpacing: "-.02em", lineHeight: 1.2 }}>
+                    {contact.heading}
+                  </h2>
+                  <p style={{ marginTop: 12, fontSize: 15.5, color: C.muted, lineHeight: 1.65 }}>
+                    {contact.sub}
+                  </p>
+
+                  <div style={{ marginTop: 24, display: "grid", gap: 10 }}>
+                    {[
+                      [<Mail size={16} key="m" />, contact.email],
+                      [<Phone size={16} key="p" />, contact.phoneNumber],
+                      [<MapPin size={16} key="l" />, contact.location],
+                    ].map(([ic, t], i) => (
+                      <div key={i} className="flex items-center gap-3">
+                        <span style={{ width: 34, height: 34, borderRadius: 10, background: C.light, border: `1px solid ${C.line}`, color: C.purple, display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>{ic}</span>
+                        <span style={{ color: C.navy, fontWeight: 500, fontSize: 14.5 }}>{t}</span>
+                      </div>
+                    ))}
                   </div>
                 </div>
+
+                {/* Right — action buttons */}
+                <div className="border-t lg:border-t-0 lg:border-l" style={{ padding: 32, background: C.light, borderColor: C.line, display: "flex", flexDirection: "column", justifyContent: "center", gap: 12 }}>
+                  {[
+                    { href: waHref, label: contact.whatsappLabel, icon: <MessageCircle size={18} />, bg: "#25D366" },
+                    { href: contact.messengerUrl, label: contact.messengerLabel, icon: <Send size={18} />, bg: "#0084FF" },
+                    { href: `tel:${contact.phoneNumber}`, label: contact.callLabel, icon: <Phone size={18} />, bg: C.purple },
+                  ].map((b, i) => (
+                    <a
+                      key={i}
+                      href={b.href}
+                      target={b.href.startsWith("tel:") ? undefined : "_blank"}
+                      rel="noopener noreferrer"
+                      className="btnx flex items-center gap-3 px-5 py-3.5"
+                      style={{ background: "#fff", border: `1px solid ${C.line}`, borderRadius: 12, color: C.navy, fontWeight: 700, fontSize: 15, textDecoration: "none" }}
+                    >
+                      <span style={{ width: 38, height: 38, borderRadius: 10, background: b.bg, color: "#fff", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>{b.icon}</span>
+                      <span style={{ flex: 1 }}>{b.label}</span>
+                      <ArrowUpRight size={17} color={C.muted} />
+                    </a>
+                  ))}
+                  <div style={{ marginTop: 6, fontSize: 12.5, color: C.muted, textAlign: "center" }}>{contact.actionsNote}</div>
+                </div>
+
               </div>
-            </Reveal>
-          </div>
+            </div>
+          </Reveal>
         </div>
       </section>
     </div>

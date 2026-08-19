@@ -250,9 +250,12 @@ export const contact = {
   whatsappNumber: "8801610034234",
   whatsappLabel: "WhatsApp-এ চ্যাট করুন",
   location: "নাটোর, বাংলাদেশ",
-  // ডান পাশের ছবি: /public/images-এ ছবি রেখে এখানে path দিন। null দিলে প্লেসহোল্ডার ফ্রেম দেখাবে।
-  image: null,
-  imageCaption: "আপনার ছবি এখানে",
+  // ডান পাশের অ্যাকশন বাটন — লিংক/লেবেল এখান থেকেই বদলানো যাবে
+  messengerUrl: "https://m.me/sabbirwebsolutions",
+  messengerLabel: "Messenger-এ মেসেজ দিন",
+  phoneNumber: "+8801610034234",
+  callLabel: "সরাসরি কল করুন",
+  actionsNote: "যেকোনো একটায় নক করুন · 24 ঘণ্টার মধ্যে উত্তর",
   services: ["ওয়েবসাইট ডিজাইন", "ভিডিও এডিটিং", "দুটোই"],
   privacyNote: "আপনার তথ্য গোপন থাকবে · কোনো স্প্যাম নয়",
   submitLabel: "মেসেজ পাঠান",
