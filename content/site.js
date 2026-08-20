@@ -121,6 +121,7 @@ export const portfolio = {
   web: [
     { t: "আলাপন", cat: "Landing Page", biz: "Organic Food", url: "https://landing.rwmart.shop/step/alapon/", image: "/images/alaapon.com.png" },
     { t: "ABC China Mart", cat: "Landing Page", biz: "Gadget Shop", url: "https://landing.rwmart.shop/step/abcchinamart/", image: "/images/abcchinamart.com.png" },
+    { t: "City Decor & Thai", cat: "Business Website", biz: "Interior Design", url: "https://citydecorandthai.rwmart.shop/", image: "/images/citydecorandthai.rwmart.shop.png" },
     { t: "আমাদের ঐতিহ্য", cat: "Other Website", biz: "Organization", url: "https://amader-proshchitra.lovable.app/", image: "/images/amader-oitijjo.png" },
     { t: "New Zone BD", cat: "E-commerce Website", biz: "Book Shop", url: "https://newzonebd.rwmart.shop/", image: "/images/newzonebd.rwmart.shop.png" },
     { t: "Borka Everyday", cat: "E-commerce Website", biz: "Clothing", url: "https://borkaeveryday.rwmart.shop/", image: "/images/borkaeveryday.rwmart.shop.png" },
