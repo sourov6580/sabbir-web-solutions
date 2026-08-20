@@ -122,6 +122,7 @@ export const portfolio = {
     { t: "আলাপন", cat: "Landing Page", biz: "Organic Food", url: "https://landing.rwmart.shop/step/alapon/", image: "/images/alaapon.com.png" },
     { t: "আমাদের ঐতিহ্য", cat: "Other Website", biz: "Organization", url: "https://amader-proshchitra.lovable.app/", image: "/images/amader-oitijjo.png" },
     { t: "New Zone BD", cat: "E-commerce Website", biz: "Book Shop", url: "https://newzonebd.rwmart.shop/", image: "/images/newzonebd.rwmart.shop.png" },
+    { t: "Borka Everyday", cat: "E-commerce Website", biz: "Clothing", url: "https://borkaeveryday.rwmart.shop/", image: "/images/borkaeveryday.rwmart.shop.png" },
   ],
   video: [
     { t: "M M Agro – Fresh Agricultural & Dairy", cat: "E-commerce & Product Ads", biz: "এগ্রিকালচার", url: "https://youtu.be/Fn0Z41aj2Gs", image: "https://img.youtube.com/vi/Fn0Z41aj2Gs/hqdefault.jpg" },
