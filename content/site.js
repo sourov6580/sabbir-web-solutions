@@ -136,6 +136,7 @@ export const portfolio = {
     { t: "Dafresh - Baby Cerelac and Rajma Khichuri", cat: "E-commerce & Product Ads", biz: "বেবি ফুড", url: "https://youtube.com/shorts/KRbqpcAG--4", image: "https://img.youtube.com/vi/KRbqpcAG--4/hqdefault.jpg" },
     { t: "Hridoy Agro Faridpur", cat: "E-commerce & Product Ads", biz: "এগ্রিকালচার", url: "https://youtube.com/shorts/TW3fuZ24LqE", image: "https://img.youtube.com/vi/TW3fuZ24LqE/hqdefault.jpg" },
     { t: "JS Calligraphy video Ad", cat: "E-commerce & Product Ads", biz: "গিফট আইটেম", url: "https://youtube.com/shorts/dxNGjvSbX7Y", image: "https://img.youtube.com/vi/dxNGjvSbX7Y/hqdefault.jpg" },
+    { t: "Non Slip Floor Mat - Bhog Bazar", cat: "E-commerce & Product Ads", biz: "হোম অ্যান্ড লিভিং", url: "https://youtu.be/K3Phnwqd4uE", image: "https://img.youtube.com/vi/K3Phnwqd4uE/hqdefault.jpg" },
     { t: "M M Agro – Fresh Agricultural & Dairy", cat: "E-commerce & Product Ads", biz: "এগ্রিকালচার", url: "https://youtu.be/Fn0Z41aj2Gs", image: "https://img.youtube.com/vi/Fn0Z41aj2Gs/hqdefault.jpg" },
 
     { t: "Mimi's Fashion Indian 3pis", cat: "Clothing & Fashion Ads", biz: "ফ্যাশন", url: "https://youtube.com/shorts/msdQ-eVA2jQ", image: "https://img.youtube.com/vi/msdQ-eVA2jQ/hqdefault.jpg" },
