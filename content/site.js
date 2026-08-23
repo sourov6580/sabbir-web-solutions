@@ -138,6 +138,7 @@ export const portfolio = {
     { t: "JS Calligraphy video Ad", cat: "E-commerce & Product Ads", biz: "গিফট আইটেম", url: "https://youtube.com/shorts/dxNGjvSbX7Y", image: "https://img.youtube.com/vi/dxNGjvSbX7Y/hqdefault.jpg" },
     { t: "M M Agro – Fresh Agricultural & Dairy", cat: "E-commerce & Product Ads", biz: "এগ্রিকালচার", url: "https://youtu.be/Fn0Z41aj2Gs", image: "https://img.youtube.com/vi/Fn0Z41aj2Gs/hqdefault.jpg" },
 
+    { t: "Mimi's Fashion Indian 3pis", cat: "Clothing & Fashion Ads", biz: "ফ্যাশন", url: "https://youtube.com/shorts/msdQ-eVA2jQ", image: "https://img.youtube.com/vi/msdQ-eVA2jQ/hqdefault.jpg" },
     { t: "Rupak Store – Premium Collection", cat: "Clothing & Fashion Ads", biz: "ফ্যাশন", url: "https://youtu.be/aB2BcOuFxO0", image: "https://img.youtube.com/vi/aB2BcOuFxO0/hqdefault.jpg" },
     { t: "Borka Everyday – Premium Borka Set Collections", cat: "Clothing & Fashion Ads", biz: "ফ্যাশন", url: "https://youtu.be/UbgXWiZy9wY", image: "https://img.youtube.com/vi/UbgXWiZy9wY/hqdefault.jpg" },
     { t: "Daraz Fashion Zone – Premium Skin Care Products", cat: "Clothing & Fashion Ads", biz: "স্কিন কেয়ার", url: "https://youtu.be/hQ8wMqXFJV8", image: "https://img.youtube.com/vi/hQ8wMqXFJV8/hqdefault.jpg" },
