@@ -136,7 +136,7 @@ export const portfolio = {
     { t: "M M Agro – Fresh Agricultural & Dairy", cat: "E-commerce & Product Ads", biz: "এগ্রিকালচার", url: "https://youtu.be/Fn0Z41aj2Gs", image: "https://img.youtube.com/vi/Fn0Z41aj2Gs/hqdefault.jpg" },
     { t: "JS Calligraphy – Handcrafted Custom Name Gift Design", cat: "E-commerce & Product Ads", biz: "গিফট", url: "https://youtu.be/PyBP-aZ3joA", image: "https://img.youtube.com/vi/PyBP-aZ3joA/hqdefault.jpg" },
     { t: "Fresh Mango Rajshahi – Premium Agro", cat: "E-commerce & Product Ads", biz: "এগ্রিকালচার", url: "https://youtu.be/-FJiPYMp5gQ", image: "https://img.youtube.com/vi/-FJiPYMp5gQ/hqdefault.jpg" },
-    { t: "ওয়েবসাইট না ল্যান্ডিং পেজ?", cat: "E-commerce & Product Ads", biz: "এডুকেশন", url: "https://youtu.be/MnIbE0lwTOI", image: "https://img.youtube.com/vi/MnIbE0lwTOI/hqdefault.jpg" },
+    { t: "আপনার বিজনেস এর সেল সিস্টেম কে করুন অটোমেটিক।", cat: "E-commerce & Product Ads", biz: "এডুকেশন", url: "https://youtu.be/UeeqMI55iXc", image: "https://img.youtube.com/vi/UeeqMI55iXc/hqdefault.jpg" },
 
     { t: "Rupak Store – Premium Collection", cat: "Clothing & Fashion Ads", biz: "ফ্যাশন", url: "https://youtu.be/aB2BcOuFxO0", image: "https://img.youtube.com/vi/aB2BcOuFxO0/hqdefault.jpg" },
     { t: "Borka Everyday – Premium Borka Set Collections", cat: "Clothing & Fashion Ads", biz: "ফ্যাশন", url: "https://youtu.be/UbgXWiZy9wY", image: "https://img.youtube.com/vi/UbgXWiZy9wY/hqdefault.jpg" },
