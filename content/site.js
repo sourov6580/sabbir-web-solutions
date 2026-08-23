@@ -114,7 +114,7 @@ export const portfolio = {
     "Clothing & Fashion Ads",
     "Organic & Herbal Solutions",
     "Real Estate & Property Ads",
-    "Lifestyle & Service Ads",
+    "Business & Service Ads",
   ],
   web: [
     { t: "আলাপন", cat: "Landing Page", biz: "Organic Food", url: "https://landing.rwmart.shop/step/alapon/", image: "/images/alaapon.com.png" },
@@ -150,10 +150,10 @@ export const portfolio = {
     { t: "Dream 15 Dolonchapa – Modern Residential Living Spaces", cat: "Real Estate & Property Ads", biz: "রিয়েল এস্টেট", url: "https://youtu.be/wk5kA4Lzpng", image: "https://img.youtube.com/vi/wk5kA4Lzpng/hqdefault.jpg" },
     { t: "Dream 15 Dolonchapa – Luxury Apartment Tour & Flat Booking", cat: "Real Estate & Property Ads", biz: "রিয়েল এস্টেট", url: "https://youtu.be/PsF615meeVM", image: "https://img.youtube.com/vi/PsF615meeVM/hqdefault.jpg" },
 
-    { t: "TeacherLagbe Noakhali - Home Tutor Service", cat: "Lifestyle & Service Ads", biz: "সার্ভিস", url: "https://youtube.com/shorts/pdrVlok5dAA", image: "https://img.youtube.com/vi/pdrVlok5dAA/hqdefault.jpg" },
-    { t: "Sr Entreprise - Pickup Rent Service", cat: "Lifestyle & Service Ads", biz: "সার্ভিস", url: "https://youtube.com/shorts/ZSeefAHiaJc", image: "https://img.youtube.com/vi/ZSeefAHiaJc/hqdefault.jpg" },
-    { t: "Ghotok Apu – Trusted Matrimony & Matchmaking Service", cat: "Lifestyle & Service Ads", biz: "সার্ভিস", url: "https://youtu.be/a2Pg42ZCFk0", image: "https://img.youtube.com/vi/a2Pg42ZCFk0/hqdefault.jpg" },
-    { t: "Kotha Bondhu – Mental Health Counseling Video", cat: "Lifestyle & Service Ads", biz: "কাউন্সেলিং", url: "https://youtu.be/y0KCcPFjduE", image: "https://img.youtube.com/vi/y0KCcPFjduE/hqdefault.jpg" },
+    { t: "TeacherLagbe Noakhali - Home Tutor Service", cat: "Business & Service Ads", biz: "সার্ভিস", url: "https://youtube.com/shorts/pdrVlok5dAA", image: "https://img.youtube.com/vi/pdrVlok5dAA/hqdefault.jpg" },
+    { t: "Sr Entreprise - Pickup Rent Service", cat: "Business & Service Ads", biz: "সার্ভিস", url: "https://youtube.com/shorts/ZSeefAHiaJc", image: "https://img.youtube.com/vi/ZSeefAHiaJc/hqdefault.jpg" },
+    { t: "Ghotok Apu – Trusted Matrimony & Matchmaking Service", cat: "Business & Service Ads", biz: "সার্ভিস", url: "https://youtu.be/a2Pg42ZCFk0", image: "https://img.youtube.com/vi/a2Pg42ZCFk0/hqdefault.jpg" },
+    { t: "Kotha Bondhu – Mental Health Counseling Video", cat: "Business & Service Ads", biz: "কাউন্সেলিং", url: "https://youtu.be/y0KCcPFjduE", image: "https://img.youtube.com/vi/y0KCcPFjduE/hqdefault.jpg" },
   ],
 };
 
