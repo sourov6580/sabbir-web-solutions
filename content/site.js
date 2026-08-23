@@ -95,13 +95,11 @@ export const portfolio = {
   webPage: {
     eyebrow: "আমাদের কাজের স্যাম্পল",
     title: "ওয়েব স্যাম্পল",
-    sub: "সাম্প্রতিক কিছু Website ডিজাইন ও ডেভেলপমেন্ট প্রজেক্ট দেখুন।",
   },
   // ভিডিও স্যাম্পল পেজের হেডিং
   videoPage: {
     eyebrow: "আমাদের কাজের স্যাম্পল",
     title: "ভিডিও স্যাম্পল",
-    sub: "সাম্প্রতিক কিছু Promotional ও Product Video প্রজেক্ট দেখুন।",
   },
   webFilters: [
     "সব",
