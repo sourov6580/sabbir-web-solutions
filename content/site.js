@@ -125,7 +125,6 @@ export const portfolio = {
     { t: "Ai Online Mart", cat: "Landing Page", biz: "Daily Necessities", url: "https://landing.rwmart.shop/step/ai-online-mart/", image: "/images/ai-online-mart.webp" },
     { t: "New Zone BD", cat: "E-commerce Website", biz: "Book Shop", url: "https://newzonebd.rwmart.shop/", image: "/images/newzonebd.rwmart.shop.png" },
     { t: "Borka Everyday", cat: "E-commerce Website", biz: "Clothing", url: "https://borkaeveryday.rwmart.shop/", image: "/images/borkaeveryday.rwmart.shop.png" },
-    { t: "Rupkotha Web Mart", cat: "E-commerce Website", biz: "WP Tools", url: "https://rwmart.shop/", image: "/images/rwmart.shop.png" },
     { t: "Her Wishes", cat: "E-commerce Website", biz: "Clothing", url: "https://herwishes.rwmart.shop/", image: "/images/herwishes.shop.webp" },
     { t: "BLACK DIAMOND", cat: "E-commerce Website", biz: "Jewellery", url: "https://blackdimons.rwmart.shop/", image: "/images/blackdimons.rwmart.shop.webp" },
     { t: "City Decor & Thai", cat: "Business Website", biz: "Interior Design", url: "https://citydecorandthai.rwmart.shop/", image: "/images/citydecorandthai.rwmart.shop.png" },
