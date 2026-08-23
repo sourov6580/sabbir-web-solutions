@@ -133,10 +133,9 @@ export const portfolio = {
     { t: "আমাদের ঐতিহ্য", cat: "Other Website", biz: "Organization", url: "https://amader-proshchitra.lovable.app/", image: "/images/amader-oitijjo.png" },
   ],
   video: [
-    { t: "M M Agro – Fresh Agricultural & Dairy", cat: "E-commerce & Product Ads", biz: "এগ্রিকালচার", url: "https://youtu.be/Fn0Z41aj2Gs", image: "https://img.youtube.com/vi/Fn0Z41aj2Gs/hqdefault.jpg" },
-    { t: "JS Calligraphy – Handcrafted Custom Name Gift Design", cat: "E-commerce & Product Ads", biz: "গিফট", url: "https://youtu.be/PyBP-aZ3joA", image: "https://img.youtube.com/vi/PyBP-aZ3joA/hqdefault.jpg" },
-    { t: "Fresh Mango Rajshahi – Premium Agro", cat: "E-commerce & Product Ads", biz: "এগ্রিকালচার", url: "https://youtu.be/-FJiPYMp5gQ", image: "https://img.youtube.com/vi/-FJiPYMp5gQ/hqdefault.jpg" },
     { t: "আপনার বিজনেস এর সেল সিস্টেম কে করুন অটোমেটিক।", cat: "E-commerce & Product Ads", biz: "এডুকেশন", url: "https://youtu.be/UeeqMI55iXc", image: "https://img.youtube.com/vi/UeeqMI55iXc/hqdefault.jpg" },
+    { t: "Fresh Mango Rajshahi – Premium Agro", cat: "E-commerce & Product Ads", biz: "এগ্রিকালচার", url: "https://youtu.be/-FJiPYMp5gQ", image: "https://img.youtube.com/vi/-FJiPYMp5gQ/hqdefault.jpg" },
+    { t: "M M Agro – Fresh Agricultural & Dairy", cat: "E-commerce & Product Ads", biz: "এগ্রিকালচার", url: "https://youtu.be/Fn0Z41aj2Gs", image: "https://img.youtube.com/vi/Fn0Z41aj2Gs/hqdefault.jpg" },
 
     { t: "Rupak Store – Premium Collection", cat: "Clothing & Fashion Ads", biz: "ফ্যাশন", url: "https://youtu.be/aB2BcOuFxO0", image: "https://img.youtube.com/vi/aB2BcOuFxO0/hqdefault.jpg" },
     { t: "Borka Everyday – Premium Borka Set Collections", cat: "Clothing & Fashion Ads", biz: "ফ্যাশন", url: "https://youtu.be/UbgXWiZy9wY", image: "https://img.youtube.com/vi/UbgXWiZy9wY/hqdefault.jpg" },
@@ -144,7 +143,6 @@ export const portfolio = {
 
     { t: "Shifayah – Organic Wellness & Energy Booster", cat: "Organic & Herbal Solutions", biz: "ওয়েলনেস", url: "https://youtu.be/q6K0d-8Dfo4", image: "https://img.youtube.com/vi/q6K0d-8Dfo4/hqdefault.jpg" },
     { t: "Jamaican Black Castor Oil – Pure Herbal Hair Care", cat: "Organic & Herbal Solutions", biz: "হেয়ার কেয়ার", url: "https://youtu.be/fu720ICsaQc", image: "https://img.youtube.com/vi/fu720ICsaQc/hqdefault.jpg" },
-    { t: "KING SPICE – 100% Pure Organic Energy Booster", cat: "Organic & Herbal Solutions", biz: "হার্বাল", url: "https://youtu.be/oh9_ZYwYtgo", image: "https://img.youtube.com/vi/oh9_ZYwYtgo/hqdefault.jpg" },
 
     { t: "Dream 15 Dolonchapa – Modern Residential Living Spaces", cat: "Real Estate & Property Ads", biz: "রিয়েল এস্টেট", url: "https://youtu.be/wk5kA4Lzpng", image: "https://img.youtube.com/vi/wk5kA4Lzpng/hqdefault.jpg" },
     { t: "Dream 15 Dolonchapa – Luxury Apartment Tour & Flat Booking", cat: "Real Estate & Property Ads", biz: "রিয়েল এস্টেট", url: "https://youtu.be/PsF615meeVM", image: "https://img.youtube.com/vi/PsF615meeVM/hqdefault.jpg" },
