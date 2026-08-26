@@ -190,7 +190,7 @@ export const caseStudy = {
 
 export const pricing = {
   eyebrow: "প্রাইসিং",
-  title: "আপনার প্রয়োজন অনুযায়ী প্যাকেজ বেছে নিন।",
+  title: "প্রয়োজন অনুযায়ী প্যাকেজ বেছে নিন।",
   // প্রাইসিং পেজের টগল বাটন (নিচের groups-এর সাথে মিলিয়ে, একই ক্রমে)
   toggles: [
     { key: "web", label: "ওয়েবসাইট প্রাইসিং", icon: "globe" },
