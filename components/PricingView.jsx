@@ -1,6 +1,7 @@
 "use client";
 
-import React, { useState } from "react";
+import React from "react";
+import Link from "next/link";
 import { ArrowRight, Check } from "lucide-react";
 import { pricing, contact } from "@/content/site";
 import { Reveal, SectionHead, Icon } from "@/components/shared";
@@ -39,8 +40,8 @@ function PlanCard({ p, note }) {
   );
 }
 
-export default function PricingView() {
-  const [active, setActive] = useState(0); // 0 = ওয়েবসাইট, 1 = ভিডিও
+export default function PricingView({ active = 0 }) {
+  // active: 0 = ওয়েবসাইট (/pricing/web), 1 = ভিডিও (/pricing/video)
   const group = pricing.groups[active];
 
   return (
@@ -53,13 +54,13 @@ export default function PricingView() {
           <div className="inline-flex flex-wrap justify-center gap-2 p-1.5"
             style={{ background: "#fff", border: `1px solid ${C.line}`, borderRadius: 999, boxShadow: "0 10px 24px -18px rgba(15,23,42,.4)" }}>
             {pricing.toggles.map((t, i) => (
-              <button key={t.key} onClick={() => setActive(i)} className="btnx inline-flex items-center gap-2 px-6 py-3"
-                style={{ borderRadius: 999, fontWeight: 600, fontSize: 15, cursor: "pointer", border: "none",
+              <Link key={t.key} href={`/pricing/${t.key}`} scroll={false} className="btnx inline-flex items-center gap-2 px-6 py-3"
+                style={{ borderRadius: 999, fontWeight: 600, fontSize: 15, cursor: "pointer", border: "none", textDecoration: "none",
                   background: active === i ? C.purple : "transparent",
                   color: active === i ? "#fff" : C.navy,
                   boxShadow: active === i ? "0 12px 24px -12px rgba(91,42,157,.7)" : "none" }}>
                 <Icon name={t.icon} size={17} /> {t.label}
-              </button>
+              </Link>
             ))}
           </div>
         </div>
