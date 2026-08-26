@@ -201,9 +201,9 @@ export const pricing = {
     {
       label: "ওয়েবসাইট ডিজাইন",
       plans: [
-        { name: "স্টার্টার Landing Page", price: "৳3,000", feats: ["1টি conversion-focused পেজ", "মোবাইল রেসপন্সিভ", "বেসিক SEO সেটআপ", "3 দিনে ডেলিভারি"] },
-        { name: "বিজনেস Website", price: "৳6,000", featured: true, feats: ["6টি পর্যন্ত পেজ", "কাস্টম ডিজাইন", "On-page SEO", "স্পিড অপটিমাইজেশন", "Contact ইন্টিগ্রেশন"] },
-        { name: "E-commerce Website", price: "৳10,000", feats: ["WooCommerce স্টোর", "প্রোডাক্ট সেটআপ", "পেমেন্ট গেটওয়ে", "কার্ট ও চেকআউট", "লঞ্চ সাপোর্ট"] },
+        { name: "Starter", price: "৳3,000", feats: ["1টি conversion-focused পেজ", "মোবাইল রেসপন্সিভ", "বেসিক SEO সেটআপ", "3 দিনে ডেলিভারি"] },
+        { name: "Growth", price: "৳6,000", featured: true, feats: ["6টি পর্যন্ত পেজ", "কাস্টম ডিজাইন", "On-page SEO", "স্পিড অপটিমাইজেশন", "Contact ইন্টিগ্রেশন"] },
+        { name: "Scale", price: "৳10,000", feats: ["WooCommerce স্টোর", "প্রোডাক্ট সেটআপ", "পেমেন্ট গেটওয়ে", "কার্ট ও চেকআউট", "লঞ্চ সাপোর্ট"] },
       ],
     },
     {
