@@ -19,8 +19,8 @@ function PlanCard({ p }) {
       {p.featured && (
         <span style={{ position: "absolute", top: 18, right: 18, fontSize: 11, fontWeight: 700, letterSpacing: ".08em", textTransform: "uppercase", background: "rgba(255,255,255,.18)", padding: "4px 10px", borderRadius: 999 }}>জনপ্রিয়</span>
       )}
-      <div style={{ fontSize: 16, fontWeight: 600, opacity: p.featured ? .9 : 1 }}>{p.name}</div>
-      <div style={{ marginTop: 12, fontSize: 13, opacity: .7 }}>শুরু হচ্ছে</div>
+      <div className="display" style={{ fontSize: 22, fontWeight: 700, letterSpacing: "-.01em", opacity: p.featured ? .95 : 1 }}>{p.name}</div>
+      <div style={{ marginTop: 12, fontSize: 12.5, opacity: .7, lineHeight: 1.5 }}>ডিজাইন ফি (ডোমেইন, হোস্টিং ছাড়া)</div>
       <div className="display" style={{ fontSize: 40, fontWeight: 800, letterSpacing: "-.02em" }}>{p.price}</div>
       <div className="mt-6 space-y-3">
         {p.feats.map((f) => (
