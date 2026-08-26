@@ -134,7 +134,6 @@ export const portfolio = {
   video: [
     { t: "আপনার বিজনেস এর সেল সিস্টেম কে করুন অটোমেটিক।", cat: "E-commerce & Product Ads", biz: "এডুকেশন", url: "https://youtu.be/UeeqMI55iXc", image: "https://img.youtube.com/vi/UeeqMI55iXc/hqdefault.jpg" },
     { t: "Fresh Mango Rajshahi – Premium Agro", cat: "E-commerce & Product Ads", biz: "এগ্রিকালচার", url: "https://youtu.be/-FJiPYMp5gQ", image: "https://img.youtube.com/vi/-FJiPYMp5gQ/hqdefault.jpg" },
-    { t: "Dafresh - Baby Cerelac and Rajma Khichuri", cat: "E-commerce & Product Ads", biz: "বেবি ফুড", url: "https://youtube.com/shorts/KRbqpcAG--4", image: "https://img.youtube.com/vi/KRbqpcAG--4/hqdefault.jpg" },
     { t: "Hridoy Agro Faridpur", cat: "E-commerce & Product Ads", biz: "এগ্রিকালচার", url: "https://youtube.com/shorts/TW3fuZ24LqE", image: "https://img.youtube.com/vi/TW3fuZ24LqE/hqdefault.jpg" },
     { t: "JS Calligraphy video Ad", cat: "E-commerce & Product Ads", biz: "গিফট আইটেম", url: "https://youtube.com/shorts/dxNGjvSbX7Y", image: "https://img.youtube.com/vi/dxNGjvSbX7Y/hqdefault.jpg" },
     { t: "Non Slip Floor Mat - Bhog Bazar", cat: "E-commerce & Product Ads", biz: "হোম অ্যান্ড লিভিং", url: "https://youtu.be/K3Phnwqd4uE", image: "https://img.youtube.com/vi/K3Phnwqd4uE/hqdefault.jpg" },
