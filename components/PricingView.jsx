@@ -6,7 +6,7 @@ import { pricing, contact } from "@/content/site";
 import { Reveal, SectionHead, Icon } from "@/components/shared";
 import { C } from "@/components/tokens";
 
-function PlanCard({ p }) {
+function PlanCard({ p, note }) {
   const waHref = `https://wa.me/${contact.whatsappNumber}`;
   return (
     <div className="lift" style={{
@@ -20,7 +20,7 @@ function PlanCard({ p }) {
         <span style={{ position: "absolute", top: 18, right: 18, fontSize: 11, fontWeight: 700, letterSpacing: ".08em", textTransform: "uppercase", background: "rgba(255,255,255,.18)", padding: "4px 10px", borderRadius: 999 }}>জনপ্রিয়</span>
       )}
       <div className="display" style={{ fontSize: 22, fontWeight: 700, letterSpacing: "-.01em", opacity: p.featured ? .95 : 1 }}>{p.name}</div>
-      <div style={{ marginTop: 12, fontSize: 12.5, opacity: .7, lineHeight: 1.5 }}>ডিজাইন ফি (ডোমেইন, হোস্টিং ছাড়া)</div>
+      <div style={{ marginTop: 12, fontSize: 12.5, opacity: .7, lineHeight: 1.5 }}>{note}</div>
       <div className="display" style={{ fontSize: 40, fontWeight: 800, letterSpacing: "-.02em" }}>{p.price}</div>
       <div className="mt-6 space-y-3">
         {p.feats.map((f) => (
@@ -72,7 +72,7 @@ export default function PricingView() {
           </div>
           <div className="grid gap-6 md:grid-cols-3">
             {group.plans.map((p, i) => (
-              <Reveal key={p.name} delay={i * 0.08}><PlanCard p={p} /></Reveal>
+              <Reveal key={p.name} delay={i * 0.08}><PlanCard p={p} note={group.priceNote} /></Reveal>
             ))}
           </div>
         </div>
