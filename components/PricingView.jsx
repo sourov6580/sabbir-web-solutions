@@ -2,6 +2,7 @@
 
 import React from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { ArrowRight, Check } from "lucide-react";
 import { pricing, contact } from "@/content/site";
 import { Reveal, SectionHead, Icon } from "@/components/shared";
@@ -40,8 +41,12 @@ function PlanCard({ p, note }) {
   );
 }
 
-export default function PricingView({ active = 0 }) {
-  // active: 0 = ওয়েবসাইট (/pricing/web), 1 = ভিডিও (/pricing/video)
+export default function PricingView({ active: activeProp = 0 }) {
+  // URL থেকেই active ঠিক হয় → /pricing/web = 0, /pricing/video = 1
+  const pathname = usePathname() || "";
+  const seg = pathname.split("/").filter(Boolean).pop();
+  const fromPath = pricing.toggles.findIndex((t) => t.key === seg);
+  const active = fromPath >= 0 ? fromPath : activeProp;
   const group = pricing.groups[active];
 
   return (
@@ -54,7 +59,7 @@ export default function PricingView({ active = 0 }) {
           <div className="inline-flex flex-wrap justify-center gap-2 p-1.5"
             style={{ background: "#fff", border: `1px solid ${C.line}`, borderRadius: 999, boxShadow: "0 10px 24px -18px rgba(15,23,42,.4)" }}>
             {pricing.toggles.map((t, i) => (
-              <Link key={t.key} href={`/pricing/${t.key}`} scroll={false} className="btnx inline-flex items-center gap-2 px-6 py-3"
+              <Link key={t.key} href={`/pricing/${t.key}`} className="btnx inline-flex items-center gap-2 px-6 py-3"
                 style={{ borderRadius: 999, fontWeight: 600, fontSize: 15, cursor: "pointer", border: "none", textDecoration: "none",
                   background: active === i ? C.purple : "transparent",
                   color: active === i ? "#fff" : C.navy,
@@ -66,7 +71,7 @@ export default function PricingView({ active = 0 }) {
         </div>
 
         {/* Active group plans */}
-        <div style={{ marginTop: 44 }}>
+        <div key={group.label} style={{ marginTop: 44 }}>
           <div className="flex items-center gap-4" style={{ marginBottom: 22 }}>
             <span style={{ fontSize: 13, fontWeight: 700, color: C.purple, letterSpacing: ".14em", textTransform: "uppercase", whiteSpace: "nowrap" }}>{group.label}</span>
             <span style={{ flex: 1, height: 1, background: C.line }} />

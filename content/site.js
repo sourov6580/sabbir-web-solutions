@@ -27,7 +27,7 @@ export const nav = [
   { label: "সার্ভিস", href: "/#services" },
   { label: "ওয়েব স্যাম্পল", href: "/web-samples" },
   { label: "ভিডিও স্যাম্পল", href: "/video-samples" },
-  { label: "প্রাইসিং", href: "/pricing" },
+  { label: "প্রাইসিং", href: "/pricing/web" },
   { label: "পরিচিতি", href: "/#about" },
   { label: "যোগাযোগ", href: "/#contact" },
 ];

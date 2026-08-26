@@ -21,9 +21,11 @@ export default function Header() {
 
   const waHref = `https://wa.me/${contact.whatsappNumber}`;
   // শুধু আসল আলাদা পেজগুলোর জন্য active state (hash link-এ নয়)
+  // প্রথম সেগমেন্ট মিলিয়ে active (যেমন /pricing/web ও /pricing/video দুটোতেই "প্রাইসিং" active)
+  const base = (p) => "/" + (p || "").split("/").filter(Boolean)[0];
   const isActive = (href) =>
     href.startsWith("/") && !href.includes("#") && href !== "/" &&
-    (pathname === href || pathname.startsWith(`${href}/`));
+    base(pathname) === base(href);
 
   return (
     <header
