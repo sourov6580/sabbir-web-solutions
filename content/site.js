@@ -187,6 +187,11 @@ export const caseStudy = {
   tech: ["WordPress", "WooCommerce", "Elementor Pro", "CapCut", "Performance Tuning"],
 };
 
+// ট্র্যাকিং — Facebook Pixel ID এখানে বসান (খালি রাখলে পিক্সেল লোড হবে না)
+export const analytics = {
+  facebookPixelId: "838209114985225",
+};
+
 export const pricing = {
   eyebrow: "প্রাইসিং",
   title: "প্রয়োজন অনুযায়ী প্যাকেজ বেছে নিন।",

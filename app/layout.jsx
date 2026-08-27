@@ -3,6 +3,7 @@ import { seo, brand } from "@/content/site";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import ScrollToTop from "@/components/ScrollToTop";
+import Pixel from "@/components/Pixel";
 
 export const metadata = {
   metadataBase: new URL(seo.siteUrl),
@@ -51,6 +52,7 @@ export default function RootLayout({ children }) {
         {children}
         <Footer />
         <ScrollToTop />
+        <Pixel />
       </body>
     </html>
   );
