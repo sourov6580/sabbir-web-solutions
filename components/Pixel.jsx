@@ -7,6 +7,64 @@ import { analytics } from "@/content/site";
 
 const PIXEL_ID = analytics?.facebookPixelId || "";
 
+// কুকি পড়া (fbp / fbc — CAPI ম্যাচিং কোয়ালিটির জন্য জরুরি)
+function getCookie(name) {
+  if (typeof document === "undefined") return undefined;
+  const m = document.cookie.match(new RegExp("(^| )" + name + "=([^;]+)"));
+  return m ? decodeURIComponent(m[2]) : undefined;
+}
+
+function newEventId() {
+  return `${Date.now()}-${Math.random().toString(36).slice(2, 10)}`;
+}
+
+// একই ইভেন্ট ব্রাউজার (Pixel) + সার্ভার (CAPI) দুই দিকে — একই event_id দিয়ে ডিডুপ
+function sendEvent(eventName, customData) {
+  const eventId = newEventId();
+  const sourceUrl = window.location.href;
+
+  if (window.fbq) {
+    window.fbq("track", eventName, customData, { eventID: eventId });
+  }
+
+  try {
+    const body = JSON.stringify({
+      event_name: eventName,
+      event_id: eventId,
+      event_source_url: sourceUrl,
+      fbp: getCookie("_fbp"),
+      fbc: getCookie("_fbc"),
+      custom_data: customData,
+    });
+    // পেজ ছেড়ে যাওয়ার সময়েও যেন যায়
+    if (navigator.sendBeacon) {
+      navigator.sendBeacon("/api/fb-event", new Blob([body], { type: "application/json" }));
+    } else {
+      fetch("/api/fb-event", { method: "POST", headers: { "Content-Type": "application/json" }, body, keepalive: true });
+    }
+  } catch {}
+}
+
+function sendCustom(eventName, customData) {
+  const eventId = newEventId();
+  if (window.fbq) window.fbq("trackCustom", eventName, customData, { eventID: eventId });
+  try {
+    const body = JSON.stringify({
+      event_name: eventName,
+      event_id: eventId,
+      event_source_url: window.location.href,
+      fbp: getCookie("_fbp"),
+      fbc: getCookie("_fbc"),
+      custom_data: customData,
+    });
+    if (navigator.sendBeacon) {
+      navigator.sendBeacon("/api/fb-event", new Blob([body], { type: "application/json" }));
+    } else {
+      fetch("/api/fb-event", { method: "POST", headers: { "Content-Type": "application/json" }, body, keepalive: true });
+    }
+  } catch {}
+}
+
 // কোন লিংক কোন ইভেন্ট
 function matchLink(href) {
   if (!href) return null;
@@ -21,10 +79,12 @@ function matchLink(href) {
 export default function Pixel() {
   const pathname = usePathname();
 
-  // রুট বদলালে PageView
+  // রুট বদলালে PageView (ব্রাউজার + সার্ভার)
   useEffect(() => {
     if (!PIXEL_ID) return;
-    if (typeof window !== "undefined" && window.fbq) window.fbq("track", "PageView");
+    if (typeof window === "undefined") return;
+    // প্রথম লোডের PageView ইনলাইন স্ক্রিপ্টে হয়ে যায়, তাই এখানে শুধু সার্ভার-সাইড কপি
+    sendEvent("PageView", { source_page: window.location.pathname });
   }, [pathname]);
 
   // পুরো সাইটের যেকোনো WhatsApp / Messenger / Call লিংক ক্লিক ট্র্যাক
@@ -46,8 +106,8 @@ export default function Pixel() {
       };
 
       // স্ট্যান্ডার্ড ইভেন্ট (Ads অপটিমাইজেশনের জন্য) + কাস্টম ইভেন্ট (আলাদা করে দেখার জন্য)
-      window.fbq("track", "Contact", payload);
-      window.fbq("trackCustom", hit.event, payload);
+      sendEvent("Contact", payload);
+      sendCustom(hit.event, payload);
     };
 
     document.addEventListener("click", onClick, true);
