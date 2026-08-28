@@ -351,14 +351,14 @@ export default function SampleGallery({ type }) {
         </div>
 
         {isVideo ? (
-          <div className="mx-auto" style={{ maxWidth: 760 }}>
+          <div className="mx-auto" style={{ maxWidth: 1200 }}>
             {/* ৯:১৬ — ২ কলাম */}
             {portrait.length > 0 && (
-              <div className="mt-10 grid grid-cols-2 gap-5">
+              <div className="mt-10 grid grid-cols-2 md:grid-cols-4 gap-5">
                 {portrait.map((p, i) => {
                   const key = `v-${p.url}-${i}`;
                   return (
-                    <Reveal key={key} delay={(i % 2) * 0.06}>
+                    <Reveal key={key} delay={(i % 4) * 0.05}>
                       <VideoCard p={p} playing={playingKey === key} onPlay={() => setPlayingKey(key)} />
                     </Reveal>
                   );
@@ -368,7 +368,7 @@ export default function SampleGallery({ type }) {
 
             {/* ১৬:৯ — ১ কলাম */}
             {landscape.length > 0 && (
-              <div className="grid grid-cols-1 gap-5" style={{ marginTop: 24 }}>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-5" style={{ marginTop: 24 }}>
                 {landscape.map((p, i) => {
                   const key = `h-${p.url}-${i}`;
                   return (
