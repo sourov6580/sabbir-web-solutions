@@ -28,10 +28,28 @@ function VideoCard({ p, playing, onPlay }) {
   const vertical = isVertical(p);
   const ratio = vertical ? "9 / 16" : "16 / 9";
 
-  // ভার্টিকাল ভিডিওর জন্য YouTube-এর পোর্ট্রেট থাম্বনেইল, না পেলে সাধারণটা
-  const [thumb, setThumb] = useState(
-    vertical && id ? `https://i.ytimg.com/vi/${id}/oardefault.jpg` : p.image
-  );
+  // থাম্বনেইলের ফলব্যাক চেইন — প্রথমটা না পেলে পরেরটা
+  const sources = React.useMemo(() => {
+    const list = [];
+    if (id) {
+      // ভার্টিকাল (Shorts) হলে আগে পোর্ট্রেট থাম্বনেইল
+      if (vertical) list.push(`https://i.ytimg.com/vi/${id}/oardefault.jpg`);
+      list.push(`https://i.ytimg.com/vi/${id}/maxresdefault.jpg`);
+      list.push(`https://i.ytimg.com/vi/${id}/hqdefault.jpg`);
+    }
+    if (p.image) list.push(p.image);
+    return list;
+  }, [id, vertical, p.image]);
+
+  const [srcIndex, setSrcIndex] = useState(0);
+  const thumb = sources[srcIndex];
+  const nextSource = () => setSrcIndex((n) => (n + 1 < sources.length ? n + 1 : n));
+
+  // YouTube না থাকা থাম্বনেইলের বদলে ধূসর প্লেসহোল্ডার (120x90) পাঠায়, 404 দেয় না —
+  // তাই সাইজ দেখে বুঝে পরের সোর্সে যাই
+  const handleLoad = (e) => {
+    if (e.currentTarget.naturalWidth > 0 && e.currentTarget.naturalWidth < 200) nextSource();
+  };
 
   return (
     <div
@@ -66,6 +84,7 @@ function VideoCard({ p, playing, onPlay }) {
             {/* ব্লার ব্যাকগ্রাউন্ড — ফাঁকা জায়গা ভরাট করে, ভিডিও ফ্রেম কাটে না */}
             {thumb && (
               <img
+                key={`bg-${srcIndex}`}
                 src={thumb}
                 alt=""
                 aria-hidden="true"
@@ -83,16 +102,20 @@ function VideoCard({ p, playing, onPlay }) {
 
             {thumb ? (
               <img
+                key={`fg-${srcIndex}`}
                 className="grow"
                 src={thumb}
                 alt={p.t}
-                onError={() => setThumb(p.image)}
+                onError={nextSource}
+                onLoad={handleLoad}
                 style={{
                   position: "absolute",
                   inset: 0,
                   width: "100%",
                   height: "100%",
-                  objectFit: "contain",
+                  // ভার্টিকাল কার্ডে fallback থাম্বনেইল 16:9 হলে পাশের কালো বার বাদ দিয়ে
+                  // ভিডিওর আসল ফ্রেমটাই দেখায়
+                  objectFit: vertical ? "cover" : "contain",
                 }}
               />
             ) : (
