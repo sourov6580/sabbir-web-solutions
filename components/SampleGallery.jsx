@@ -1,12 +1,12 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
-import { ArrowUpRight, Layout, Play, X } from "lucide-react";
+import React, { useState } from "react";
+import { ArrowUpRight, Layout, Play } from "lucide-react";
 import { portfolio } from "@/content/site";
 import { Reveal, SectionHead } from "@/components/shared";
 import { C } from "@/components/tokens";
 
-/* YouTube URL থেকে ভিডিও ID বের করা (youtu.be / shorts / watch?v=) */
+/* YouTube URL থেকে ভিডিও ID (youtu.be / shorts / watch?v= / embed) */
 function youtubeId(url = "") {
   const m =
     url.match(/youtu\.be\/([\w-]{6,})/) ||
@@ -16,105 +16,279 @@ function youtubeId(url = "") {
   return m ? m[1] : null;
 }
 
-/* সাইটেই ভিডিও চালানোর জন্য লাইটবক্স */
-function VideoLightbox({ item, onClose }) {
-  useEffect(() => {
-    const onKey = (e) => e.key === "Escape" && onClose();
-    document.addEventListener("keydown", onKey);
-    const prev = document.body.style.overflow;
-    document.body.style.overflow = "hidden";
-    return () => {
-      document.removeEventListener("keydown", onKey);
-      document.body.style.overflow = prev;
-    };
-  }, [onClose]);
+/* site.js-এ vertical: true/false দিলে সেটাই, না দিলে shorts হলে ভার্টিকাল */
+function isVertical(p) {
+  if (typeof p.vertical === "boolean") return p.vertical;
+  return /\/shorts\//.test(p.url || "");
+}
 
-  if (!item) return null;
+/* ভিডিও কার্ড — থাম্বনেইল ও প্লেয়ার দুটোই কার্ডের ভেতরে, একই অ্যাসপেক্ট রেশিওতে */
+function VideoCard({ p, playing, onPlay }) {
+  const id = youtubeId(p.url);
+  const vertical = isVertical(p);
+  const ratio = vertical ? "9 / 16" : "16 / 9";
 
-  const id = youtubeId(item.url);
-  if (!id) return null;
-
-  // shorts হলে পোর্ট্রেট, নাহলে ল্যান্ডস্কেপ (site.js-এ vertical: true দিয়েও ঠিক করা যায়)
-  const vertical = item.vertical ?? /\/shorts\//.test(item.url || "");
-  const src = `https://www.youtube-nocookie.com/embed/${id}?autoplay=1&rel=0&modestbranding=1&playsinline=1`;
+  // ভার্টিকাল ভিডিওর জন্য YouTube-এর পোর্ট্রেট থাম্বনেইল, না পেলে সাধারণটা
+  const [thumb, setThumb] = useState(
+    vertical && id ? `https://i.ytimg.com/vi/${id}/oardefault.jpg` : p.image
+  );
 
   return (
     <div
-      onClick={onClose}
       style={{
-        position: "fixed",
-        inset: 0,
-        zIndex: 120,
-        background: "rgba(10,12,24,.88)",
-        backdropFilter: "blur(6px)",
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-        padding: 20,
-        animation: "lbFade .18s ease",
+        background: "#fff",
+        borderRadius: 18,
+        overflow: "hidden",
+        border: `1px solid ${C.line}`,
       }}
     >
-      <style>{`
-        @keyframes lbFade { from { opacity: 0 } to { opacity: 1 } }
-        @keyframes lbPop { from { opacity: 0; transform: translateY(14px) scale(.98) } to { opacity: 1; transform: none } }
-      `}</style>
-
       <div
-        onClick={(e) => e.stopPropagation()}
+        onClick={() => !playing && id && onPlay()}
+        className={playing ? "" : "card-media lift"}
         style={{
           position: "relative",
           width: "100%",
-          maxWidth: vertical ? 420 : 960,
-          animation: "lbPop .22s ease",
+          aspectRatio: ratio,
+          background: "#000",
+          cursor: playing ? "default" : "pointer",
         }}
       >
-        <button
-          onClick={onClose}
-          aria-label="বন্ধ করুন"
+        {playing ? (
+          <iframe
+            src={`https://www.youtube-nocookie.com/embed/${id}?autoplay=1&rel=0&modestbranding=1&playsinline=1`}
+            title={p.t}
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowFullScreen
+            style={{ position: "absolute", inset: 0, width: "100%", height: "100%", border: 0 }}
+          />
+        ) : (
+          <>
+            {/* ব্লার ব্যাকগ্রাউন্ড — ফাঁকা জায়গা ভরাট করে, ভিডিও ফ্রেম কাটে না */}
+            {thumb && (
+              <img
+                src={thumb}
+                alt=""
+                aria-hidden="true"
+                style={{
+                  position: "absolute",
+                  inset: 0,
+                  width: "100%",
+                  height: "100%",
+                  objectFit: "cover",
+                  filter: "blur(22px) brightness(.55)",
+                  transform: "scale(1.15)",
+                }}
+              />
+            )}
+
+            {thumb ? (
+              <img
+                className="grow"
+                src={thumb}
+                alt={p.t}
+                onError={() => setThumb(p.image)}
+                style={{
+                  position: "absolute",
+                  inset: 0,
+                  width: "100%",
+                  height: "100%",
+                  objectFit: "contain",
+                }}
+              />
+            ) : (
+              <div
+                style={{
+                  position: "absolute",
+                  inset: 0,
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  background: `linear-gradient(135deg, ${C.purple}, ${C.purpleDeep})`,
+                }}
+              >
+                <Play size={46} color="rgba(255,255,255,.85)" />
+              </div>
+            )}
+
+            {/* ক্যাটাগরি ব্যাজ */}
+            <span
+              style={{
+                position: "absolute",
+                top: 12,
+                left: 12,
+                background: "rgba(255,255,255,.92)",
+                color: C.purple,
+                fontSize: 12,
+                fontWeight: 600,
+                padding: "4px 10px",
+                borderRadius: 999,
+              }}
+            >
+              {p.biz}
+            </span>
+
+            {/* প্লে বাটন */}
+            <div
+              style={{
+                position: "absolute",
+                inset: 0,
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+              }}
+            >
+              <span
+                style={{
+                  width: 62,
+                  height: 62,
+                  borderRadius: 999,
+                  background: "rgba(255,255,255,.94)",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  boxShadow: "0 10px 30px -8px rgba(0,0,0,.5)",
+                }}
+              >
+                <Play size={24} fill={C.navy} color={C.navy} style={{ marginLeft: 3 }} />
+              </span>
+            </div>
+          </>
+        )}
+      </div>
+
+      <div style={{ padding: 16 }}>
+        <div
+          style={{
+            fontSize: 11.5,
+            color: C.purple,
+            fontWeight: 600,
+            textTransform: "uppercase",
+            letterSpacing: ".08em",
+          }}
+        >
+          {p.cat}
+        </div>
+        <div className="display" style={{ marginTop: 5, fontSize: 16.5, fontWeight: 600, lineHeight: 1.35 }}>
+          {p.t}
+        </div>
+      </div>
+    </div>
+  );
+}
+
+/* ওয়েব প্রজেক্ট কার্ড — আগের মতোই */
+function WebCard({ p }) {
+  return (
+    <div
+      onClick={() => p.url && window.open(p.url, "_blank")}
+      className="card-media lift"
+      style={{
+        cursor: "pointer",
+        background: "#fff",
+        borderRadius: 18,
+        overflow: "hidden",
+        border: `1px solid ${C.line}`,
+      }}
+    >
+      <div
+        style={{
+          height: 190,
+          background: p.image ? C.navy : `linear-gradient(135deg, ${C.purple}, ${C.purpleDeep})`,
+          position: "relative",
+          overflow: "hidden",
+        }}
+      >
+        {p.image ? (
+          <img
+            className="grow"
+            src={p.image}
+            alt={p.t}
+            style={{
+              position: "absolute",
+              inset: 0,
+              width: "100%",
+              height: "100%",
+              objectFit: "cover",
+              objectPosition: "top center",
+            }}
+          />
+        ) : (
+          <div
+            className="grow"
+            style={{
+              position: "absolute",
+              inset: 0,
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+            }}
+          >
+            <Layout size={46} color="rgba(255,255,255,.85)" />
+          </div>
+        )}
+
+        <span
           style={{
             position: "absolute",
-            top: -46,
-            right: 0,
-            width: 38,
-            height: 38,
+            top: 12,
+            left: 12,
+            background: "rgba(255,255,255,.92)",
+            color: C.purple,
+            fontSize: 12,
+            fontWeight: 600,
+            padding: "4px 10px",
             borderRadius: 999,
-            border: "none",
-            cursor: "pointer",
-            background: "rgba(255,255,255,.14)",
-            color: "#fff",
+          }}
+        >
+          {p.biz}
+        </span>
+
+        <div
+          className="overlay"
+          style={{
+            position: "absolute",
+            inset: 0,
+            background: "rgba(15,23,42,.55)",
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
           }}
         >
-          <X size={20} />
-        </button>
-
-        <div
-          style={{
-            position: "relative",
-            width: "100%",
-            aspectRatio: vertical ? "9 / 16" : "16 / 9",
-            maxHeight: "82vh",
-            borderRadius: 16,
-            overflow: "hidden",
-            background: "#000",
-            boxShadow: "0 30px 80px -20px rgba(0,0,0,.7)",
-          }}
-        >
-          <iframe
-            src={src}
-            title={item.t}
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            allowFullScreen
-            style={{ position: "absolute", inset: 0, width: "100%", height: "100%", border: 0 }}
-          />
+          <span
+            className="inline-flex items-center gap-2"
+            style={{
+              background: "#fff",
+              color: C.navy,
+              fontSize: 14,
+              fontWeight: 600,
+              padding: "9px 16px",
+              borderRadius: 999,
+            }}
+          >
+            প্রজেক্ট দেখুন
+            <ArrowUpRight size={16} />
+          </span>
         </div>
+      </div>
 
-        <div style={{ marginTop: 14, color: "#fff", textAlign: "center" }}>
-          <div className="display" style={{ fontSize: 17, fontWeight: 600 }}>{item.t}</div>
-          <div style={{ fontSize: 13, opacity: .7, marginTop: 3 }}>{item.cat}</div>
+      <div className="flex items-center justify-between" style={{ padding: 18 }}>
+        <div>
+          <div
+            style={{
+              fontSize: 12,
+              color: C.purple,
+              fontWeight: 600,
+              textTransform: "uppercase",
+              letterSpacing: ".08em",
+            }}
+          >
+            {p.cat}
+          </div>
+          <div className="display" style={{ marginTop: 6, fontSize: 18, fontWeight: 600 }}>
+            {p.t}
+          </div>
         </div>
+        <ArrowUpRight size={20} color={C.muted} />
       </div>
     </div>
   );
@@ -129,50 +303,46 @@ export default function SampleGallery({ type }) {
   const head = isVideo ? portfolio.videoPage : portfolio.webPage;
 
   const [pFilter, setPFilter] = useState(filters[0]);
-  const [openVideo, setOpenVideo] = useState(null);
+  const [playingKey, setPlayingKey] = useState(null);
 
-  const shown = projects.filter(
-    (p) => pFilter === filters[0] || p.cat === pFilter
-  );
+  const shown = projects.filter((p) => pFilter === filters[0] || p.cat === pFilter);
+
+  // ক্যাটাগরির ক্রম অনুযায়ী সাজানো (filters-এর ক্রম মেনে)
+  const catRank = (p) => {
+    const i = filters.indexOf(p.cat);
+    return i === -1 ? 999 : i;
+  };
+  const byCat = (a, b) => catRank(a) - catRank(b);
+
+  const vids = isVideo ? [...shown].sort(byCat) : [];
+  const portrait = vids.filter(isVertical); // ৯:১৬ — আগে
+  const landscape = vids.filter((p) => !isVertical(p)); // ১৬:৯ — শেষে
 
   return (
     <section style={{ background: C.light, minHeight: "70vh" }}>
       <div className="mx-auto px-6 pt-14 pb-20" style={{ maxWidth: 1200 }}>
-
         <Reveal>
-          <SectionHead
-            eyebrow={head.eyebrow}
-            title={head.title}
-            sub={head.sub}
-          />
+          <SectionHead eyebrow={head.eyebrow} title={head.title} sub={head.sub} />
         </Reveal>
 
         {/* Filters */}
-        <div
-          className="mt-10 flex flex-wrap justify-center gap-2"
-          style={{ marginTop: 40 }}
-        >
+        <div className="mt-10 flex flex-wrap justify-center gap-2" style={{ marginTop: 40 }}>
           {filters.map((f) => (
             <button
               key={f}
-              onClick={() => setPFilter(f)}
+              onClick={() => {
+                setPFilter(f);
+                setPlayingKey(null);
+              }}
               className="chip px-4 py-2"
               style={{
                 borderRadius: 999,
                 fontSize: 13.5,
                 fontWeight: 500,
                 cursor: "pointer",
-                border: `1px solid ${
-                  pFilter === f ? C.purple : C.line
-                }`,
-                background:
-                  pFilter === f
-                    ? "rgba(91,42,157,.1)"
-                    : "#fff",
-                color:
-                  pFilter === f
-                    ? C.purple
-                    : C.muted,
+                border: `1px solid ${pFilter === f ? C.purple : C.line}`,
+                background: pFilter === f ? "rgba(91,42,157,.1)" : "#fff",
+                color: pFilter === f ? C.purple : C.muted,
               }}
             >
               {f}
@@ -180,205 +350,46 @@ export default function SampleGallery({ type }) {
           ))}
         </div>
 
-
-        {/* Grid */}
-        <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-
-          {shown.map((p, i) => (
-
-            <Reveal key={p.t + i} delay={(i % 3) * 0.06}>
-
-              <div
-                onClick={() => {
-                  if (!p.url) return;
-                  // ভিডিও হলে সাইটেই লাইটবক্সে চলবে, ওয়েব প্রজেক্ট নতুন ট্যাবে
-                  if (isVideo && youtubeId(p.url)) setOpenVideo(p);
-                  else window.open(p.url, "_blank");
-                }}
-                className="card-media lift"
-                style={{
-                  cursor: "pointer",
-                  background: "#fff",
-                  borderRadius: 18,
-                  overflow: "hidden",
-                  border: `1px solid ${C.line}`,
-                }}
-              >
-
-                {/* Image */}
-                <div
-                  style={{
-                    height: 190,
-                    background: p.image
-                      ? C.navy
-                      : `linear-gradient(135deg, ${C.purple}, ${C.purpleDeep})`,
-                    position: "relative",
-                    overflow: "hidden",
-                  }}
-                >
-
-                  {p.image ? (
-
-                    <img
-                      className="grow"
-                      src={p.image}
-                      alt={p.t}
-                      style={{
-                        position: "absolute",
-                        inset: 0,
-                        width: "100%",
-                        height: "100%",
-                        objectFit: "cover",
-                        objectPosition: "top center",
-                      }}
-                    />
-
-                  ) : (
-
-                    <div
-                      className="grow"
-                      style={{
-                        position: "absolute",
-                        inset: 0,
-                        display: "flex",
-                        alignItems: "center",
-                        justifyContent: "center",
-                      }}
-                    >
-                      {isVideo ? (
-                        <Play
-                          size={46}
-                          color="rgba(255,255,255,.85)"
-                        />
-                      ) : (
-                        <Layout
-                          size={46}
-                          color="rgba(255,255,255,.85)"
-                        />
-                      )}
-                    </div>
-
-                  )}
-
-
-                  {/* Category */}
-                  <span
-                    style={{
-                      position: "absolute",
-                      top: 12,
-                      left: 12,
-                      background:
-                        "rgba(255,255,255,.92)",
-                      color: C.purple,
-                      fontSize: 12,
-                      fontWeight: 600,
-                      padding: "4px 10px",
-                      borderRadius: 999,
-                    }}
-                  >
-                    {p.biz}
-                  </span>
-
-
-                  {/* Hover */}
-                  <div
-                    className="overlay"
-                    style={{
-                      position: "absolute",
-                      inset: 0,
-                      background:
-                        "rgba(15,23,42,.55)",
-                      display: "flex",
-                      alignItems: "center",
-                      justifyContent: "center",
-                    }}
-                  >
-
-                    <span
-                      className="inline-flex items-center gap-2"
-                      style={{
-                        background:"#fff",
-                        color:C.navy,
-                        fontSize:14,
-                        fontWeight:600,
-                        padding:"9px 16px",
-                        borderRadius:999,
-                      }}
-                    >
-                      {isVideo ? (
-                        <>
-                          ভিডিও দেখুন
-                          <Play size={15} fill={C.navy}/>
-                        </>
-                      ) : (
-                        <>
-                          প্রজেক্ট দেখুন
-                          <ArrowUpRight size={16}/>
-                        </>
-                      )}
-                    </span>
-
-                  </div>
-
-                </div>
-
-
-                {/* Content */}
-                <div
-                  className="flex items-center justify-between"
-                  style={{ padding:18 }}
-                >
-
-                  <div>
-
-                    <div
-                      style={{
-                        fontSize:12,
-                        color:C.purple,
-                        fontWeight:600,
-                        textTransform:"uppercase",
-                        letterSpacing:".08em",
-                      }}
-                    >
-                      {p.cat}
-                    </div>
-
-
-                    <div
-                      className="display"
-                      style={{
-                        marginTop:6,
-                        fontSize:18,
-                        fontWeight:600,
-                      }}
-                    >
-                      {p.t}
-                    </div>
-
-                  </div>
-
-
-                  <ArrowUpRight
-                    size={20}
-                    color={C.muted}
-                  />
-
-                </div>
-
-
+        {isVideo ? (
+          <div className="mx-auto" style={{ maxWidth: 760 }}>
+            {/* ৯:১৬ — ২ কলাম */}
+            {portrait.length > 0 && (
+              <div className="mt-10 grid grid-cols-2 gap-5">
+                {portrait.map((p, i) => {
+                  const key = `v-${p.url}-${i}`;
+                  return (
+                    <Reveal key={key} delay={(i % 2) * 0.06}>
+                      <VideoCard p={p} playing={playingKey === key} onPlay={() => setPlayingKey(key)} />
+                    </Reveal>
+                  );
+                })}
               </div>
+            )}
 
-            </Reveal>
-
-          ))}
-
-        </div>
-
+            {/* ১৬:৯ — ১ কলাম */}
+            {landscape.length > 0 && (
+              <div className="grid grid-cols-1 gap-5" style={{ marginTop: 24 }}>
+                {landscape.map((p, i) => {
+                  const key = `h-${p.url}-${i}`;
+                  return (
+                    <Reveal key={key}>
+                      <VideoCard p={p} playing={playingKey === key} onPlay={() => setPlayingKey(key)} />
+                    </Reveal>
+                  );
+                })}
+              </div>
+            )}
+          </div>
+        ) : (
+          <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            {shown.map((p, i) => (
+              <Reveal key={p.t + i} delay={(i % 3) * 0.06}>
+                <WebCard p={p} />
+              </Reveal>
+            ))}
+          </div>
+        )}
       </div>
-
-      {openVideo && (
-        <VideoLightbox item={openVideo} onClose={() => setOpenVideo(null)} />
-      )}
     </section>
   );
 }
