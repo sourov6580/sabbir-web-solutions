@@ -1,10 +1,124 @@
 "use client";
 
-import React, { useState } from "react";
-import { ArrowUpRight, Layout, Play } from "lucide-react";
+import React, { useState, useEffect } from "react";
+import { ArrowUpRight, Layout, Play, X } from "lucide-react";
 import { portfolio } from "@/content/site";
 import { Reveal, SectionHead } from "@/components/shared";
 import { C } from "@/components/tokens";
+
+/* YouTube URL থেকে ভিডিও ID বের করা (youtu.be / shorts / watch?v=) */
+function youtubeId(url = "") {
+  const m =
+    url.match(/youtu\.be\/([\w-]{6,})/) ||
+    url.match(/\/shorts\/([\w-]{6,})/) ||
+    url.match(/[?&]v=([\w-]{6,})/) ||
+    url.match(/\/embed\/([\w-]{6,})/);
+  return m ? m[1] : null;
+}
+
+/* সাইটেই ভিডিও চালানোর জন্য লাইটবক্স */
+function VideoLightbox({ item, onClose }) {
+  useEffect(() => {
+    const onKey = (e) => e.key === "Escape" && onClose();
+    document.addEventListener("keydown", onKey);
+    const prev = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.removeEventListener("keydown", onKey);
+      document.body.style.overflow = prev;
+    };
+  }, [onClose]);
+
+  if (!item) return null;
+
+  const id = youtubeId(item.url);
+  if (!id) return null;
+
+  // shorts হলে পোর্ট্রেট, নাহলে ল্যান্ডস্কেপ (site.js-এ vertical: true দিয়েও ঠিক করা যায়)
+  const vertical = item.vertical ?? /\/shorts\//.test(item.url || "");
+  const src = `https://www.youtube-nocookie.com/embed/${id}?autoplay=1&rel=0&modestbranding=1&playsinline=1`;
+
+  return (
+    <div
+      onClick={onClose}
+      style={{
+        position: "fixed",
+        inset: 0,
+        zIndex: 120,
+        background: "rgba(10,12,24,.88)",
+        backdropFilter: "blur(6px)",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        padding: 20,
+        animation: "lbFade .18s ease",
+      }}
+    >
+      <style>{`
+        @keyframes lbFade { from { opacity: 0 } to { opacity: 1 } }
+        @keyframes lbPop { from { opacity: 0; transform: translateY(14px) scale(.98) } to { opacity: 1; transform: none } }
+      `}</style>
+
+      <div
+        onClick={(e) => e.stopPropagation()}
+        style={{
+          position: "relative",
+          width: "100%",
+          maxWidth: vertical ? 420 : 960,
+          animation: "lbPop .22s ease",
+        }}
+      >
+        <button
+          onClick={onClose}
+          aria-label="বন্ধ করুন"
+          style={{
+            position: "absolute",
+            top: -46,
+            right: 0,
+            width: 38,
+            height: 38,
+            borderRadius: 999,
+            border: "none",
+            cursor: "pointer",
+            background: "rgba(255,255,255,.14)",
+            color: "#fff",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+          }}
+        >
+          <X size={20} />
+        </button>
+
+        <div
+          style={{
+            position: "relative",
+            width: "100%",
+            aspectRatio: vertical ? "9 / 16" : "16 / 9",
+            maxHeight: "82vh",
+            borderRadius: 16,
+            overflow: "hidden",
+            background: "#000",
+            boxShadow: "0 30px 80px -20px rgba(0,0,0,.7)",
+          }}
+        >
+          <iframe
+            src={src}
+            title={item.t}
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowFullScreen
+            style={{ position: "absolute", inset: 0, width: "100%", height: "100%", border: 0 }}
+          />
+        </div>
+
+        <div style={{ marginTop: 14, color: "#fff", textAlign: "center" }}>
+          <div className="display" style={{ fontSize: 17, fontWeight: 600 }}>{item.t}</div>
+          <div style={{ fontSize: 13, opacity: .7, marginTop: 3 }}>{item.cat}</div>
+        </div>
+      </div>
+    </div>
+  );
+}
 
 /* type: "web" | "video" */
 export default function SampleGallery({ type }) {
@@ -15,6 +129,7 @@ export default function SampleGallery({ type }) {
   const head = isVideo ? portfolio.videoPage : portfolio.webPage;
 
   const [pFilter, setPFilter] = useState(filters[0]);
+  const [openVideo, setOpenVideo] = useState(null);
 
   const shown = projects.filter(
     (p) => pFilter === filters[0] || p.cat === pFilter
@@ -75,7 +190,10 @@ export default function SampleGallery({ type }) {
 
               <div
                 onClick={() => {
-                  if (p.url) window.open(p.url, "_blank");
+                  if (!p.url) return;
+                  // ভিডিও হলে সাইটেই লাইটবক্সে চলবে, ওয়েব প্রজেক্ট নতুন ট্যাবে
+                  if (isVideo && youtubeId(p.url)) setOpenVideo(p);
+                  else window.open(p.url, "_blank");
                 }}
                 className="card-media lift"
                 style={{
@@ -257,6 +375,10 @@ export default function SampleGallery({ type }) {
         </div>
 
       </div>
+
+      {openVideo && (
+        <VideoLightbox item={openVideo} onClose={() => setOpenVideo(null)} />
+      )}
     </section>
   );
 }
