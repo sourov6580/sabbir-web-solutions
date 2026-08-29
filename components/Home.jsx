@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
+import ClientLogos from "@/components/ClientLogos";
 import Link from "next/link";
 import {
   ArrowRight, ArrowUpRight, Globe, Video, Check, X,
@@ -298,7 +299,11 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ============ TESTIMONIALS ============ */}
+      {/* ============ CLIENT LOGOS ============ */}
+      <ClientLogos />
+
+      {/* ============ TESTIMONIALS (আপাতত বন্ধ — আসল রিভিউ পেলে চালু করবেন) ============ */}
+      {/*
       <section className="mx-auto px-6 py-16" style={{ maxWidth: 1200 }}>
         <Reveal><SectionHead eyebrow={testimonials.eyebrow} title={testimonials.title} sub={testimonials.sub} /></Reveal>
         <div className="mt-12 grid gap-6 md:grid-cols-3">
@@ -324,6 +329,8 @@ export default function Home() {
           ))}
         </div>
       </section>
+
+      */}
 
       {/* ============ CONTACT ============ */}
       <section id="contact" style={{ background: C.light, borderTop: `1px solid ${C.line}` }}>

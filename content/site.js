@@ -249,6 +249,57 @@ export const process = {
   ],
 };
 
+export const clients = {
+  eyebrow: "আমাদের ক্লায়েন্ট",
+  title: "যাদের সাথে কাজ করেছি",
+  sub: "ছোট ব্যবসা থেকে ই-কমার্স ব্র্যান্ড — বিভিন্ন সেক্টরের ক্লায়েন্ট।",
+  // প্রতিটি লোগো: name = ব্যবসার নাম, url = ফেসবুক পেজ, image = ছবির path
+  // image: "/images/clients/borka-everyday.jpg"  ← এভাবে দিন
+  // image: null দিলে নামের আদ্যক্ষর দেখাবে (ডেমো)
+  items: [
+    { name: "Demo Client 01", url: "https://facebook.com", image: null },
+    { name: "Demo Client 02", url: "https://facebook.com", image: null },
+    { name: "Demo Client 03", url: "https://facebook.com", image: null },
+    { name: "Demo Client 04", url: "https://facebook.com", image: null },
+    { name: "Demo Client 05", url: "https://facebook.com", image: null },
+    { name: "Demo Client 06", url: "https://facebook.com", image: null },
+    { name: "Demo Client 07", url: "https://facebook.com", image: null },
+    { name: "Demo Client 08", url: "https://facebook.com", image: null },
+    { name: "Demo Client 09", url: "https://facebook.com", image: null },
+    { name: "Demo Client 10", url: "https://facebook.com", image: null },
+    { name: "Demo Client 11", url: "https://facebook.com", image: null },
+    { name: "Demo Client 12", url: "https://facebook.com", image: null },
+    { name: "Demo Client 13", url: "https://facebook.com", image: null },
+    { name: "Demo Client 14", url: "https://facebook.com", image: null },
+    { name: "Demo Client 15", url: "https://facebook.com", image: null },
+    { name: "Demo Client 16", url: "https://facebook.com", image: null },
+    { name: "Demo Client 17", url: "https://facebook.com", image: null },
+    { name: "Demo Client 18", url: "https://facebook.com", image: null },
+    { name: "Demo Client 19", url: "https://facebook.com", image: null },
+    { name: "Demo Client 20", url: "https://facebook.com", image: null },
+    { name: "Demo Client 21", url: "https://facebook.com", image: null },
+    { name: "Demo Client 22", url: "https://facebook.com", image: null },
+    { name: "Demo Client 23", url: "https://facebook.com", image: null },
+    { name: "Demo Client 24", url: "https://facebook.com", image: null },
+    { name: "Demo Client 25", url: "https://facebook.com", image: null },
+    { name: "Demo Client 26", url: "https://facebook.com", image: null },
+    { name: "Demo Client 27", url: "https://facebook.com", image: null },
+    { name: "Demo Client 28", url: "https://facebook.com", image: null },
+    { name: "Demo Client 29", url: "https://facebook.com", image: null },
+    { name: "Demo Client 30", url: "https://facebook.com", image: null },
+    { name: "Demo Client 31", url: "https://facebook.com", image: null },
+    { name: "Demo Client 32", url: "https://facebook.com", image: null },
+    { name: "Demo Client 33", url: "https://facebook.com", image: null },
+    { name: "Demo Client 34", url: "https://facebook.com", image: null },
+    { name: "Demo Client 35", url: "https://facebook.com", image: null },
+    { name: "Demo Client 36", url: "https://facebook.com", image: null },
+    { name: "Demo Client 37", url: "https://facebook.com", image: null },
+    { name: "Demo Client 38", url: "https://facebook.com", image: null },
+    { name: "Demo Client 39", url: "https://facebook.com", image: null },
+    { name: "Demo Client 40", url: "https://facebook.com", image: null },
+  ],
+};
+
 export const testimonials = {
   eyebrow: "ক্লায়েন্ট রিভিউ",
   title: "ক্লায়েন্টরা যা বলেন",
