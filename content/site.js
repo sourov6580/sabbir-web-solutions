@@ -253,6 +253,7 @@ export const clients = {
   eyebrow: "আমাদের ক্লায়েন্ট",
   title: "যাদের সাথে কাজ করেছি",
   sub: "ছোট ব্যবসা থেকে ই-কমার্স ব্র্যান্ড — বিভিন্ন সেক্টরের ক্লায়েন্ট।",
+  countLabel: "ব্র্যান্ড ও বিজনেস",
   // প্রতিটি লোগো: name = ব্যবসার নাম, url = ফেসবুক পেজ, image = ছবির path
   // image: "/images/clients/borka-everyday.jpg"  ← এভাবে দিন
   // image: null দিলে নামের আদ্যক্ষর দেখাবে (ডেমো)
