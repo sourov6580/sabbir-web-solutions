@@ -16,6 +16,16 @@ function youtubeId(url = "") {
   return m ? m[1] : null;
 }
 
+/* Facebook ভিডিও / রিল কি না */
+function isFacebook(url = "") {
+  return /facebook\.com|fb\.watch/.test(url);
+}
+
+/* Facebook এম্বেড লিংক */
+function facebookEmbed(url) {
+  return `https://www.facebook.com/plugins/video.php?href=${encodeURIComponent(url)}&show_text=false&autoplay=false`;
+}
+
 /* site.js-এ vertical: true/false দিলে সেটাই, না দিলে shorts হলে ভার্টিকাল */
 function isVertical(p) {
   if (typeof p.vertical === "boolean") return p.vertical;
@@ -25,6 +35,7 @@ function isVertical(p) {
 /* ভিডিও কার্ড — থাম্বনেইল ও প্লেয়ার দুটোই কার্ডের ভেতরে, একই অ্যাসপেক্ট রেশিওতে */
 function VideoCard({ p, playing, onPlay }) {
   const id = youtubeId(p.url);
+  const fb = isFacebook(p.url);
   const vertical = isVertical(p);
   const ratio = vertical ? "9 / 16" : "16 / 9";
 
@@ -61,17 +72,27 @@ function VideoCard({ p, playing, onPlay }) {
       }}
     >
       <div
-        onClick={() => !playing && id && onPlay()}
-        className={playing ? "" : "card-media lift"}
+        onClick={() => !playing && !fb && id && onPlay()}
+        className={playing || fb ? "" : "card-media lift"}
         style={{
           position: "relative",
           width: "100%",
           aspectRatio: ratio,
           background: "#000",
-          cursor: playing ? "default" : "pointer",
+          cursor: playing || fb ? "default" : "pointer",
         }}
       >
-        {playing ? (
+        {fb ? (
+          <iframe
+            src={facebookEmbed(p.url)}
+            title={p.t}
+            loading="lazy"
+            scrolling="no"
+            allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
+            allowFullScreen
+            style={{ position: "absolute", inset: 0, width: "100%", height: "100%", border: 0 }}
+          />
+        ) : playing ? (
           <iframe
             src={`https://www.youtube-nocookie.com/embed/${id}?autoplay=1&rel=0&modestbranding=1&playsinline=1`}
             title={p.t}

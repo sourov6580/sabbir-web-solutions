@@ -143,6 +143,11 @@ export const portfolio = {
     { t: "Rupak Store – Premium Collection", cat: "Clothing & Fashion Ads", biz: "ফ্যাশন", url: "https://youtu.be/aB2BcOuFxO0", vertical: true, image: "https://img.youtube.com/vi/aB2BcOuFxO0/hqdefault.jpg" },
     { t: "Borka Everyday – Premium Borka Set Collections", cat: "Clothing & Fashion Ads", biz: "ফ্যাশন", url: "https://youtu.be/UbgXWiZy9wY", vertical: true, image: "https://img.youtube.com/vi/UbgXWiZy9wY/hqdefault.jpg" },
     { t: "Daraz Fashion Zone – Premium Skin Care Products", cat: "Clothing & Fashion Ads", biz: "স্কিন কেয়ার", url: "https://youtu.be/hQ8wMqXFJV8", vertical: true, image: "https://img.youtube.com/vi/hQ8wMqXFJV8/hqdefault.jpg" },
+    { t: "Borka Everyday", cat: "Clothing & Fashion Ads", biz: "ফ্যাশন", url: "https://www.facebook.com/reel/28040072635676203", vertical: true, image: null },
+    { t: "Borka Everyday", cat: "Clothing & Fashion Ads", biz: "ফ্যাশন", url: "https://www.facebook.com/reel/4448427455475168", vertical: true, image: null },
+    { t: "Borka Everyday", cat: "Clothing & Fashion Ads", biz: "ফ্যাশন", url: "https://www.facebook.com/reel/1002269836195009", vertical: true, image: null },
+    { t: "Borka Everyday", cat: "Clothing & Fashion Ads", biz: "ফ্যাশন", url: "https://www.facebook.com/reel/1362721476017165", vertical: true, image: null },
+    { t: "Wisteria Fashion Club", cat: "Clothing & Fashion Ads", biz: "ফ্যাশন", url: "https://www.facebook.com/reel/1824754961887960", vertical: true, image: null },
 
     { t: "Shifayah – Organic Wellness & Energy Booster", cat: "Organic & Herbal Solutions", biz: "ওয়েলনেস", url: "https://youtu.be/q6K0d-8Dfo4", vertical: true, image: "https://img.youtube.com/vi/q6K0d-8Dfo4/hqdefault.jpg" },
     { t: "Jamaican Black Castor Oil – Pure Herbal Hair Care", cat: "Organic & Herbal Solutions", biz: "হেয়ার কেয়ার", url: "https://youtu.be/fu720ICsaQc", vertical: true, image: "https://img.youtube.com/vi/fu720ICsaQc/hqdefault.jpg" },
