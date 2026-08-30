@@ -249,6 +249,19 @@ export const process = {
   ],
 };
 
+export const reviews = {
+  eyebrow: "ক্লায়েন্ট রিভিউ",
+  title: "ক্লায়েন্টরা যা বলেন",
+  sub: "সরাসরি ক্লায়েন্টদের সাথে কথোপকথন থেকে নেওয়া।",
+  // নতুন রিভিউ যোগ করতে নিচে একটা লাইন বাড়ান
+  items: [
+    { image: "/images/reviews/Review-1.webp", alt: "ক্লায়েন্ট রিভিউ ১" },
+    { image: "/images/reviews/Review-2.webp", alt: "ক্লায়েন্ট রিভিউ ২" },
+    { image: "/images/reviews/Review-3.webp", alt: "ক্লায়েন্ট রিভিউ ৩" },
+    { image: "/images/reviews/Review-4.webp", alt: "ক্লায়েন্ট রিভিউ ৪" },
+  ],
+};
+
 export const clients = {
   eyebrow: "আমাদের ক্লায়েন্ট",
   title: "যাদের সাথে কাজ করেছি",

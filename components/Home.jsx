@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import ClientLogos from "@/components/ClientLogos";
+import Reviews from "@/components/Reviews";
 import Link from "next/link";
 import {
   ArrowRight, ArrowUpRight, Globe, Video, Check, X,
@@ -299,8 +299,8 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ============ CLIENT LOGOS ============ */}
-      <ClientLogos />
+      {/* ============ CLIENT REVIEWS ============ */}
+      <Reviews />
 
       {/* ============ TESTIMONIALS (আপাতত বন্ধ — আসল রিভিউ পেলে চালু করবেন) ============ */}
       {/*
