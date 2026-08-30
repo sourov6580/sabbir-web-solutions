@@ -137,23 +137,23 @@ export const portfolio = {
     { t: "Hridoy Agro Faridpur", cat: "E-commerce & Product Ads", biz: "এগ্রিকালচার", url: "https://youtube.com/shorts/TW3fuZ24LqE", vertical: true, image: "https://img.youtube.com/vi/TW3fuZ24LqE/hqdefault.jpg" },
     { t: "JS Calligraphy video Ad", cat: "E-commerce & Product Ads", biz: "গিফট আইটেম", url: "https://youtube.com/shorts/dxNGjvSbX7Y", vertical: true, image: "https://img.youtube.com/vi/dxNGjvSbX7Y/hqdefault.jpg" },
     { t: "Non Slip Floor Mat - Bhog Bazar", cat: "E-commerce & Product Ads", biz: "হোম অ্যান্ড লিভিং", url: "https://youtu.be/K3Phnwqd4uE", vertical: false, image: "https://img.youtube.com/vi/K3Phnwqd4uE/hqdefault.jpg" },
-    { t: "M M Agro – Fresh Agricultural & Dairy", cat: "E-commerce & Product Ads", biz: "এগ্রিকালচার", url: "https://youtu.be/Fn0Z41aj2Gs", vertical: false, image: "https://img.youtube.com/vi/Fn0Z41aj2Gs/hqdefault.jpg" },
+    { t: "M M Agro – Fresh Agricultural & Dairy", cat: "E-commerce & Product Ads", biz: "এগ্রিকালচার", url: "https://youtu.be/Fn0Z41aj2Gs", vertical: true, image: "https://img.youtube.com/vi/Fn0Z41aj2Gs/hqdefault.jpg" },
 
     { t: "Mimi's Fashion Indian 3pis", cat: "Clothing & Fashion Ads", biz: "ফ্যাশন", url: "https://youtube.com/shorts/msdQ-eVA2jQ", vertical: true, image: "https://img.youtube.com/vi/msdQ-eVA2jQ/hqdefault.jpg" },
-    { t: "Rupak Store – Premium Collection", cat: "Clothing & Fashion Ads", biz: "ফ্যাশন", url: "https://youtu.be/aB2BcOuFxO0", vertical: false, image: "https://img.youtube.com/vi/aB2BcOuFxO0/hqdefault.jpg" },
-    { t: "Borka Everyday – Premium Borka Set Collections", cat: "Clothing & Fashion Ads", biz: "ফ্যাশন", url: "https://youtu.be/UbgXWiZy9wY", vertical: false, image: "https://img.youtube.com/vi/UbgXWiZy9wY/hqdefault.jpg" },
-    { t: "Daraz Fashion Zone – Premium Skin Care Products", cat: "Clothing & Fashion Ads", biz: "স্কিন কেয়ার", url: "https://youtu.be/hQ8wMqXFJV8", vertical: false, image: "https://img.youtube.com/vi/hQ8wMqXFJV8/hqdefault.jpg" },
+    { t: "Rupak Store – Premium Collection", cat: "Clothing & Fashion Ads", biz: "ফ্যাশন", url: "https://youtu.be/aB2BcOuFxO0", vertical: true, image: "https://img.youtube.com/vi/aB2BcOuFxO0/hqdefault.jpg" },
+    { t: "Borka Everyday – Premium Borka Set Collections", cat: "Clothing & Fashion Ads", biz: "ফ্যাশন", url: "https://youtu.be/UbgXWiZy9wY", vertical: true, image: "https://img.youtube.com/vi/UbgXWiZy9wY/hqdefault.jpg" },
+    { t: "Daraz Fashion Zone – Premium Skin Care Products", cat: "Clothing & Fashion Ads", biz: "স্কিন কেয়ার", url: "https://youtu.be/hQ8wMqXFJV8", vertical: true, image: "https://img.youtube.com/vi/hQ8wMqXFJV8/hqdefault.jpg" },
 
-    { t: "Shifayah – Organic Wellness & Energy Booster", cat: "Organic & Herbal Solutions", biz: "ওয়েলনেস", url: "https://youtu.be/q6K0d-8Dfo4", vertical: false, image: "https://img.youtube.com/vi/q6K0d-8Dfo4/hqdefault.jpg" },
-    { t: "Jamaican Black Castor Oil – Pure Herbal Hair Care", cat: "Organic & Herbal Solutions", biz: "হেয়ার কেয়ার", url: "https://youtu.be/fu720ICsaQc", vertical: false, image: "https://img.youtube.com/vi/fu720ICsaQc/hqdefault.jpg" },
+    { t: "Shifayah – Organic Wellness & Energy Booster", cat: "Organic & Herbal Solutions", biz: "ওয়েলনেস", url: "https://youtu.be/q6K0d-8Dfo4", vertical: true, image: "https://img.youtube.com/vi/q6K0d-8Dfo4/hqdefault.jpg" },
+    { t: "Jamaican Black Castor Oil – Pure Herbal Hair Care", cat: "Organic & Herbal Solutions", biz: "হেয়ার কেয়ার", url: "https://youtu.be/fu720ICsaQc", vertical: true, image: "https://img.youtube.com/vi/fu720ICsaQc/hqdefault.jpg" },
 
-    { t: "Dream 15 Dolonchapa – Modern Residential Living Spaces", cat: "Real Estate & Property Ads", biz: "রিয়েল এস্টেট", url: "https://youtu.be/wk5kA4Lzpng", vertical: false, image: "https://img.youtube.com/vi/wk5kA4Lzpng/hqdefault.jpg" },
-    { t: "Dream 15 Dolonchapa – Luxury Apartment Tour & Flat Booking", cat: "Real Estate & Property Ads", biz: "রিয়েল এস্টেট", url: "https://youtu.be/PsF615meeVM", vertical: false, image: "https://img.youtube.com/vi/PsF615meeVM/hqdefault.jpg" },
+    { t: "Dream 15 Dolonchapa – Modern Residential Living Spaces", cat: "Real Estate & Property Ads", biz: "রিয়েল এস্টেট", url: "https://youtu.be/wk5kA4Lzpng", vertical: true, image: "https://img.youtube.com/vi/wk5kA4Lzpng/hqdefault.jpg" },
+    { t: "Dream 15 Dolonchapa – Luxury Apartment Tour & Flat Booking", cat: "Real Estate & Property Ads", biz: "রিয়েল এস্টেট", url: "https://youtu.be/PsF615meeVM", vertical: true, image: "https://img.youtube.com/vi/PsF615meeVM/hqdefault.jpg" },
 
     { t: "TeacherLagbe Noakhali - Home Tutor Service", cat: "Business & Service Ads", biz: "সার্ভিস", url: "https://youtube.com/shorts/pdrVlok5dAA", vertical: true, image: "https://img.youtube.com/vi/pdrVlok5dAA/hqdefault.jpg" },
     { t: "Sr Entreprise - Pickup Rent Service", cat: "Business & Service Ads", biz: "সার্ভিস", url: "https://youtube.com/shorts/ZSeefAHiaJc", vertical: true, image: "https://img.youtube.com/vi/ZSeefAHiaJc/hqdefault.jpg" },
-    { t: "Ghotok Apu – Trusted Matrimony & Matchmaking Service", cat: "Business & Service Ads", biz: "সার্ভিস", url: "https://youtu.be/a2Pg42ZCFk0", vertical: false, image: "https://img.youtube.com/vi/a2Pg42ZCFk0/hqdefault.jpg" },
-    { t: "Kotha Bondhu – Mental Health Counseling Video", cat: "Business & Service Ads", biz: "কাউন্সেলিং", url: "https://youtu.be/y0KCcPFjduE", vertical: false, image: "https://img.youtube.com/vi/y0KCcPFjduE/hqdefault.jpg" },
+    { t: "Ghotok Apu – Trusted Matrimony & Matchmaking Service", cat: "Business & Service Ads", biz: "সার্ভিস", url: "https://youtu.be/a2Pg42ZCFk0", vertical: true, image: "https://img.youtube.com/vi/a2Pg42ZCFk0/hqdefault.jpg" },
+    { t: "Kotha Bondhu – Mental Health Counseling Video", cat: "Business & Service Ads", biz: "কাউন্সেলিং", url: "https://youtu.be/y0KCcPFjduE", vertical: true, image: "https://img.youtube.com/vi/y0KCcPFjduE/hqdefault.jpg" },
   ],
 };
 
