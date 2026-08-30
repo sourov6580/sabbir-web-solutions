@@ -145,8 +145,6 @@ export const portfolio = {
     { t: "Daraz Fashion Zone – Premium Skin Care Products", cat: "Clothing & Fashion Ads", biz: "স্কিন কেয়ার", url: "https://youtu.be/hQ8wMqXFJV8", vertical: true, image: "https://img.youtube.com/vi/hQ8wMqXFJV8/hqdefault.jpg" },
     { t: "Borka Everyday", cat: "Clothing & Fashion Ads", biz: "ফ্যাশন", url: "https://www.facebook.com/reel/28040072635676203", vertical: true, image: null },
     { t: "Borka Everyday", cat: "Clothing & Fashion Ads", biz: "ফ্যাশন", url: "https://www.facebook.com/reel/4448427455475168", vertical: true, image: null },
-    { t: "Borka Everyday", cat: "Clothing & Fashion Ads", biz: "ফ্যাশন", url: "https://www.facebook.com/reel/1002269836195009", vertical: true, image: null },
-    { t: "Borka Everyday", cat: "Clothing & Fashion Ads", biz: "ফ্যাশন", url: "https://www.facebook.com/reel/1362721476017165", vertical: true, image: null },
     { t: "Wisteria Fashion Club", cat: "Clothing & Fashion Ads", biz: "ফ্যাশন", url: "https://www.facebook.com/reel/1824754961887960", vertical: true, image: null },
 
     { t: "Shifayah – Organic Wellness & Energy Booster", cat: "Organic & Herbal Solutions", biz: "ওয়েলনেস", url: "https://youtu.be/q6K0d-8Dfo4", vertical: true, image: "https://img.youtube.com/vi/q6K0d-8Dfo4/hqdefault.jpg" },
