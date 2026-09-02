@@ -159,7 +159,6 @@ export const portfolio = {
     { t: "Sr Entreprise - Pickup Rent Service", cat: "Business & Service Ads", biz: "সার্ভিস", url: "https://youtube.com/shorts/ZSeefAHiaJc", vertical: true, image: "https://img.youtube.com/vi/ZSeefAHiaJc/hqdefault.jpg" },
     { t: "Ghotok Apu – Trusted Matrimony & Matchmaking Service", cat: "Business & Service Ads", biz: "সার্ভিস", url: "https://youtu.be/a2Pg42ZCFk0", vertical: true, image: "https://img.youtube.com/vi/a2Pg42ZCFk0/hqdefault.jpg" },
     { t: "Kotha Bondhu – Mental Health Counseling Video", cat: "Business & Service Ads", biz: "কাউন্সেলিং", url: "https://youtu.be/y0KCcPFjduE", vertical: true, image: "https://img.youtube.com/vi/y0KCcPFjduE/hqdefault.jpg" },
-  ],    { t: "Kotha Bondhu – Mental Health Counseling Video", cat: "Business & Service Ads", biz: "কাউন্সেলিং", url: "https://youtu.be/y0KCcPFjduE", vertical: true, image: "https://img.youtube.com/vi/y0KCcPFjduE/hqdefault.jpg" },
   ],
 };
 
