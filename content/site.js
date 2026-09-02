@@ -133,6 +133,7 @@ export const portfolio = {
     { t: "আমাদের ঐতিহ্য", cat: "Other Website", biz: "Organization", url: "https://amader-proshchitra.lovable.app/", image: "/images/amader-oitijjo.png" },
   ],
   video: [
+    { t: "একজন উদ্যোক্তার গল্প", cat: "E-commerce & Product Ads", biz: "ফুড আইটেম", url: "https://youtube.com/shorts/pnaJ0fgDqxQ", vertical: true, image: "https://img.youtube.com/vi/pnaJ0fgDqxQ/hqdefault.jpg" },
     { t: "আপনার বিজনেস এর সেল সিস্টেম কে করুন অটোমেটিক।", cat: "E-commerce & Product Ads", biz: "এডুকেশন", url: "https://youtu.be/UeeqMI55iXc", vertical: false, image: "https://img.youtube.com/vi/UeeqMI55iXc/hqdefault.jpg" },
     { t: "Fresh Mango Rajshahi – Premium Agro", cat: "E-commerce & Product Ads", biz: "এগ্রিকালচার", url: "https://youtu.be/-FJiPYMp5gQ", vertical: false, image: "https://img.youtube.com/vi/-FJiPYMp5gQ/hqdefault.jpg" },
     { t: "Hridoy Agro Faridpur", cat: "E-commerce & Product Ads", biz: "এগ্রিকালচার", url: "https://youtube.com/shorts/TW3fuZ24LqE", vertical: true, image: "https://img.youtube.com/vi/TW3fuZ24LqE/hqdefault.jpg" },
@@ -158,6 +159,7 @@ export const portfolio = {
     { t: "Sr Entreprise - Pickup Rent Service", cat: "Business & Service Ads", biz: "সার্ভিস", url: "https://youtube.com/shorts/ZSeefAHiaJc", vertical: true, image: "https://img.youtube.com/vi/ZSeefAHiaJc/hqdefault.jpg" },
     { t: "Ghotok Apu – Trusted Matrimony & Matchmaking Service", cat: "Business & Service Ads", biz: "সার্ভিস", url: "https://youtu.be/a2Pg42ZCFk0", vertical: true, image: "https://img.youtube.com/vi/a2Pg42ZCFk0/hqdefault.jpg" },
     { t: "Kotha Bondhu – Mental Health Counseling Video", cat: "Business & Service Ads", biz: "কাউন্সেলিং", url: "https://youtu.be/y0KCcPFjduE", vertical: true, image: "https://img.youtube.com/vi/y0KCcPFjduE/hqdefault.jpg" },
+  ],    { t: "Kotha Bondhu – Mental Health Counseling Video", cat: "Business & Service Ads", biz: "কাউন্সেলিং", url: "https://youtu.be/y0KCcPFjduE", vertical: true, image: "https://img.youtube.com/vi/y0KCcPFjduE/hqdefault.jpg" },
   ],
 };
 
