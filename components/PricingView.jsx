@@ -15,6 +15,7 @@ function PlanCard({ p, note }) {
       border: `1px solid ${p.featured ? C.purple : C.line}`,
       borderRadius: 20, padding: 28, position: "relative",
       boxShadow: p.featured ? "0 26px 50px -24px rgba(91,42,157,.6)" : "none",
+      display: "flex", flexDirection: "column", height: "100%",
     }}>
       {p.featured && (
         <span style={{ position: "absolute", top: 18, right: 18, fontSize: 11, fontWeight: 700, letterSpacing: ".08em", textTransform: "uppercase", background: "rgba(255,255,255,.18)", padding: "4px 10px", borderRadius: 999 }}>জনপ্রিয়</span>
@@ -22,7 +23,7 @@ function PlanCard({ p, note }) {
       <div className="display" style={{ fontSize: 22, fontWeight: 700, letterSpacing: "-.01em", opacity: p.featured ? .95 : 1 }}>{p.name}</div>
       <div style={{ marginTop: 12, fontSize: 12.5, opacity: .7, lineHeight: 1.5 }}>{note}</div>
       <div className="display" style={{ fontSize: 40, fontWeight: 800, letterSpacing: "-.02em" }}>{p.price}</div>
-      <div className="mt-6 space-y-3">
+      <div className="mt-6 space-y-3" style={{ flex: 1 }}>
         {p.feats.map((f) => (
           <div key={f} className="flex items-center gap-3" style={{ fontSize: 14.5 }}>
             <Check size={16} color={p.featured ? "#fff" : C.purple} style={{ flexShrink: 0 }} />
@@ -81,7 +82,7 @@ export default function PricingView({ active: initial = 0 }) {
             <span style={{ fontSize: 13, fontWeight: 700, color: C.purple, letterSpacing: ".14em", textTransform: "uppercase", whiteSpace: "nowrap" }}>{group.label}</span>
             <span style={{ flex: 1, height: 1, background: C.line }} />
           </div>
-          <div className="grid gap-6 md:grid-cols-3">
+          <div className="grid gap-6 md:grid-cols-3" style={{ alignItems: "stretch" }}>
             {group.plans.map((p, i) => (
               <Reveal key={p.name} delay={i * 0.08}><PlanCard p={p} note={group.priceNote} /></Reveal>
             ))}
