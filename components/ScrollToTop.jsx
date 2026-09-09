@@ -43,17 +43,17 @@ export default function ScrollToTop() {
         aria-label="Scroll to top"
         className="btnx"
         style={{
-          width: 48, height: 48, borderRadius: "50%",
-          background: C.purple, color: "#fff", border: "none", cursor: "pointer",
+          width: 48, height: 48,
+          background: "none", color: C.purple, border: "none", cursor: "pointer",
           display: "flex", alignItems: "center", justifyContent: "center",
-          boxShadow: "0 12px 28px -8px rgba(91,42,157,.7)",
+          padding: 0,
           opacity: showTop ? 1 : 0,
           visibility: showTop ? "visible" : "hidden",
           transform: showTop ? "translateY(0)" : "translateY(12px)",
           transition: "opacity .3s ease, transform .3s ease, visibility .3s ease",
         }}
       >
-        <ArrowUp size={22} />
+        <ArrowUp size={28} strokeWidth={2.5} />
       </button>
     </div>
   );
