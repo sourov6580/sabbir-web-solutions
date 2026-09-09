@@ -37,7 +37,7 @@ export const viewport = {
 };
 
 // পেজ লোডের আগেই থিম সেট করে — white flash প্রতিরোধ
-const themeScript = `(function(){try{var t=localStorage.getItem("theme");var d=t==="dark"||(t==null&&window.matchMedia("(prefers-color-scheme:dark)").matches);if(d)document.documentElement.classList.add("dark")}catch(e){}})()`;
+const themeScript = `(function(){try{if(localStorage.getItem("theme")==="dark")document.documentElement.classList.add("dark")}catch(e){}})()`;
 
 export default function RootLayout({ children }) {
   return (
