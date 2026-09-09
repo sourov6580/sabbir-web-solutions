@@ -137,7 +137,7 @@ export default function Reviews() {
                   cursor: "zoom-in",
                   borderRadius: 16,
                   overflow: "hidden",
-                  background: "#fff",
+                  background: C.cardBg,
                   border: `1px solid ${C.line}`,
                   boxShadow: "0 16px 40px -34px rgba(15,23,42,.7)",
                 }}
@@ -167,7 +167,7 @@ export default function Reviews() {
                     <span
                       className="inline-flex items-center gap-2"
                       style={{
-                        background: "#fff",
+                        background: C.cardBg,
                         color: C.navy,
                         fontSize: 13,
                         fontWeight: 600,

@@ -10,7 +10,7 @@ function PlanCard({ p, note }) {
   const waHref = `https://wa.me/${contact.whatsappNumber}`;
   return (
     <div className="lift" style={{
-      background: p.featured ? C.purple : "#fff",
+      background: p.featured ? C.purple : C.cardBg,
       color: p.featured ? "#fff" : C.navy,
       border: `1px solid ${p.featured ? C.purple : C.line}`,
       borderRadius: 20, padding: 28, position: "relative",
@@ -61,7 +61,7 @@ export default function PricingView({ active: initial = 0 }) {
         {/* Toggle buttons */}
         <div className="mt-10 flex justify-center" style={{ marginTop: 40 }}>
           <div className="inline-flex flex-wrap justify-center gap-2 p-1.5"
-            style={{ background: "#fff", border: `1px solid ${C.line}`, borderRadius: 999, boxShadow: "0 10px 24px -18px rgba(15,23,42,.4)" }}>
+            style={{ background: C.cardBg, border: `1px solid ${C.line}`, borderRadius: 999, boxShadow: "0 10px 24px -18px rgba(15,23,42,.4)" }}>
             {pricing.toggles.map((t, i) => (
               <a key={t.key} href={`/pricing/${t.key}`}
                 onClick={(e) => { e.preventDefault(); pick(i); }}

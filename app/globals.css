@@ -5,6 +5,42 @@
 :root {
   --font-sora: 'Hind Siliguri', sans-serif;
   --font-jakarta: 'Hind Siliguri', sans-serif;
+
+  /* === Color tokens (Light) === */
+  --purple: #5B2A9D;
+  --purple-deep: #3D1A6E;
+  --purple-soft: #7C4DCB;
+  --navy: #0F172A;
+  --navy-soft: #1E293B;
+  --light: #F8F7FC;
+  --white: #FFFFFF;
+  --line: #E7E2F2;
+  --muted: #64607A;
+  --card-bg: #FFFFFF;
+  --header-bg: rgba(255,255,255,.72);
+  --header-bg-scroll: rgba(255,255,255,.88);
+
+  /* shadows */
+  --shadow-purple: rgba(91,42,157,.6);
+  --shadow-navy: rgba(15,23,42,.4);
+}
+
+.dark {
+  --purple: #9B6FD9;
+  --purple-deep: #7C4DCB;
+  --purple-soft: #B088E3;
+  --navy: #E2E0EA;
+  --navy-soft: #CBD5E1;
+  --light: #13111A;
+  --white: #0D0B12;
+  --line: #2A2536;
+  --muted: #9B95AD;
+  --card-bg: #1A1726;
+  --header-bg: rgba(13,11,18,.72);
+  --header-bg-scroll: rgba(13,11,18,.92);
+
+  --shadow-purple: rgba(155,111,217,.35);
+  --shadow-navy: rgba(0,0,0,.5);
 }
 
 
@@ -13,18 +49,19 @@
 html { scroll-behavior: smooth; }
 body {
   font-family: var(--font-jakarta), system-ui, sans-serif;
-  color: #0F172A;
-  background: #FFFFFF;
+  color: var(--navy);
+  background: var(--white);
+  transition: color .3s ease, background .3s ease;
 }
 .display { font-family: var(--font-sora), sans-serif; }
 
 /* ---- hover lift ---- */
 .lift { transition: transform .35s cubic-bezier(.22,1,.36,1), box-shadow .35s ease; }
-.lift:hover { transform: translateY(-6px); box-shadow: 0 24px 50px -20px rgba(91,42,157,.35); }
+.lift:hover { transform: translateY(-6px); box-shadow: 0 24px 50px -20px var(--shadow-purple); }
 
 /* ---- nav underline ---- */
 .navlink { position: relative; }
-.navlink::after { content:''; position:absolute; left:0; bottom:-6px; height:2px; width:0; background:#5B2A9D; transition:width .3s ease; }
+.navlink::after { content:''; position:absolute; left:0; bottom:-6px; height:2px; width:0; background:var(--purple); transition:width .3s ease; }
 .navlink:hover::after { width:100%; }
 
 /* ---- misc transitions ---- */
@@ -38,12 +75,12 @@ body {
 .topbar { position: relative; }
 .topbar::before {
   content:''; position:absolute; top:0; left:0; right:0; height:3px;
-  background:linear-gradient(90deg, #5B2A9D, #7C4DCB);
+  background:linear-gradient(90deg, var(--purple), var(--purple-soft));
   border-radius:20px 20px 0 0;
   transform:scaleX(0); transform-origin:left; transition:transform .4s ease;
 }
 .topbar:hover::before { transform:scaleX(1); }
-.topbar-light::before { background:linear-gradient(90deg, #7C4DCB, #C4A9F0); }
+.topbar-light::before { background:linear-gradient(90deg, var(--purple-soft), #C4A9F0); }
 
 /* ---- buttons ---- */
 .btnx { transition: transform .25s ease, box-shadow .25s ease, background .25s ease; }
@@ -62,4 +99,7 @@ body {
   .lift:hover { transform:none; }
 }
 
-:focus-visible { outline: 3px solid #7C4DCB; outline-offset: 2px; border-radius: 6px; }
+:focus-visible { outline: 3px solid var(--purple-soft); outline-offset: 2px; border-radius: 6px; }
+
+/* ---- dark mode: header logo invert ---- */
+.dark .dark-logo { filter: brightness(0) invert(1); }

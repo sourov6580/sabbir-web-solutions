@@ -44,7 +44,7 @@ function PortfolioModal({ onClose }) {
       <div
         onClick={(e) => e.stopPropagation()}
         style={{
-          background: "#fff", borderRadius: 24, padding: "34px 28px 30px", width: "100%", maxWidth: 460,
+          background: C.cardBg, borderRadius: 24, padding: "34px 28px 30px", width: "100%", maxWidth: 460,
           boxShadow: "0 40px 90px -30px rgba(15,23,42,.6)", border: `1px solid ${C.line}`,
           position: "relative", animation: "popIn .28s cubic-bezier(.22,1,.36,1)",
         }}
@@ -92,7 +92,7 @@ export default function Home() {
         <div className="mx-auto grid items-center gap-16 px-6 pt-8 pb-16 lg:grid-cols-2 lg:pt-12 lg:pb-20" style={{ maxWidth: 1200 }}>
           <Reveal>
             <div className="inline-flex items-center gap-2.5 pl-1.5 pr-4 py-1.5 mb-7"
-              style={{ background: "#fff", border: `1px solid ${C.line}`, borderRadius: 999, boxShadow: "0 8px 20px -14px rgba(15,23,42,.3)" }}>
+              style={{ background: C.cardBg, border: `1px solid ${C.line}`, borderRadius: 999, boxShadow: "0 8px 20px -14px rgba(15,23,42,.3)" }}>
               <span className="display" style={{ width: 26, height: 26, borderRadius: "50%", background: C.purple, color: "#fff", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 11, fontWeight: 700 }}>{brand.founderInitials}</span>
               <span style={{ fontSize: 13, fontWeight: 600, color: C.navy }}>{hero.badge}</span>
             </div>
@@ -111,7 +111,7 @@ export default function Home() {
                 {hero.primaryCta.label} <ArrowRight size={18} />
               </a>
               <button onClick={() => setShowPortfolio(true)} className="btnx inline-flex items-center gap-2 px-7 py-4"
-                style={{ background: "#fff", color: C.navy, border: `1px solid ${C.line}`, borderRadius: 13, fontWeight: 600, fontSize: 16, cursor: "pointer" }}>
+                style={{ background: C.cardBg, color: C.navy, border: `1px solid ${C.line}`, borderRadius: 13, fontWeight: 600, fontSize: 16, cursor: "pointer" }}>
                 {hero.secondaryCta.label} <ArrowUpRight size={17} />
               </button>
             </div>
@@ -123,7 +123,7 @@ export default function Home() {
           {/* Signature hero visual */}
           <Reveal delay={0.15}>
             <div className="relative floaty">
-              <div className="lift" style={{ background: "#fff", borderRadius: 20, boxShadow: "0 40px 80px -34px rgba(15,23,42,.4)", border: `1px solid ${C.line}`, overflow: "hidden", aspectRatio: "4 / 3" }}>
+              <div className="lift" style={{ background: C.cardBg, borderRadius: 20, boxShadow: "0 40px 80px -34px rgba(15,23,42,.4)", border: `1px solid ${C.line}`, overflow: "hidden", aspectRatio: "4 / 3" }}>
                 <img src={hero.image} alt={brand.name} style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }} />
               </div>
             </div>
@@ -198,7 +198,7 @@ export default function Home() {
       <section className="mx-auto px-6 py-16" style={{ maxWidth: 1200 }}>
         <Reveal><SectionHead eyebrow={caseStudy.eyebrow} title={caseStudy.title} sub={caseStudy.sub} /></Reveal>
         <Reveal delay={0.1}>
-          <div className="mt-12 overflow-hidden" style={{ borderRadius: 24, border: `1px solid ${C.line}`, background: "#fff" }}>
+          <div className="mt-12 overflow-hidden" style={{ borderRadius: 24, border: `1px solid ${C.line}`, background: C.cardBg }}>
             <div className="grid lg:grid-cols-5">
               <div className="lg:col-span-2 p-10" style={{ background: C.navy, color: "#fff" }}>
                 <div style={{ fontSize: 13, letterSpacing: ".14em", textTransform: "uppercase", color: C.purpleSoft, fontWeight: 600 }}>{caseStudy.clientLabel}</div>
@@ -247,7 +247,7 @@ export default function Home() {
                   </>
                 )}
               </div>
-              <div style={{ position: "absolute", bottom: -18, right: -14, background: "#fff", borderRadius: 16, padding: "14px 18px", boxShadow: "0 20px 40px -20px rgba(15,23,42,.4)", border: `1px solid ${C.line}` }}>
+              <div style={{ position: "absolute", bottom: -18, right: -14, background: C.cardBg, borderRadius: 16, padding: "14px 18px", boxShadow: "0 20px 40px -20px rgba(15,23,42,.4)", border: `1px solid ${C.line}` }}>
                 <div className="display" style={{ fontSize: 20, fontWeight: 700, color: C.purple }}>{brand.founderName}</div>
                 <div style={{ fontSize: 13, color: C.muted }}>ফাউন্ডার · {brand.name}</div>
               </div>
@@ -309,7 +309,7 @@ export default function Home() {
         <div className="mt-12 grid gap-6 md:grid-cols-3">
           {testimonials.items.map((t, i) => (
             <Reveal key={t.name} delay={i * 0.08}>
-              <div className="lift topbar" style={{ background: "#fff", border: `1px solid ${C.line}`, borderRadius: 18, padding: 28, height: "100%" }}>
+              <div className="lift topbar" style={{ background: C.cardBg, border: `1px solid ${C.line}`, borderRadius: 18, padding: 28, height: "100%" }}>
                 <Quote size={30} color={C.purple} style={{ opacity: .3 }} />
                 <div className="mt-3 flex gap-1">
                   {[...Array(5)].map((_, k) => <Star key={k} size={15} color={C.purple} fill={C.purple} />)}

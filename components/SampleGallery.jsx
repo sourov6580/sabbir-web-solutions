@@ -65,7 +65,7 @@ function VideoCard({ p, playing, onPlay }) {
   return (
     <div
       style={{
-        background: "#fff",
+        background: C.cardBg,
         borderRadius: 18,
         overflow: "hidden",
         border: `1px solid ${C.line}`,
@@ -228,7 +228,7 @@ function WebCard({ p }) {
       className="card-media lift"
       style={{
         cursor: "pointer",
-        background: "#fff",
+        background: C.cardBg,
         borderRadius: 18,
         overflow: "hidden",
         border: `1px solid ${C.line}`,
@@ -301,7 +301,7 @@ function WebCard({ p }) {
           <span
             className="inline-flex items-center gap-2"
             style={{
-              background: "#fff",
+              background: C.cardBg,
               color: C.navy,
               fontSize: 14,
               fontWeight: 600,
@@ -385,7 +385,7 @@ export default function SampleGallery({ type }) {
                 fontWeight: 500,
                 cursor: "pointer",
                 border: `1px solid ${pFilter === f ? C.purple : C.line}`,
-                background: pFilter === f ? "rgba(91,42,157,.1)" : "#fff",
+                background: pFilter === f ? "rgba(91,42,157,.1)" : C.cardBg,
                 color: pFilter === f ? C.purple : C.muted,
               }}
             >

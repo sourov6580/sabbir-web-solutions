@@ -6,6 +6,7 @@ import { usePathname } from "next/navigation";
 import { Menu, X, ArrowRight, Sparkles } from "lucide-react";
 import { brand, nav, startProjectLabel, contact } from "@/content/site";
 import { C } from "@/components/tokens";
+import ThemeToggle from "@/components/ThemeToggle";
 
 export default function Header() {
   const [open, setOpen] = useState(false);
@@ -20,8 +21,6 @@ export default function Header() {
   }, []);
 
   const waHref = `https://wa.me/${contact.whatsappNumber}`;
-  // শুধু আসল আলাদা পেজগুলোর জন্য active state (hash link-এ নয়)
-  // প্রথম সেগমেন্ট মিলিয়ে active (যেমন /pricing/web ও /pricing/video দুটোতেই "প্রাইসিং" active)
   const base = (p) => "/" + (p || "").split("/").filter(Boolean)[0];
   const isActive = (href) =>
     href.startsWith("/") && !href.includes("#") && href !== "/" &&
@@ -31,7 +30,7 @@ export default function Header() {
     <header
       style={{
         position: "sticky", top: 0, zIndex: 50,
-        background: scrolled ? "rgba(255,255,255,.88)" : "rgba(255,255,255,.72)",
+        background: scrolled ? C.headerBgScroll : C.headerBg,
         backdropFilter: "blur(14px)",
         borderBottom: scrolled ? `1px solid ${C.line}` : "1px solid transparent",
         transition: "all .3s ease",
@@ -41,7 +40,7 @@ export default function Header() {
         {/* Logo */}
         <Link href="/" className="flex items-center gap-3" style={{ textDecoration: "none", color: "inherit" }} aria-label={brand.name}>
           {brand.logoImage ? (
-            <img src={brand.logoImage} alt={brand.name} className="h-9 sm:h-11 w-auto" style={{ display: "block" }} />
+            <img src={brand.logoImage} alt={brand.name} className="h-9 sm:h-11 w-auto dark-logo" style={{ display: "block" }} />
           ) : (
             <>
               <div className="flex items-center justify-center"
@@ -69,22 +68,28 @@ export default function Header() {
           })}
         </nav>
 
-        <div className="hidden xl:block">
+        {/* Desktop: Toggle + CTA */}
+        <div className="hidden xl:flex items-center gap-3">
+          <ThemeToggle />
           <a href={waHref} target="_blank" rel="noopener noreferrer" className="btnx inline-flex items-center gap-2 px-5 py-3"
             style={{ background: C.purple, color: "#fff", borderRadius: 12, fontWeight: 600, fontSize: 15, textDecoration: "none", boxShadow: "0 12px 24px -12px rgba(91,42,157,.7)" }}>
             {startProjectLabel} <ArrowRight size={17} />
           </a>
         </div>
 
-        <button className="xl:hidden" onClick={() => setOpen(!open)} aria-label="Menu"
-          style={{ background: "none", border: "none", color: C.navy, cursor: "pointer" }}>
-          {open ? <X size={26} /> : <Menu size={26} />}
-        </button>
+        {/* Mobile: Toggle + Hamburger */}
+        <div className="xl:hidden flex items-center gap-2">
+          <ThemeToggle />
+          <button onClick={() => setOpen(!open)} aria-label="Menu"
+            style={{ background: "none", border: "none", color: C.navy, cursor: "pointer" }}>
+            {open ? <X size={26} /> : <Menu size={26} />}
+          </button>
+        </div>
       </div>
 
       {/* Mobile menu */}
       {open && (
-        <div className="xl:hidden px-6 pb-6" style={{ background: "#fff", borderBottom: `1px solid ${C.line}` }}>
+        <div className="xl:hidden px-6 pb-6" style={{ background: C.cardBg, borderBottom: `1px solid ${C.line}` }}>
           <div className="flex flex-col gap-1 pt-2">
             {nav.map((item) => {
               const active = isActive(item.href);
