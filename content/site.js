@@ -115,6 +115,7 @@ export const portfolio = {
     "Organic & Herbal Solutions",
     "Real Estate & Property Ads",
     "Business & Service Ads",
+    "Lifestyle & Service Ads",
   ],
   web: [
     { t: "HelpyHut", cat: "Landing Page", biz: "Home & Kitchen", url: "https://sabbirwebportfolio.site/step/helpyhut/", image: "/images/HelpyHut.png" },
@@ -133,6 +134,8 @@ export const portfolio = {
     { t: "আমাদের ঐতিহ্য", cat: "Other Website", biz: "Organization", url: "https://amader-proshchitra.lovable.app/", image: "/images/amader-oitijjo.png" },
   ],
   video: [
+    { t: "AI-পাওয়ার্ড ভিডিও মেকিং সার্ভিস!", cat: "Lifestyle & Service Ads", biz: "সার্ভিস", url: "https://youtube.com/shorts/ft3G1rOhk9w", vertical: true, image: "https://img.youtube.com/vi/ft3G1rOhk9w/hqdefault.jpg" },
+    { t: "Intelligent Cupping Instrument", cat: "E-commerce & Product Ads", biz: "gadget", url: "https://youtube.com/shorts/nJkzRVPVOIY", vertical: true, image: "https://img.youtube.com/vi/nJkzRVPVOIY/hqdefault.jpg" },
     { t: "একজন উদ্যোক্তার গল্প", cat: "E-commerce & Product Ads", biz: "ফুড আইটেম", url: "https://youtube.com/shorts/pnaJ0fgDqxQ", vertical: true, image: "https://img.youtube.com/vi/pnaJ0fgDqxQ/hqdefault.jpg" },
     { t: "আপনার বিজনেস এর সেল সিস্টেম কে করুন অটোমেটিক।", cat: "E-commerce & Product Ads", biz: "এডুকেশন", url: "https://youtu.be/UeeqMI55iXc", vertical: false, image: "https://img.youtube.com/vi/UeeqMI55iXc/hqdefault.jpg" },
     { t: "Fresh Mango Rajshahi – Premium Agro", cat: "E-commerce & Product Ads", biz: "এগ্রিকালচার", url: "https://youtu.be/-FJiPYMp5gQ", vertical: false, image: "https://img.youtube.com/vi/-FJiPYMp5gQ/hqdefault.jpg" },
