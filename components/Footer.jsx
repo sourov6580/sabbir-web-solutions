@@ -6,7 +6,7 @@ import { C } from "@/components/tokens";
 
 export default function Footer() {
   return (
-    <footer style={{ background: C.navy, color: "#fff" }}>
+    <footer style={{ background: C.bgDark, color: "#fff" }}>
       <div className="mx-auto px-6 py-14" style={{ maxWidth: 1200 }}>
         <div className="flex flex-col items-center gap-6 md:flex-row md:justify-between">
           <Link href="/" className="flex items-center gap-3" style={{ textDecoration: "none" }} aria-label={brand.name}>

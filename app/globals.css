@@ -19,6 +19,8 @@
   --card-bg: #FFFFFF;
   --header-bg: rgba(255,255,255,.72);
   --header-bg-scroll: rgba(255,255,255,.88);
+  --bg-dark: #0F172A;
+  --bg-dark-soft: #1E293B;
 
   /* shadows */
   --shadow-purple: rgba(91,42,157,.6);
@@ -38,6 +40,8 @@
   --card-bg: #1A1726;
   --header-bg: rgba(13,11,18,.72);
   --header-bg-scroll: rgba(13,11,18,.92);
+  --bg-dark: #161222;
+  --bg-dark-soft: #1E1A2E;
 
   --shadow-purple: rgba(155,111,217,.35);
   --shadow-navy: rgba(0,0,0,.5);

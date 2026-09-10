@@ -13,4 +13,6 @@ export const C = {
   cardBg: "var(--card-bg)",
   headerBg: "var(--header-bg)",
   headerBgScroll: "var(--header-bg-scroll)",
+  bgDark: "var(--bg-dark)",
+  bgDarkSoft: "var(--bg-dark-soft)",
 };

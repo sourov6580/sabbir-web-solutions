@@ -141,7 +141,7 @@ export default function Home() {
                 className="lift topbar topbar-light"
                 style={{
                   position: "relative",
-                  background: `linear-gradient(160deg, ${C.navy} 0%, ${C.navySoft} 100%)`,
+                  background: `linear-gradient(160deg, ${C.bgDark} 0%, ${C.bgDarkSoft} 100%)`,
                   border: "1px solid rgba(255,255,255,.08)",
                   borderRadius: 20,
                   padding: 36,
@@ -200,7 +200,7 @@ export default function Home() {
         <Reveal delay={0.1}>
           <div className="mt-12 overflow-hidden" style={{ borderRadius: 24, border: `1px solid ${C.line}`, background: C.cardBg }}>
             <div className="grid lg:grid-cols-5">
-              <div className="lg:col-span-2 p-10" style={{ background: C.navy, color: "#fff" }}>
+              <div className="lg:col-span-2 p-10" style={{ background: C.bgDark, color: "#fff" }}>
                 <div style={{ fontSize: 13, letterSpacing: ".14em", textTransform: "uppercase", color: C.purpleSoft, fontWeight: 600 }}>{caseStudy.clientLabel}</div>
                 <h3 className="display" style={{ marginTop: 8, fontSize: 28, fontWeight: 700 }}>{caseStudy.client}</h3>
                 <div style={{ marginTop: 6, color: "#94a3b8" }}>{caseStudy.projectType}</div>
@@ -274,7 +274,7 @@ export default function Home() {
       </section>
 
       {/* ============ PROCESS ============ */}
-      <section style={{ background: C.navy, color: "#fff" }}>
+      <section style={{ background: C.bgDark, color: "#fff" }}>
         <div className="mx-auto px-6 py-16" style={{ maxWidth: 1200 }}>
           <Reveal>
             <div style={{ textAlign: "center", maxWidth: 640, margin: "0 auto" }}>
@@ -285,7 +285,7 @@ export default function Home() {
           <div className="mt-16 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {processData.steps.map((step, i) => (
               <Reveal key={step.head} delay={i * 0.08}>
-                <div className="lift" style={{ padding: 28, borderRadius: 18, background: C.navySoft, border: "1px solid rgba(255,255,255,.08)", height: "100%", position: "relative" }}>
+                <div className="lift" style={{ padding: 28, borderRadius: 18, background: C.bgDarkSoft, border: "1px solid rgba(255,255,255,.08)", height: "100%", position: "relative" }}>
                   <div className="flex items-center justify-between">
                     <div style={{ width: 46, height: 46, borderRadius: 13, background: "rgba(124,77,203,.18)", color: C.purpleSoft, display: "flex", alignItems: "center", justifyContent: "center" }}><Icon name={step.icon} size={20} /></div>
                     <span className="display" style={{ fontSize: 34, fontWeight: 800, color: "rgba(255,255,255,.14)", lineHeight: 1 }}>0{i + 1}</span>
@@ -336,7 +336,7 @@ export default function Home() {
       <section id="contact" style={{ background: C.light, borderTop: `1px solid ${C.line}` }}>
         <div className="mx-auto px-6 py-14" style={{ maxWidth: 1040 }}>
           <Reveal>
-            <div style={{ background: "#fff", border: `1px solid ${C.line}`, borderRadius: 20, overflow: "hidden" }}>
+            <div style={{ background: C.cardBg, border: `1px solid ${C.line}`, borderRadius: 20, overflow: "hidden" }}>
               <div className="grid lg:grid-cols-2">
 
                 {/* Left — info */}
@@ -376,7 +376,7 @@ export default function Home() {
                       target={b.href.startsWith("tel:") ? undefined : "_blank"}
                       rel="noopener noreferrer"
                       className="btnx flex items-center gap-3 px-5 py-3.5"
-                      style={{ background: "#fff", border: `1px solid ${C.line}`, borderRadius: 12, color: C.navy, fontWeight: 700, fontSize: 15, textDecoration: "none" }}
+                      style={{ background: C.cardBg, border: `1px solid ${C.line}`, borderRadius: 12, color: C.navy, fontWeight: 700, fontSize: 15, textDecoration: "none" }}
                     >
                       <span style={{ width: 38, height: 38, borderRadius: 10, background: b.bg, color: "#fff", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>{b.icon}</span>
                       <span style={{ flex: 1 }}>{b.label}</span>
