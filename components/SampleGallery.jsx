@@ -1,7 +1,7 @@
 "use client";
 
-import React, { useState } from "react";
-import { ArrowUpRight, Layout, Play } from "lucide-react";
+import React, { useState, useEffect, useCallback } from "react";
+import { ArrowUpRight, Layout, Play, X } from "lucide-react";
 import { portfolio } from "@/content/site";
 import { Reveal, SectionHead } from "@/components/shared";
 import { C } from "@/components/tokens";
@@ -23,7 +23,7 @@ function isFacebook(url = "") {
 
 /* Facebook এম্বেড লিংক */
 function facebookEmbed(url) {
-  return `https://www.facebook.com/plugins/video.php?href=${encodeURIComponent(url)}&show_text=false&autoplay=false`;
+  return `https://www.facebook.com/plugins/video.php?href=${encodeURIComponent(url)}&show_text=false&autoplay=1`;
 }
 
 /* site.js-এ vertical: true/false দিলে সেটাই, না দিলে shorts হলে ভার্টিকাল */
@@ -32,8 +32,90 @@ function isVertical(p) {
   return /\/shorts\//.test(p.url || "");
 }
 
-/* ভিডিও কার্ড — থাম্বনেইল ও প্লেয়ার দুটোই কার্ডের ভেতরে, একই অ্যাসপেক্ট রেশিওতে */
-function VideoCard({ p, playing, onPlay }) {
+/* ===== ভিডিও পপআপ মোডাল ===== */
+function VideoModal({ p, onClose }) {
+  const id = youtubeId(p.url);
+  const fb = isFacebook(p.url);
+  const vertical = isVertical(p);
+
+  // Escape কি তে বন্ধ
+  useEffect(() => {
+    const onKey = (e) => e.key === "Escape" && onClose();
+    window.addEventListener("keydown", onKey);
+    document.body.style.overflow = "hidden";
+    return () => {
+      window.removeEventListener("keydown", onKey);
+      document.body.style.overflow = "";
+    };
+  }, [onClose]);
+
+  // মোবাইলে ব্যাক বাটনে বন্ধ
+  useEffect(() => {
+    window.history.pushState({ videoModal: true }, "");
+    const onPop = () => onClose();
+    window.addEventListener("popstate", onPop);
+    return () => window.removeEventListener("popstate", onPop);
+  }, [onClose]);
+
+  const embedSrc = fb
+    ? facebookEmbed(p.url)
+    : `https://www.youtube-nocookie.com/embed/${id}?autoplay=1&rel=0&modestbranding=1&playsinline=1`;
+
+  return (
+    <div
+      onClick={onClose}
+      style={{
+        position: "fixed", inset: 0, zIndex: 100,
+        background: "rgba(0,0,0,.85)",
+        display: "flex", alignItems: "center", justifyContent: "center",
+        padding: 16,
+        animation: "fadeIn .2s ease",
+      }}
+    >
+      <div
+        onClick={(e) => e.stopPropagation()}
+        style={{
+          position: "relative",
+          width: "100%",
+          maxWidth: vertical ? 400 : 900,
+          aspectRatio: vertical ? "9 / 16" : "16 / 9",
+          maxHeight: "85vh",
+          borderRadius: 16,
+          overflow: "hidden",
+          background: "#000",
+          boxShadow: "0 40px 90px -30px rgba(0,0,0,.8)",
+        }}
+      >
+        <iframe
+          src={embedSrc}
+          title={p.t}
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowFullScreen
+          style={{ position: "absolute", inset: 0, width: "100%", height: "100%", border: 0 }}
+        />
+
+        {/* ক্রস বাটন */}
+        <button
+          onClick={onClose}
+          aria-label="বন্ধ করুন"
+          style={{
+            position: "absolute", top: 10, right: 10, zIndex: 2,
+            width: 36, height: 36, borderRadius: "50%",
+            background: "rgba(0,0,0,.6)", color: "#fff",
+            border: "none", cursor: "pointer",
+            display: "flex", alignItems: "center", justifyContent: "center",
+            backdropFilter: "blur(6px)",
+          }}
+        >
+          <X size={20} />
+        </button>
+      </div>
+    </div>
+  );
+}
+
+/* ভিডিও কার্ড — শুধু থাম্বনেইল, ক্লিকে মোডাল ওপেন হয় */
+function VideoCard({ p, onPlay }) {
   const id = youtubeId(p.url);
   const fb = isFacebook(p.url);
   const vertical = isVertical(p);
@@ -43,7 +125,6 @@ function VideoCard({ p, playing, onPlay }) {
   const sources = React.useMemo(() => {
     const list = [];
     if (id) {
-      // ভার্টিকাল (Shorts) হলে আগে পোর্ট্রেট থাম্বনেইল
       if (vertical) list.push(`https://i.ytimg.com/vi/${id}/oardefault.jpg`);
       list.push(`https://i.ytimg.com/vi/${id}/maxresdefault.jpg`);
       list.push(`https://i.ytimg.com/vi/${id}/hqdefault.jpg`);
@@ -56,10 +137,17 @@ function VideoCard({ p, playing, onPlay }) {
   const thumb = sources[srcIndex];
   const nextSource = () => setSrcIndex((n) => (n + 1 < sources.length ? n + 1 : n));
 
-  // YouTube না থাকা থাম্বনেইলের বদলে ধূসর প্লেসহোল্ডার (120x90) পাঠায়, 404 দেয় না —
-  // তাই সাইজ দেখে বুঝে পরের সোর্সে যাই
   const handleLoad = (e) => {
     if (e.currentTarget.naturalWidth > 0 && e.currentTarget.naturalWidth < 200) nextSource();
+  };
+
+  // Facebook ভিডিও সরাসরি নতুন ট্যাবে খুলবে
+  const handleClick = () => {
+    if (fb) {
+      window.open(p.url, "_blank");
+    } else if (id) {
+      onPlay();
+    }
   };
 
   return (
@@ -72,36 +160,17 @@ function VideoCard({ p, playing, onPlay }) {
       }}
     >
       <div
-        onClick={() => !playing && !fb && id && onPlay()}
-        className={playing || fb ? "" : "card-media lift"}
+        onClick={handleClick}
+        className="card-media lift"
         style={{
           position: "relative",
           width: "100%",
           aspectRatio: ratio,
           background: "#000",
-          cursor: playing || fb ? "default" : "pointer",
+          cursor: "pointer",
         }}
       >
-        {fb ? (
-          <iframe
-            src={facebookEmbed(p.url)}
-            title={p.t}
-            loading="lazy"
-            scrolling="no"
-            allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
-            allowFullScreen
-            style={{ position: "absolute", inset: 0, width: "100%", height: "100%", border: 0 }}
-          />
-        ) : playing ? (
-          <iframe
-            src={`https://www.youtube-nocookie.com/embed/${id}?autoplay=1&rel=0&modestbranding=1&playsinline=1`}
-            title={p.t}
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            allowFullScreen
-            style={{ position: "absolute", inset: 0, width: "100%", height: "100%", border: 0 }}
-          />
-        ) : (
-          <>
+        {/* থাম্বনেইল */}
             {/* ব্লার ব্যাকগ্রাউন্ড — ফাঁকা জায়গা ভরাট করে, ভিডিও ফ্রেম কাটে না */}
             {thumb && (
               <img
@@ -196,8 +265,6 @@ function VideoCard({ p, playing, onPlay }) {
                 <Play size={24} fill={C.navy} color={C.navy} style={{ marginLeft: 3 }} />
               </span>
             </div>
-          </>
-        )}
       </div>
 
       <div style={{ padding: 16 }}>
@@ -347,7 +414,7 @@ export default function SampleGallery({ type }) {
   const head = isVideo ? portfolio.videoPage : portfolio.webPage;
 
   const [pFilter, setPFilter] = useState(filters[0]);
-  const [playingKey, setPlayingKey] = useState(null);
+  const [modalVideo, setModalVideo] = useState(null);
 
   const shown = projects.filter((p) => pFilter === filters[0] || p.cat === pFilter);
 
@@ -376,7 +443,6 @@ export default function SampleGallery({ type }) {
               key={f}
               onClick={() => {
                 setPFilter(f);
-                setPlayingKey(null);
               }}
               className="chip px-4 py-2"
               style={{
@@ -403,7 +469,7 @@ export default function SampleGallery({ type }) {
                   const key = `v-${p.url}-${i}`;
                   return (
                     <Reveal key={key} delay={(i % 4) * 0.05}>
-                      <VideoCard p={p} playing={playingKey === key} onPlay={() => setPlayingKey(key)} />
+                      <VideoCard p={p} onPlay={() => setModalVideo(p)} />
                     </Reveal>
                   );
                 })}
@@ -417,7 +483,7 @@ export default function SampleGallery({ type }) {
                   const key = `h-${p.url}-${i}`;
                   return (
                     <Reveal key={key}>
-                      <VideoCard p={p} playing={playingKey === key} onPlay={() => setPlayingKey(key)} />
+                      <VideoCard p={p} onPlay={() => setModalVideo(p)} />
                     </Reveal>
                   );
                 })}
@@ -434,6 +500,11 @@ export default function SampleGallery({ type }) {
           </div>
         )}
       </div>
+
+      {/* ভিডিও পপআপ */}
+      {modalVideo && (
+        <VideoModal p={modalVideo} onClose={() => setModalVideo(null)} />
+      )}
     </section>
   );
 }
