@@ -127,7 +127,9 @@ function VideoCard({ p, onPlay }) {
     if (id) {
       if (vertical) list.push(`https://i.ytimg.com/vi/${id}/oardefault.jpg`);
       list.push(`https://i.ytimg.com/vi/${id}/maxresdefault.jpg`);
+      list.push(`https://i.ytimg.com/vi/${id}/sddefault.jpg`);
       list.push(`https://i.ytimg.com/vi/${id}/hqdefault.jpg`);
+      list.push(`https://i.ytimg.com/vi/${id}/0.jpg`);
     }
     if (p.image) list.push(p.image);
     return list;
@@ -141,13 +143,9 @@ function VideoCard({ p, onPlay }) {
     if (e.currentTarget.naturalWidth > 0 && e.currentTarget.naturalWidth < 200) nextSource();
   };
 
-  // Facebook ভিডিও সরাসরি নতুন ট্যাবে খুলবে
+  // সব ভিডিও মোডালে ওপেন হবে
   const handleClick = () => {
-    if (fb) {
-      window.open(p.url, "_blank");
-    } else if (id) {
-      onPlay();
-    }
+    if (id || fb) onPlay();
   };
 
   return (
