@@ -133,6 +133,7 @@ export const portfolio = {
     { t: "আমাদের ঐতিহ্য", cat: "Other Website", biz: "Organization", url: "https://amader-proshchitra.lovable.app/", image: "/images/amader-oitijjo.png" },
   ],
   video: [
+    { t: "Premium quality borka set", cat: "Clothing & Fashion Ads", biz: "Clothing", url: "https://www.youtube.com/shorts/Bw7mAAnpeVM", vertical: true, image: "https://img.youtube.com/vi/Bw7mAAnpeVM/hqdefault.jpg" },
     { t: "AI-পাওয়ার্ড ভিডিও মেকিং সার্ভিস!", cat: "Business & Service Ads", biz: "সার্ভিস", url: "https://youtube.com/shorts/ft3G1rOhk9w", vertical: true, image: "https://img.youtube.com/vi/ft3G1rOhk9w/hqdefault.jpg" },
     { t: "Intelligent Cupping Instrument", cat: "E-commerce & Product Ads", biz: "gadget", url: "https://youtube.com/shorts/nJkzRVPVOIY", vertical: true, image: "https://img.youtube.com/vi/nJkzRVPVOIY/hqdefault.jpg" },
     { t: "একজন উদ্যোক্তার গল্প", cat: "E-commerce & Product Ads", biz: "ফুড আইটেম", url: "https://youtube.com/shorts/pnaJ0fgDqxQ", vertical: true, image: "https://img.youtube.com/vi/pnaJ0fgDqxQ/hqdefault.jpg" },
