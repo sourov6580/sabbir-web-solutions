@@ -28,6 +28,11 @@ export const metadata = {
   },
   robots: { index: true, follow: true },
   alternates: { canonical: seo.siteUrl },
+  icons: {
+    icon: [{ url: "/images/sws-site-icon.webp", type: "image/webp" }],
+    shortcut: "/images/sws-site-icon.webp",
+    apple: "/images/sws-site-icon.webp",
+  },
 };
 
 export const viewport = {
