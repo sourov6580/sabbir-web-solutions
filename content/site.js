@@ -125,6 +125,7 @@ export const portfolio = {
     { t: "Her Wishes — Abaya", cat: "Landing Page", biz: "Clothing", url: "https://herwishes.sabbirwebportfolio.site/step/shrug-type-abaya-with-beautifully-motif-work-new/", image: "/images/herwishes.rwmart.shop_step_new.webp" },
     { t: "Ai Online Mart", cat: "Landing Page", biz: "Daily Necessities", url: "https://sabbirwebportfolio.site/step/ai-online-mart/", image: "/images/ai-online-mart.webp" },
     { t: "ট্যাপ ফিল্টার", cat: "Landing Page", biz: "Daily Necessities", url: "https://sabbirwebportfolio.site/step/water-filter/", image: "/images/landing.rwmart.shop_step_water-filter.png" },
+    { t: "Kid Store BD", cat: "E-commerce Website", biz: "Baby Shop", url: "https://kidstorebd.sabbirwebportfolio.site/", image: "/images/kidstorebd.sabbirwebportfolio.site.webp" },
     { t: "New Zone BD", cat: "E-commerce Website", biz: "Book Shop", url: "https://newzonebd.sabbirwebportfolio.site/", image: "/images/newzonebd.rwmart.shop.png" },
     { t: "Borka Everyday", cat: "E-commerce Website", biz: "Clothing", url: "https://borkaeveryday.sabbirwebportfolio.site/", image: "/images/borkaeveryday.rwmart.shop.png" },
     { t: "Her Wishes", cat: "E-commerce Website", biz: "Clothing", url: "https://herwishes.sabbirwebportfolio.site/", image: "/images/herwishes.shop.webp" },
