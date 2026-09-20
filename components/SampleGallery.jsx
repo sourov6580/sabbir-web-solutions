@@ -336,22 +336,6 @@ function WebCard({ p }) {
           </div>
         )}
 
-        <span
-          style={{
-            position: "absolute",
-            top: 12,
-            left: 12,
-            background: "rgba(255,255,255,.92)",
-            color: C.purple,
-            fontSize: 12,
-            fontWeight: 600,
-            padding: "4px 10px",
-            borderRadius: 999,
-          }}
-        >
-          {p.biz}
-        </span>
-
         <div
           className="overlay"
           style={{
@@ -380,24 +364,22 @@ function WebCard({ p }) {
         </div>
       </div>
 
-      <div className="flex items-center justify-between" style={{ padding: 18 }}>
-        <div>
-          <div
+      <div className="flex items-center justify-between" style={{ padding: "12px 16px", gap: 10 }}>
+        <div className="display" style={{ fontSize: 16, fontWeight: 600, lineHeight: 1.35 }}>
+          {p.t}
+          <span
             style={{
+              marginLeft: 6,
               fontSize: 12,
               color: C.purple,
               fontWeight: 600,
-              textTransform: "uppercase",
-              letterSpacing: ".08em",
+              letterSpacing: ".02em",
             }}
           >
-            {p.cat}
-          </div>
-          <div className="display" style={{ marginTop: 6, fontSize: 18, fontWeight: 600 }}>
-            {p.t}
-          </div>
+            ({p.cat})
+          </span>
         </div>
-        <ArrowUpRight size={20} color={C.muted} />
+        <ArrowUpRight size={18} color={C.muted} style={{ flexShrink: 0 }} />
       </div>
     </div>
   );
