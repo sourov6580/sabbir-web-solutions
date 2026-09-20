@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, useEffect, useCallback } from "react";
-import { ArrowUpRight, Layout, Play, X } from "lucide-react";
+import { Layout, Play, X } from "lucide-react";
 import { portfolio } from "@/content/site";
 import { Reveal, SectionHead } from "@/components/shared";
 import { C } from "@/components/tokens";
@@ -335,33 +335,6 @@ function WebCard({ p }) {
             <Layout size={46} color="rgba(255,255,255,.85)" />
           </div>
         )}
-
-        <div
-          className="overlay"
-          style={{
-            position: "absolute",
-            inset: 0,
-            background: "rgba(15,23,42,.55)",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-          }}
-        >
-          <span
-            className="inline-flex items-center gap-2"
-            style={{
-              background: C.cardBg,
-              color: C.navy,
-              fontSize: 14,
-              fontWeight: 600,
-              padding: "9px 16px",
-              borderRadius: 999,
-            }}
-          >
-            প্রজেক্ট দেখুন
-            <ArrowUpRight size={16} />
-          </span>
-        </div>
       </div>
 
       <div className="flex items-center justify-between" style={{ padding: "12px 16px", gap: 10 }}>
@@ -379,7 +352,20 @@ function WebCard({ p }) {
             ({p.cat})
           </span>
         </div>
-        <ArrowUpRight size={18} color={C.muted} style={{ flexShrink: 0 }} />
+        <span
+          style={{
+            flexShrink: 0,
+            background: C.purple,
+            color: "#fff",
+            fontSize: 13,
+            fontWeight: 600,
+            padding: "6px 14px",
+            borderRadius: 999,
+            whiteSpace: "nowrap",
+          }}
+        >
+          লাইভ দেখুন
+        </span>
       </div>
     </div>
   );
