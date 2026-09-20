@@ -1,7 +1,7 @@
 "use client";
 
-import React, { useState } from "react";
-import { ArrowUpRight, Layout, Play } from "lucide-react";
+import React, { useState, useEffect, useCallback } from "react";
+import { Layout, Play, X } from "lucide-react";
 import { portfolio } from "@/content/site";
 import { Reveal, SectionHead } from "@/components/shared";
 import { C } from "@/components/tokens";
@@ -16,15 +16,108 @@ function youtubeId(url = "") {
   return m ? m[1] : null;
 }
 
+/* Facebook ভিডিও / রিল কি না */
+function isFacebook(url = "") {
+  return /facebook\.com|fb\.watch/.test(url);
+}
+
+/* Facebook এম্বেড লিংক */
+function facebookEmbed(url) {
+  return `https://www.facebook.com/plugins/video.php?href=${encodeURIComponent(url)}&show_text=false&autoplay=1`;
+}
+
 /* site.js-এ vertical: true/false দিলে সেটাই, না দিলে shorts হলে ভার্টিকাল */
 function isVertical(p) {
   if (typeof p.vertical === "boolean") return p.vertical;
   return /\/shorts\//.test(p.url || "");
 }
 
-/* ভিডিও কার্ড — থাম্বনেইল ও প্লেয়ার দুটোই কার্ডের ভেতরে, একই অ্যাসপেক্ট রেশিওতে */
-function VideoCard({ p, playing, onPlay }) {
+/* ===== ভিডিও পপআপ মোডাল ===== */
+function VideoModal({ p, onClose }) {
   const id = youtubeId(p.url);
+  const fb = isFacebook(p.url);
+  const vertical = isVertical(p);
+
+  // Escape কি তে বন্ধ
+  useEffect(() => {
+    const onKey = (e) => e.key === "Escape" && onClose();
+    window.addEventListener("keydown", onKey);
+    document.body.style.overflow = "hidden";
+    return () => {
+      window.removeEventListener("keydown", onKey);
+      document.body.style.overflow = "";
+    };
+  }, [onClose]);
+
+  // মোবাইলে ব্যাক বাটনে বন্ধ
+  useEffect(() => {
+    window.history.pushState({ videoModal: true }, "");
+    const onPop = () => onClose();
+    window.addEventListener("popstate", onPop);
+    return () => window.removeEventListener("popstate", onPop);
+  }, [onClose]);
+
+  const embedSrc = fb
+    ? facebookEmbed(p.url)
+    : `https://www.youtube-nocookie.com/embed/${id}?autoplay=1&rel=0&modestbranding=1&playsinline=1`;
+
+  return (
+    <div
+      onClick={onClose}
+      style={{
+        position: "fixed", inset: 0, zIndex: 100,
+        background: "rgba(0,0,0,.85)",
+        display: "flex", alignItems: "center", justifyContent: "center",
+        padding: 16,
+        animation: "fadeIn .2s ease",
+      }}
+    >
+      <div
+        onClick={(e) => e.stopPropagation()}
+        style={{
+          position: "relative",
+          width: "100%",
+          maxWidth: vertical ? 400 : 900,
+          aspectRatio: vertical ? "9 / 16" : "16 / 9",
+          maxHeight: "85vh",
+          borderRadius: 16,
+          overflow: "hidden",
+          background: "#000",
+          boxShadow: "0 40px 90px -30px rgba(0,0,0,.8)",
+        }}
+      >
+        <iframe
+          src={embedSrc}
+          title={p.t}
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowFullScreen
+          style={{ position: "absolute", inset: 0, width: "100%", height: "100%", border: 0 }}
+        />
+
+        {/* ক্রস বাটন */}
+        <button
+          onClick={onClose}
+          aria-label="বন্ধ করুন"
+          style={{
+            position: "absolute", top: 10, right: 10, zIndex: 2,
+            width: 36, height: 36, borderRadius: "50%",
+            background: "rgba(0,0,0,.6)", color: "#fff",
+            border: "none", cursor: "pointer",
+            display: "flex", alignItems: "center", justifyContent: "center",
+            backdropFilter: "blur(6px)",
+          }}
+        >
+          <X size={20} />
+        </button>
+      </div>
+    </div>
+  );
+}
+
+/* ভিডিও কার্ড — শুধু থাম্বনেইল, ক্লিকে মোডাল ওপেন হয় */
+function VideoCard({ p, onPlay }) {
+  const id = youtubeId(p.url);
+  const fb = isFacebook(p.url);
   const vertical = isVertical(p);
   const ratio = vertical ? "9 / 16" : "16 / 9";
 
@@ -32,10 +125,11 @@ function VideoCard({ p, playing, onPlay }) {
   const sources = React.useMemo(() => {
     const list = [];
     if (id) {
-      // ভার্টিকাল (Shorts) হলে আগে পোর্ট্রেট থাম্বনেইল
       if (vertical) list.push(`https://i.ytimg.com/vi/${id}/oardefault.jpg`);
       list.push(`https://i.ytimg.com/vi/${id}/maxresdefault.jpg`);
+      list.push(`https://i.ytimg.com/vi/${id}/sddefault.jpg`);
       list.push(`https://i.ytimg.com/vi/${id}/hqdefault.jpg`);
+      list.push(`https://i.ytimg.com/vi/${id}/0.jpg`);
     }
     if (p.image) list.push(p.image);
     return list;
@@ -45,42 +139,36 @@ function VideoCard({ p, playing, onPlay }) {
   const thumb = sources[srcIndex];
   const nextSource = () => setSrcIndex((n) => (n + 1 < sources.length ? n + 1 : n));
 
-  // YouTube না থাকা থাম্বনেইলের বদলে ধূসর প্লেসহোল্ডার (120x90) পাঠায়, 404 দেয় না —
-  // তাই সাইজ দেখে বুঝে পরের সোর্সে যাই
   const handleLoad = (e) => {
     if (e.currentTarget.naturalWidth > 0 && e.currentTarget.naturalWidth < 200) nextSource();
+  };
+
+  // সব ভিডিও মোডালে ওপেন হবে
+  const handleClick = () => {
+    if (id || fb) onPlay();
   };
 
   return (
     <div
       style={{
-        background: "#fff",
+        background: C.cardBg,
         borderRadius: 18,
         overflow: "hidden",
         border: `1px solid ${C.line}`,
       }}
     >
       <div
-        onClick={() => !playing && id && onPlay()}
-        className={playing ? "" : "card-media lift"}
+        onClick={handleClick}
+        className="card-media lift"
         style={{
           position: "relative",
           width: "100%",
           aspectRatio: ratio,
           background: "#000",
-          cursor: playing ? "default" : "pointer",
+          cursor: "pointer",
         }}
       >
-        {playing ? (
-          <iframe
-            src={`https://www.youtube-nocookie.com/embed/${id}?autoplay=1&rel=0&modestbranding=1&playsinline=1`}
-            title={p.t}
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            allowFullScreen
-            style={{ position: "absolute", inset: 0, width: "100%", height: "100%", border: 0 }}
-          />
-        ) : (
-          <>
+        {/* থাম্বনেইল */}
             {/* ব্লার ব্যাকগ্রাউন্ড — ফাঁকা জায়গা ভরাট করে, ভিডিও ফ্রেম কাটে না */}
             {thumb && (
               <img
@@ -113,7 +201,9 @@ function VideoCard({ p, playing, onPlay }) {
                   inset: 0,
                   width: "100%",
                   height: "100%",
-                  objectFit: "contain",
+                  // ভার্টিকাল কার্ডে fallback থাম্বনেইল 16:9 হলে পাশের কালো বার বাদ দিয়ে
+                  // ভিডিওর আসল ফ্রেমটাই দেখায়
+                  objectFit: vertical ? "cover" : "contain",
                 }}
               />
             ) : (
@@ -173,8 +263,6 @@ function VideoCard({ p, playing, onPlay }) {
                 <Play size={24} fill={C.navy} color={C.navy} style={{ marginLeft: 3 }} />
               </span>
             </div>
-          </>
-        )}
       </div>
 
       <div style={{ padding: 16 }}>
@@ -205,7 +293,7 @@ function WebCard({ p }) {
       className="card-media lift"
       style={{
         cursor: "pointer",
-        background: "#fff",
+        background: C.cardBg,
         borderRadius: 18,
         overflow: "hidden",
         border: `1px solid ${C.line}`,
@@ -247,69 +335,37 @@ function WebCard({ p }) {
             <Layout size={46} color="rgba(255,255,255,.85)" />
           </div>
         )}
-
-        <span
-          style={{
-            position: "absolute",
-            top: 12,
-            left: 12,
-            background: "rgba(255,255,255,.92)",
-            color: C.purple,
-            fontSize: 12,
-            fontWeight: 600,
-            padding: "4px 10px",
-            borderRadius: 999,
-          }}
-        >
-          {p.biz}
-        </span>
-
-        <div
-          className="overlay"
-          style={{
-            position: "absolute",
-            inset: 0,
-            background: "rgba(15,23,42,.55)",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-          }}
-        >
-          <span
-            className="inline-flex items-center gap-2"
-            style={{
-              background: "#fff",
-              color: C.navy,
-              fontSize: 14,
-              fontWeight: 600,
-              padding: "9px 16px",
-              borderRadius: 999,
-            }}
-          >
-            প্রজেক্ট দেখুন
-            <ArrowUpRight size={16} />
-          </span>
-        </div>
       </div>
 
-      <div className="flex items-center justify-between" style={{ padding: 18 }}>
-        <div>
-          <div
+      <div className="flex items-center justify-between" style={{ padding: "12px 16px", gap: 10 }}>
+        <div className="display" style={{ fontSize: 16, fontWeight: 600, lineHeight: 1.35 }}>
+          {p.t}
+          <span
             style={{
+              marginLeft: 6,
               fontSize: 12,
               color: C.purple,
               fontWeight: 600,
-              textTransform: "uppercase",
-              letterSpacing: ".08em",
+              letterSpacing: ".02em",
             }}
           >
-            {p.cat}
-          </div>
-          <div className="display" style={{ marginTop: 6, fontSize: 18, fontWeight: 600 }}>
-            {p.t}
-          </div>
+            ({p.cat})
+          </span>
         </div>
-        <ArrowUpRight size={20} color={C.muted} />
+        <span
+          style={{
+            flexShrink: 0,
+            background: C.purple,
+            color: "#fff",
+            fontSize: 13,
+            fontWeight: 600,
+            padding: "6px 14px",
+            borderRadius: 999,
+            whiteSpace: "nowrap",
+          }}
+        >
+          লাইভ দেখুন
+        </span>
       </div>
     </div>
   );
@@ -324,7 +380,7 @@ export default function SampleGallery({ type }) {
   const head = isVideo ? portfolio.videoPage : portfolio.webPage;
 
   const [pFilter, setPFilter] = useState(filters[0]);
-  const [playingKey, setPlayingKey] = useState(null);
+  const [modalVideo, setModalVideo] = useState(null);
 
   const shown = projects.filter((p) => pFilter === filters[0] || p.cat === pFilter);
 
@@ -353,7 +409,6 @@ export default function SampleGallery({ type }) {
               key={f}
               onClick={() => {
                 setPFilter(f);
-                setPlayingKey(null);
               }}
               className="chip px-4 py-2"
               style={{
@@ -362,7 +417,7 @@ export default function SampleGallery({ type }) {
                 fontWeight: 500,
                 cursor: "pointer",
                 border: `1px solid ${pFilter === f ? C.purple : C.line}`,
-                background: pFilter === f ? "rgba(91,42,157,.1)" : "#fff",
+                background: pFilter === f ? "rgba(91,42,157,.1)" : C.cardBg,
                 color: pFilter === f ? C.purple : C.muted,
               }}
             >
@@ -380,7 +435,7 @@ export default function SampleGallery({ type }) {
                   const key = `v-${p.url}-${i}`;
                   return (
                     <Reveal key={key} delay={(i % 4) * 0.05}>
-                      <VideoCard p={p} playing={playingKey === key} onPlay={() => setPlayingKey(key)} />
+                      <VideoCard p={p} onPlay={() => setModalVideo(p)} />
                     </Reveal>
                   );
                 })}
@@ -394,7 +449,7 @@ export default function SampleGallery({ type }) {
                   const key = `h-${p.url}-${i}`;
                   return (
                     <Reveal key={key}>
-                      <VideoCard p={p} playing={playingKey === key} onPlay={() => setPlayingKey(key)} />
+                      <VideoCard p={p} onPlay={() => setModalVideo(p)} />
                     </Reveal>
                   );
                 })}
@@ -411,6 +466,11 @@ export default function SampleGallery({ type }) {
           </div>
         )}
       </div>
+
+      {/* ভিডিও পপআপ */}
+      {modalVideo && (
+        <VideoModal p={modalVideo} onClose={() => setModalVideo(null)} />
+      )}
     </section>
   );
 }
