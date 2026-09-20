@@ -117,7 +117,7 @@ export const portfolio = {
     "Business & Service Ads",
   ],
   web: [
-    { t: "HelpyHut", cat: "Landing Page", url: "https://sabbirwebportfolio.site/step/helpyhut/", image: "/images/HelpyHut.png" },
+    { t: "HelpyHut", cat: "Landing Page", url: "https://sabbirwebportfolio.site/step/helpyhut/", image: "/images/HelpyHut.webp" },
     { t: "আলাপন", cat: "Landing Page", url: "https://sabbirwebportfolio.site/step/alapon/", image: "/images/alaapon.com.png" },
     { t: "ABC China Mart", cat: "Landing Page", url: "https://sabbirwebportfolio.site/step/abcchinamart/", image: "/images/abcchinamart.com.png" },
     { t: "Mini Niqab", cat: "Landing Page", url: "https://sabbirwebportfolio.site/step/mininiqab/", image: "/images/landing.rwmart.shop_step_mininiqab.png" },
