@@ -29,9 +29,9 @@ export const metadata = {
   robots: { index: true, follow: true },
   alternates: { canonical: seo.siteUrl },
   icons: {
-    icon: [{ url: "/images/sws-site-icon.webp", type: "image/webp" }],
-    shortcut: "/images/sws-site-icon.webp",
-    apple: "/images/sws-site-icon.webp",
+    icon: [{ url: "/images/sws-site-icon.png", type: "image/png", sizes: "96x96" }],
+    shortcut: "/images/sws-site-icon.png",
+    apple: "/images/sws-site-icon-180.png",
   },
 };
 
