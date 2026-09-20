@@ -27,6 +27,7 @@ export const metadata = {
     images: [seo.ogImage],
   },
   robots: { index: true, follow: true },
+  verification: { google: "D_jmh1IuWurYh8ZrX_LHx7rFkqrW7GYsutwgH3lYhuw" },
   alternates: { canonical: seo.siteUrl },
   icons: {
     icon: [{ url: "/images/sws-site-icon.png", type: "image/png", sizes: "96x96" }],
