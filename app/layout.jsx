@@ -4,6 +4,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import ScrollToTop from "@/components/ScrollToTop";
 import Pixel from "@/components/Pixel";
+import OfferPopup from "@/components/OfferPopup";
 
 export const metadata = {
   metadataBase: new URL(seo.siteUrl),
@@ -63,6 +64,7 @@ export default function RootLayout({ children }) {
         <Footer />
         <ScrollToTop />
         <Pixel />
+        <OfferPopup />
       </body>
     </html>
   );
