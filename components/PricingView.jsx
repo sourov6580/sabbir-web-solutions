@@ -8,41 +8,48 @@ import { C } from "@/components/tokens";
 
 function PlanCard({ p, note }) {
   const waHref = `https://wa.me/${contact.whatsappNumber}`;
+  const m = /^(.+?)\s*\((.+)\)\s*$/.exec(p.name || "");
+  const title = m ? m[1] : p.name;
+  const sub = m ? m[2] : null;
   return (
     <div className="lift" style={{
-      background: p.featured ? C.purple : C.cardBg,
-      color: p.featured ? "#fff" : C.navy,
-      border: `1px solid ${p.featured ? C.purple : C.line}`,
-      borderRadius: 20, padding: 28, position: "relative",
-      boxShadow: p.featured ? "0 26px 50px -24px rgba(91,42,157,.6)" : "none",
+      background: C.purple,
+      color: "#fff",
+      border: `1px solid ${C.purple}`,
+      borderRadius: 16, padding: 18, position: "relative",
+      boxShadow: "0 20px 40px -24px rgba(91,42,157,.6)",
       display: "flex", flexDirection: "column", height: "100%",
     }}>
-      {p.featured && (
-        <span style={{ position: "absolute", top: 18, right: 18, fontSize: 11, fontWeight: 700, letterSpacing: ".08em", textTransform: "uppercase", background: "rgba(255,255,255,.18)", padding: "4px 10px", borderRadius: 999 }}>জনপ্রিয়</span>
-      )}
-      <div className="display" style={{ fontSize: 22, fontWeight: 700, letterSpacing: "-.01em", opacity: p.featured ? .95 : 1 }}>{p.name}</div>
-      <div style={{ marginTop: 12, fontSize: 12.5, opacity: .7, lineHeight: 1.5 }}>{note}</div>
-      <div className="flex items-baseline gap-2" style={{ flexWrap: "wrap" }}>
-        {p.oldPrice && (
-          <span className="display" style={{ fontSize: 20, fontWeight: 600, opacity: .55, textDecoration: "line-through" }}>{p.oldPrice}</span>
+      <div className="display" style={{ fontSize: 21, fontWeight: 700, letterSpacing: "-.01em", lineHeight: 1.2 }}>
+        {title}
+        {sub && (
+          <span style={{ display: "block", marginTop: 2, fontSize: 12.5, fontWeight: 500, opacity: .8, lineHeight: 1.35, maxWidth: "88%" }}>
+            ({sub})
+          </span>
         )}
-        <span className="display" style={{ fontSize: 40, fontWeight: 800, letterSpacing: "-.02em" }}>{p.price}</span>
+      </div>
+      <div style={{ marginTop: 8, fontSize: 12, opacity: .75, lineHeight: 1.4 }}>{note}</div>
+      <div className="flex items-baseline gap-2" style={{ marginTop: 2, flexWrap: "wrap" }}>
+        {p.oldPrice && (
+          <span className="display" style={{ fontSize: 17, fontWeight: 600, opacity: .55, textDecoration: "line-through" }}>{p.oldPrice}</span>
+        )}
+        <span className="display" style={{ fontSize: 32, fontWeight: 800, letterSpacing: "-.02em" }}>{p.price}</span>
       </div>
       {p.renew && (
-        <div style={{ marginTop: 6, fontSize: 13, opacity: .75 }}>{p.renew}</div>
+        <div style={{ marginTop: 2, fontSize: 12.5, opacity: .78 }}>{p.renew}</div>
       )}
-      <div className="mt-6 space-y-3" style={{ flex: 1 }}>
+      <div style={{ flex: 1, marginTop: 12, display: "flex", flexDirection: "column", gap: 6 }}>
         {p.feats.map((f) => (
-          <div key={f} className="flex items-center gap-3" style={{ fontSize: 14.5 }}>
-            <Check size={16} color={p.featured ? "#fff" : C.purple} style={{ flexShrink: 0 }} />
+          <div key={f} className="flex items-center gap-2" style={{ fontSize: 13.5, lineHeight: 1.35 }}>
+            <Check size={14} color="#fff" style={{ flexShrink: 0 }} />
             {f}
           </div>
         ))}
       </div>
-      <a href={waHref} target="_blank" rel="noopener noreferrer" className="btnx mt-7 inline-flex items-center justify-center gap-2"
-        style={{ width: "100%", padding: "12px", borderRadius: 11, fontWeight: 600, textDecoration: "none",
-          background: p.featured ? "#fff" : C.purple, color: p.featured ? C.purple : "#fff" }}>
-        শুরু করুন <ArrowRight size={16} />
+      <a href={waHref} target="_blank" rel="noopener noreferrer" className="btnx inline-flex items-center justify-center gap-2"
+        style={{ width: "100%", marginTop: 14, padding: "9px", borderRadius: 10, fontWeight: 600, fontSize: 14, textDecoration: "none",
+          background: "#fff", color: C.purple }}>
+        শুরু করুন <ArrowRight size={15} />
       </a>
     </div>
   );
@@ -85,12 +92,12 @@ export default function PricingView({ active: initial = 0 }) {
         </div>
 
         {/* Active group plans */}
-        <div style={{ marginTop: 44 }}>
-          <div className="flex items-center gap-4" style={{ marginBottom: 22 }}>
+        <div style={{ marginTop: 32 }}>
+          <div className="flex items-center gap-4" style={{ marginBottom: 16 }}>
             <span style={{ fontSize: 13, fontWeight: 700, color: C.purple, letterSpacing: ".14em", textTransform: "uppercase", whiteSpace: "nowrap" }}>{group.label}</span>
             <span style={{ flex: 1, height: 1, background: C.line }} />
           </div>
-          <div className="grid gap-6 md:grid-cols-3" style={{ alignItems: "stretch" }}>
+          <div className="grid gap-4 md:grid-cols-3" style={{ alignItems: "stretch" }}>
             {group.plans.map((p, i) => (
               <Reveal key={p.name} delay={i * 0.08}><PlanCard p={p} note={group.priceNote} /></Reveal>
             ))}
