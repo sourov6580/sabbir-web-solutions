@@ -6,7 +6,7 @@ import { pricing, contact } from "@/content/site";
 import { Reveal, SectionHead, Icon } from "@/components/shared";
 import { C } from "@/components/tokens";
 
-function PlanCard({ p, note }) {
+function PlanCard({ p }) {
   const waHref = `https://wa.me/${contact.whatsappNumber}`;
   const m = /^(.+?)\s*\((.+)\)\s*$/.exec(p.name || "");
   const title = m ? m[1] : p.name;
@@ -38,10 +38,9 @@ function PlanCard({ p, note }) {
         )}
       </div>
 
-      <div className="flex items-center justify-between gap-3" style={{ marginTop: 8, fontSize: 12.5, color: "rgba(255,255,255,.65)", lineHeight: 1.4, position: "relative" }}>
-        <span>{note}</span>
-        {p.renew && <span style={{ textAlign: "right", flexShrink: 0 }}>{p.renew}</span>}
-      </div>
+      {p.renew && (
+        <div style={{ marginTop: 8, fontSize: 12.5, color: "rgba(255,255,255,.65)", lineHeight: 1.4, position: "relative" }}>{p.renew}</div>
+      )}
 
       <div style={{ height: 1, background: "rgba(255,255,255,.1)", margin: "14px 0" }} />
 
@@ -109,7 +108,7 @@ export default function PricingView({ active: initial = 0 }) {
           </div>
           <div className="grid gap-4 md:grid-cols-3" style={{ alignItems: "stretch" }}>
             {group.plans.map((p, i) => (
-              <Reveal key={p.name} delay={i * 0.08}><PlanCard p={p} note={group.priceNote} /></Reveal>
+              <Reveal key={p.name} delay={i * 0.08}><PlanCard p={p} /></Reveal>
             ))}
           </div>
         </div>
