@@ -20,36 +20,38 @@ function PlanCard({ p, note }) {
       boxShadow: "0 20px 40px -24px rgba(91,42,157,.6)",
       display: "flex", flexDirection: "column", height: "100%",
     }}>
-      <div className="display" style={{ fontSize: 21, fontWeight: 700, letterSpacing: "-.01em", lineHeight: 1.2 }}>
-        {title}
-        {sub && (
-          <span style={{ display: "block", marginTop: 2, fontSize: 12.5, fontWeight: 500, opacity: .8, lineHeight: 1.35, maxWidth: "88%" }}>
-            ({sub})
-          </span>
-        )}
+      <div className="flex items-start justify-between gap-3">
+        <div className="display" style={{ fontSize: 22, fontWeight: 700, letterSpacing: "-.01em", lineHeight: 1.2, flex: 1 }}>
+          {title}
+          {sub && (
+            <span style={{ display: "block", marginTop: 2, fontSize: 12.5, fontWeight: 500, opacity: .8, lineHeight: 1.35 }}>
+              ({sub})
+            </span>
+          )}
+        </div>
+        <div style={{ textAlign: "right", flexShrink: 0 }}>
+          {p.oldPrice && (
+            <div className="display" style={{ fontSize: 16, fontWeight: 600, opacity: .55, textDecoration: "line-through", lineHeight: 1.2 }}>{p.oldPrice}</div>
+          )}
+          <div className="display" style={{ fontSize: 34, fontWeight: 800, letterSpacing: "-.02em", lineHeight: 1.15 }}>{p.price}</div>
+        </div>
       </div>
-      <div style={{ marginTop: 8, fontSize: 12, opacity: .75, lineHeight: 1.4 }}>{note}</div>
-      <div className="flex items-baseline gap-2" style={{ marginTop: 2, flexWrap: "wrap" }}>
-        {p.oldPrice && (
-          <span className="display" style={{ fontSize: 17, fontWeight: 600, opacity: .55, textDecoration: "line-through" }}>{p.oldPrice}</span>
-        )}
-        <span className="display" style={{ fontSize: 32, fontWeight: 800, letterSpacing: "-.02em" }}>{p.price}</span>
+      <div className="flex items-center justify-between gap-3" style={{ marginTop: 8, fontSize: 12.5, opacity: .75, lineHeight: 1.4 }}>
+        <span>{note}</span>
+        {p.renew && <span style={{ textAlign: "right", flexShrink: 0 }}>{p.renew}</span>}
       </div>
-      {p.renew && (
-        <div style={{ marginTop: 2, fontSize: 12.5, opacity: .78 }}>{p.renew}</div>
-      )}
-      <div style={{ flex: 1, marginTop: 12, display: "flex", flexDirection: "column", gap: 6 }}>
+      <div style={{ flex: 1, marginTop: 12, display: "flex", flexDirection: "column", gap: 8 }}>
         {p.feats.map((f) => (
-          <div key={f} className="flex items-center gap-2" style={{ fontSize: 13.5, lineHeight: 1.35 }}>
-            <Check size={14} color="#fff" style={{ flexShrink: 0 }} />
+          <div key={f} className="flex items-center gap-3" style={{ fontSize: 14.5, lineHeight: 1.35 }}>
+            <Check size={16} color="#fff" style={{ flexShrink: 0 }} />
             {f}
           </div>
         ))}
       </div>
       <a href={waHref} target="_blank" rel="noopener noreferrer" className="btnx inline-flex items-center justify-center gap-2"
-        style={{ width: "100%", marginTop: 14, padding: "9px", borderRadius: 10, fontWeight: 600, fontSize: 14, textDecoration: "none",
+        style={{ width: "100%", marginTop: 14, padding: "10px", borderRadius: 10, fontWeight: 600, textDecoration: "none",
           background: "#fff", color: C.purple }}>
-        শুরু করুন <ArrowRight size={15} />
+        WhatsApp এ মেসেজ করুন <ArrowRight size={16} />
       </a>
     </div>
   );
