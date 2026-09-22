@@ -16,7 +16,7 @@ function PlanCard({ p }) {
       position: "relative",
       background: `linear-gradient(160deg, ${C.bgDark} 0%, ${C.bgDarkSoft} 100%)`,
       border: "1px solid rgba(255,255,255,.08)",
-      borderRadius: 20, padding: 20, color: "#fff", overflow: "hidden",
+      borderRadius: 20, padding: "22px 20px", color: "#fff", overflow: "hidden",
       boxShadow: "0 30px 60px -35px rgba(15,23,42,.7)",
       display: "flex", flexDirection: "column", height: "100%",
     }}>
@@ -32,19 +32,25 @@ function PlanCard({ p }) {
         )}
         <span style={{ marginLeft: 6, fontSize: 26, fontWeight: 800, letterSpacing: "-.02em" }}>{p.price}</span>
         {sub && (
-          <span style={{ display: "block", marginTop: 3, fontSize: 12.5, fontWeight: 500, color: "rgba(255,255,255,.7)", lineHeight: 1.35 }}>
+          <span style={{ display: "block", marginTop: 3, fontSize: 13.5, fontWeight: 500, color: "rgba(255,255,255,.7)", lineHeight: 1.35 }}>
             ({sub})
           </span>
         )}
       </div>
 
       {p.renew && (
-        <div style={{ marginTop: 8, fontSize: 12.5, color: "rgba(255,255,255,.65)", lineHeight: 1.4, position: "relative" }}>{p.renew}</div>
+        <div style={{ marginTop: 8, fontSize: 13.5, color: "rgba(255,255,255,.65)", lineHeight: 1.4, position: "relative" }}>
+          {String(p.renew).split(/(৳[\d,]+)/).map((part, i) =>
+            part.startsWith("৳")
+              ? <span key={i} style={{ fontSize: 14.5, fontWeight: 600, color: "rgba(255,255,255,.85)" }}>{part}</span>
+              : <span key={i}>{part}</span>
+          )}
+        </div>
       )}
 
-      <div style={{ height: 1, background: "rgba(255,255,255,.1)", margin: "14px 0" }} />
+      <div style={{ height: 1, background: "rgba(255,255,255,.1)", margin: "16px 0" }} />
 
-      <div style={{ flex: 1, display: "flex", flexDirection: "column", gap: 8, position: "relative" }}>
+      <div style={{ flex: 1, display: "flex", flexDirection: "column", gap: 10, position: "relative" }}>
         {p.feats.map((f) => (
           <div key={f} className="flex items-center gap-2.5" style={{ fontSize: 14.5, fontWeight: 500, color: "rgba(255,255,255,.88)", lineHeight: 1.35 }}>
             <span style={{ width: 20, height: 20, borderRadius: 6, background: "rgba(124,77,203,.3)", color: "#D9C7F7", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
@@ -56,7 +62,7 @@ function PlanCard({ p }) {
       </div>
 
       <a href={waHref} target="_blank" rel="noopener noreferrer" className="btnx inline-flex items-center justify-center gap-2"
-        style={{ width: "100%", marginTop: 16, padding: "10px", borderRadius: 999, fontWeight: 600, textDecoration: "none",
+        style={{ width: "100%", marginTop: 18, padding: "11px", borderRadius: 999, fontWeight: 600, textDecoration: "none",
           color: "#fff", background: "rgba(255,255,255,.08)", border: "1px solid rgba(255,255,255,.16)", position: "relative" }}>
         WhatsApp এ মেসেজ করুন <ArrowRight size={16} />
       </a>
@@ -80,7 +86,7 @@ export default function PricingView({ active: initial = 0 }) {
   return (
     <section style={{ background: C.light, minHeight: "70vh" }}>
       <div className="mx-auto px-6 pt-14 pb-20" style={{ maxWidth: 1200 }}>
-        <Reveal><SectionHead eyebrow={pricing.eyebrow} title={pricing.title} sub={pricing.sub} /></Reveal>
+        <Reveal><div className="pv-head"><SectionHead eyebrow={pricing.eyebrow} title={pricing.title} sub={pricing.sub} /></div></Reveal>
 
         {/* Toggle buttons */}
         <div className="mt-10 flex justify-center" style={{ marginTop: 40 }}>
@@ -115,7 +121,7 @@ export default function PricingView({ active: initial = 0 }) {
 
         {/* Reassurance */}
         <Reveal>
-          <div className="mt-14 flex flex-wrap items-center justify-center gap-x-8 gap-y-3" style={{ textAlign: "center" }}>
+          <div className="pv-reassure mt-14 flex flex-wrap items-center justify-center gap-x-8 gap-y-3" style={{ textAlign: "center" }}>
             {pricing.reassurance.map((t) => (
               <div key={t} className="flex items-center gap-2" style={{ fontSize: 14.5, fontWeight: 500, color: C.navy }}>
                 <Check size={16} color={C.purple} /> {t}
@@ -127,6 +133,17 @@ export default function PricingView({ active: initial = 0 }) {
           </div>
         </Reveal>
       </div>
+    <style jsx global>{`
+      @media (max-width: 640px) {
+        .pv-head h2 { font-size: 1.45rem; white-space: nowrap; }
+        .pv-reassure {
+          flex-direction: column;
+          align-items: flex-start;
+          text-align: left;
+          row-gap: 10px;
+        }
+      }
+    `}</style>
     </section>
   );
 }
