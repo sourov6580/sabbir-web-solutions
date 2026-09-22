@@ -12,45 +12,53 @@ function PlanCard({ p, note }) {
   const title = m ? m[1] : p.name;
   const sub = m ? m[2] : null;
   return (
-    <div className="lift" style={{
-      background: C.purple,
-      color: "#fff",
-      border: `1px solid ${C.purple}`,
-      borderRadius: 16, padding: 18, position: "relative",
-      boxShadow: "0 20px 40px -24px rgba(91,42,157,.6)",
+    <div className="lift topbar topbar-light" style={{
+      position: "relative",
+      background: `linear-gradient(160deg, ${C.bgDark} 0%, ${C.bgDarkSoft} 100%)`,
+      border: "1px solid rgba(255,255,255,.08)",
+      borderRadius: 20, padding: 20, color: "#fff", overflow: "hidden",
+      boxShadow: "0 30px 60px -35px rgba(15,23,42,.7)",
       display: "flex", flexDirection: "column", height: "100%",
     }}>
-      <div className="flex items-start justify-between gap-3">
-        <div className="display" style={{ fontSize: 22, fontWeight: 700, letterSpacing: "-.01em", lineHeight: 1.2, flex: 1 }}>
-          {title}
-          {sub && (
-            <span style={{ display: "block", marginTop: 2, fontSize: 12.5, fontWeight: 500, opacity: .8, lineHeight: 1.35 }}>
-              ({sub})
-            </span>
-          )}
-        </div>
-        <div style={{ textAlign: "right", flexShrink: 0 }}>
-          {p.oldPrice && (
-            <div className="display" style={{ fontSize: 16, fontWeight: 600, opacity: .55, textDecoration: "line-through", lineHeight: 1.2 }}>{p.oldPrice}</div>
-          )}
-          <div className="display" style={{ fontSize: 34, fontWeight: 800, letterSpacing: "-.02em", lineHeight: 1.15 }}>{p.price}</div>
-        </div>
+      <div aria-hidden style={{
+        position: "absolute", top: -90, right: -90, width: 260, height: 260, borderRadius: "50%",
+        background: "radial-gradient(circle, rgba(124,77,203,.35), transparent 70%)", pointerEvents: "none",
+      }} />
+
+      <div className="display" style={{ fontSize: 22, fontWeight: 700, letterSpacing: "-.01em", lineHeight: 1.25, position: "relative" }}>
+        {title}
+        {p.oldPrice && (
+          <span style={{ marginLeft: 8, fontSize: 16, fontWeight: 600, color: "rgba(255,255,255,.5)", textDecoration: "line-through" }}>{p.oldPrice}</span>
+        )}
+        <span style={{ marginLeft: 6, fontSize: 26, fontWeight: 800, letterSpacing: "-.02em" }}>{p.price}</span>
+        {sub && (
+          <span style={{ display: "block", marginTop: 3, fontSize: 12.5, fontWeight: 500, color: "rgba(255,255,255,.7)", lineHeight: 1.35 }}>
+            ({sub})
+          </span>
+        )}
       </div>
-      <div className="flex items-center justify-between gap-3" style={{ marginTop: 8, fontSize: 12.5, opacity: .75, lineHeight: 1.4 }}>
+
+      <div className="flex items-center justify-between gap-3" style={{ marginTop: 8, fontSize: 12.5, color: "rgba(255,255,255,.65)", lineHeight: 1.4, position: "relative" }}>
         <span>{note}</span>
         {p.renew && <span style={{ textAlign: "right", flexShrink: 0 }}>{p.renew}</span>}
       </div>
-      <div style={{ flex: 1, marginTop: 12, display: "flex", flexDirection: "column", gap: 8 }}>
+
+      <div style={{ height: 1, background: "rgba(255,255,255,.1)", margin: "14px 0" }} />
+
+      <div style={{ flex: 1, display: "flex", flexDirection: "column", gap: 8, position: "relative" }}>
         {p.feats.map((f) => (
-          <div key={f} className="flex items-center gap-3" style={{ fontSize: 14.5, lineHeight: 1.35 }}>
-            <Check size={16} color="#fff" style={{ flexShrink: 0 }} />
+          <div key={f} className="flex items-center gap-2.5" style={{ fontSize: 14.5, fontWeight: 500, color: "rgba(255,255,255,.88)", lineHeight: 1.35 }}>
+            <span style={{ width: 20, height: 20, borderRadius: 6, background: "rgba(124,77,203,.3)", color: "#D9C7F7", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
+              <Check size={13} />
+            </span>
             {f}
           </div>
         ))}
       </div>
+
       <a href={waHref} target="_blank" rel="noopener noreferrer" className="btnx inline-flex items-center justify-center gap-2"
-        style={{ width: "100%", marginTop: 14, padding: "10px", borderRadius: 10, fontWeight: 600, textDecoration: "none",
-          background: "#fff", color: C.purple }}>
+        style={{ width: "100%", marginTop: 16, padding: "10px", borderRadius: 999, fontWeight: 600, textDecoration: "none",
+          color: "#fff", background: "rgba(255,255,255,.08)", border: "1px solid rgba(255,255,255,.16)", position: "relative" }}>
         WhatsApp এ মেসেজ করুন <ArrowRight size={16} />
       </a>
     </div>
