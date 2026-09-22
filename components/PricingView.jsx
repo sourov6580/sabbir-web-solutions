@@ -22,7 +22,15 @@ function PlanCard({ p, note }) {
       )}
       <div className="display" style={{ fontSize: 22, fontWeight: 700, letterSpacing: "-.01em", opacity: p.featured ? .95 : 1 }}>{p.name}</div>
       <div style={{ marginTop: 12, fontSize: 12.5, opacity: .7, lineHeight: 1.5 }}>{note}</div>
-      <div className="display" style={{ fontSize: 40, fontWeight: 800, letterSpacing: "-.02em" }}>{p.price}</div>
+      <div className="flex items-baseline gap-2" style={{ flexWrap: "wrap" }}>
+        {p.oldPrice && (
+          <span className="display" style={{ fontSize: 20, fontWeight: 600, opacity: .55, textDecoration: "line-through" }}>{p.oldPrice}</span>
+        )}
+        <span className="display" style={{ fontSize: 40, fontWeight: 800, letterSpacing: "-.02em" }}>{p.price}</span>
+      </div>
+      {p.renew && (
+        <div style={{ marginTop: 6, fontSize: 13, opacity: .75 }}>{p.renew}</div>
+      )}
       <div className="mt-6 space-y-3" style={{ flex: 1 }}>
         {p.feats.map((f) => (
           <div key={f} className="flex items-center gap-3" style={{ fontSize: 14.5 }}>
