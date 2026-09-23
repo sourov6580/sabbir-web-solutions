@@ -17,7 +17,7 @@ const OFFER = {
   delayMs: 1200,                        // পেজ লোডের কত পরে আসবে
   storageKey: "sws_offer_sept26_seen",
   badge: "সীমিত সময়ের অফার",
-  discount: "১০%",
+  discount: "স্পেশাল ডিসকাউন্ট",
   title: "ওয়েবসাইট / ল্যান্ডিং পেজে ডিসকাউন্ট",
   sub: "৩০ সেপ্টেম্বরের মধ্যে অর্ডার করলেই পাচ্ছেন ১০% ছাড়। সুযোগ সীমিত — আজই আপনার প্রজেক্ট শুরু করুন।",
   perks: ["প্রফেশনাল ও মোবাইল-ফ্রেন্ডলি ডিজাইন", "দ্রুত ডেলিভারি", "ডেলিভারির পর সাপোর্ট"],
@@ -100,7 +100,6 @@ export default function OfferPopup() {
           <span className="swo-badge">🎁 {OFFER.badge}</span>
           <div className="swo-off">
             <span className="swo-num">{OFFER.discount}</span>
-            <span className="swo-offtxt">ছাড়</span>
           </div>
         </div>
 
@@ -156,7 +155,7 @@ const css = `
 .swo-badge{position:relative;display:inline-block;font-size:13px;font-weight:600;padding:6px 14px;border-radius:999px;
   background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.25)}
 .swo-off{position:relative;display:flex;align-items:baseline;justify-content:center;gap:8px;margin-top:10px;line-height:1}
-.swo-num{font-size:52px;font-weight:700;letter-spacing:-1px;background:linear-gradient(180deg,#fff,#FFD98A);
+.swo-num{font-size:34px;font-weight:700;letter-spacing:-1px;background:linear-gradient(180deg,#fff,#FFD98A);
   -webkit-background-clip:text;background-clip:text;color:transparent}
 .swo-offtxt{font-size:22px;font-weight:700}
 .swo-body{padding:18px 20px 18px}
@@ -181,6 +180,6 @@ const css = `
 .swo-ghost svg{flex:none;width:17px;height:17px}
 .swo-ghost:hover{border-color:var(--purple,#5B2A9D);background:var(--light,#F8F7FC)}
 .swo-note{margin:12px 0 0;font-size:12px;color:var(--muted,#64607A);text-align:center}
-@media (max-width:420px){.swo-num{font-size:44px}.swo-title{font-size:17px}.swo-body{padding:14px 14px 16px}.swo-btn{font-size:12.5px;padding:9px 5px}}
+@media (max-width:420px){.swo-num{font-size:28px}.swo-title{font-size:17px}.swo-body{padding:14px 14px 16px}.swo-btn{font-size:12.5px;padding:9px 5px}}
 @media (prefers-reduced-motion:reduce){.swo-overlay,.swo-box{transition:none}}
 `;
