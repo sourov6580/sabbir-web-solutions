@@ -19,9 +19,9 @@ const OFFER = {
   badge: "সীমিত সময়ের অফার",
   discount: "স্পেশাল ডিসকাউন্ট",
   title: "ওয়েবসাইট / ল্যান্ডিং পেজে ডিসকাউন্ট",
-  sub: "৩০ সেপ্টেম্বরের মধ্যে অর্ডার করলেই পাচ্ছেন ১০% ছাড়। সুযোগ সীমিত — আজই আপনার প্রজেক্ট শুরু করুন।",
+  sub: "৩০ সেপ্টেম্বরের মধ্যে অর্ডার করলেই পাচ্ছেন স্পেশাল ডিসকাউন্ট। সুযোগ সীমিত — আজই আপনার প্রজেক্ট শুরু করুন।",
   perks: ["প্রফেশনাল ও মোবাইল-ফ্রেন্ডলি ডিজাইন", "দ্রুত ডেলিভারি", "ডেলিভারির পর সাপোর্ট"],
-  waMessage: "আসসালামু আলাইকুম, আমি ১০% ডিসকাউন্ট অফারে ওয়েবসাইট/ল্যান্ডিং পেজ অর্ডার করতে চাই।",
+  waMessage: "আসসালামু আলাইকুম, আমি স্পেশাল ডিসকাউন্ট অফারে ওয়েবসাইট/ল্যান্ডিং পেজ অর্ডার করতে চাই।",
   samplesHref: "/web-samples",
   pricingHref: "/pricing/web",
 };
@@ -154,7 +154,7 @@ const css = `
 .swo-top:after{width:140px;height:140px;bottom:-70px;right:-40px}
 .swo-badge{position:relative;display:inline-block;font-size:13px;font-weight:600;padding:6px 14px;border-radius:999px;
   background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.25)}
-.swo-off{position:relative;display:flex;align-items:baseline;justify-content:center;gap:8px;margin-top:10px;line-height:1}
+.swo-off{position:relative;display:flex;align-items:baseline;justify-content:center;gap:8px;margin-top:10px;padding-top:5px;line-height:1}
 .swo-num{font-size:34px;font-weight:700;letter-spacing:-1px;background:linear-gradient(180deg,#fff,#FFD98A);
   -webkit-background-clip:text;background-clip:text;color:transparent}
 .swo-offtxt{font-size:22px;font-weight:700}
