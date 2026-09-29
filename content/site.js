@@ -16,7 +16,7 @@ export const brand = {
   founderName: "সাব্বির হোসেন",
   founderRole: "ফাউন্ডার ও ডিজাইনার",
   founderInitials: "SH",
-  domainLabel: "sabbirwebsolutions.site",
+  domainLabel: "sabbirwebsolutions.com",
   tagline: "ওয়েব ডিজাইন & Ai ভিডিও কন্টেন্ট সার্ভিস",
 };
 
@@ -361,7 +361,7 @@ export const seo = {
   title: "Sabbir Web Solutions — প্রফেশনাল ওয়েব ডিজাইন & ক্রিয়েটিভ Video মেকিং সার্ভিস",
   description:
     "সাব্বির হোসেনের ক্রিয়েটিভ ডিজিটাল এজেন্সি। ছোট ব্যবসা, ই-কমার্স ব্র্যান্ড আর স্টার্টআপের জন্য হাই-কনভার্টিং Website ও Promotional Video।",
-  siteUrl: "https://sabbirwebsolutions.site",
+  siteUrl: "https://sabbirwebsolutions.com",
   ogImage: "/images/og-image.jpg",
   keywords: [
     "ওয়েবসাইট ডিজাইন",
