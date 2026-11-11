@@ -1,6 +1,11 @@
 {
   "redirects": [
     {
+      "source": "/",
+      "destination": "https://sabbirwebsolutions.com/",
+      "permanent": true
+    },
+    {
       "source": "/:path*",
       "destination": "https://sabbirwebsolutions.com/:path*",
       "permanent": true
